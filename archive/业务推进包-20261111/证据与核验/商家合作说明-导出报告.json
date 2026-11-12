@@ -1,0 +1,827 @@
+{
+  "outFile": "/Users/Zhuanz/Library/Mobile Documents/com~apple~CloudDocs/蝴蝶生活项目/业务推进包-20261111/商家材料/商家合作说明.pptx",
+  "reportFile": null,
+  "captureMode": "captured-tree",
+  "slideCount": 10,
+  "textObjects": 233,
+  "shapeObjects": 54,
+  "imageObjects": 48,
+  "slideSummaries": [
+    {
+      "index": 1,
+      "key": "theme01_page001-1",
+      "capturedNodes": 46,
+      "maxDepth": 9,
+      "textNodes": 20,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 16,
+      "renderedTextObjects": 20,
+      "renderedShapeObjects": 6,
+      "renderedImageObjects": 6
+    },
+    {
+      "index": 2,
+      "key": "theme01_page047-2",
+      "capturedNodes": 29,
+      "maxDepth": 7,
+      "textNodes": 10,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 9,
+      "renderedTextObjects": 9,
+      "renderedShapeObjects": 4,
+      "renderedImageObjects": 3
+    },
+    {
+      "index": 3,
+      "key": "theme01_page024-3",
+      "capturedNodes": 40,
+      "maxDepth": 8,
+      "textNodes": 17,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 15,
+      "renderedTextObjects": 17,
+      "renderedShapeObjects": 7,
+      "renderedImageObjects": 1
+    },
+    {
+      "index": 4,
+      "key": "theme01_page010-4",
+      "capturedNodes": 41,
+      "maxDepth": 9,
+      "textNodes": 20,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 12,
+      "renderedTextObjects": 20,
+      "renderedShapeObjects": 3,
+      "renderedImageObjects": 4
+    },
+    {
+      "index": 5,
+      "key": "theme01_page007-5",
+      "capturedNodes": 48,
+      "maxDepth": 8,
+      "textNodes": 28,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 8,
+      "renderedTextObjects": 28,
+      "renderedShapeObjects": 3,
+      "renderedImageObjects": 5
+    },
+    {
+      "index": 6,
+      "key": "theme01_page039-6",
+      "capturedNodes": 54,
+      "maxDepth": 7,
+      "textNodes": 34,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 14,
+      "renderedTextObjects": 34,
+      "renderedShapeObjects": 2,
+      "renderedImageObjects": 6
+    },
+    {
+      "index": 7,
+      "key": "theme01_page058-7",
+      "capturedNodes": 64,
+      "maxDepth": 8,
+      "textNodes": 24,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 25,
+      "renderedTextObjects": 23,
+      "renderedShapeObjects": 13,
+      "renderedImageObjects": 6
+    },
+    {
+      "index": 8,
+      "key": "theme01_page009-8",
+      "capturedNodes": 55,
+      "maxDepth": 7,
+      "textNodes": 35,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 11,
+      "renderedTextObjects": 35,
+      "renderedShapeObjects": 2,
+      "renderedImageObjects": 8
+    },
+    {
+      "index": 9,
+      "key": "theme01_page040-9",
+      "capturedNodes": 55,
+      "maxDepth": 8,
+      "textNodes": 25,
+      "backgroundImages": 0,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 23,
+      "renderedTextObjects": 25,
+      "renderedShapeObjects": 12,
+      "renderedImageObjects": 4
+    },
+    {
+      "index": 10,
+      "key": "theme01_page083-10",
+      "capturedNodes": 43,
+      "maxDepth": 8,
+      "textNodes": 22,
+      "backgroundImages": 1,
+      "svgImages": 0,
+      "canvasImages": 0,
+      "imageNodes": 0,
+      "shapeCandidates": 11,
+      "renderedTextObjects": 22,
+      "renderedShapeObjects": 2,
+      "renderedImageObjects": 5
+    }
+  ],
+  "warnings": [
+    {
+      "slide": 1,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 20,
+      "sample": "蝴蝶生活 · 合作沟通版 让本地好生意 多一种获客方式 实体商家合作说明 一起选一个门店能赚钱、用户愿意买的套餐，先做小范围试售。 一起选一个门店能赚钱、用户愿意买的套餐，先做小范围试售。 本地套餐 内容与分享 订单经营 合作起点 01 方式 先试点 依据 真实订单 目标 持续合作 */ 2026.11.11｜具体权益"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 20,
+      "sample": "蝴蝶生活 · 合作沟通版 让本地好生意 多一种获客方式 实体商家合作说明 一起选一个门店能赚钱、用户愿意买的套餐，先做小范围试售。 一起选一个门店能赚钱、用户愿意买的套餐，先做小范围试售。 本地套餐 内容与分享 订单经营 合作起点 01 方式 先试点 依据 真实订单 目标 持续合作 */ 2026.11.11｜具体权益"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 3,
+      "sample": "订单经营 2026.11.11｜具体权益与费用以书面约定为准 /*"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 16,
+      "sample": "蝴蝶生活 · 合作沟通版 让本地好生意 多一种获客方式 一起选一个门店能赚钱、用户愿意买的套餐，先做小范围试售。 内容与分享 订单经营 合作起点 01 方式 先试点 依据 真实订单 目标 持续合作 2026.11.11｜具体权益与费用以书面约定为准 /*"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback-text-extracted",
+      "node": "material-background",
+      "textCount": 18,
+      "sample": "多一种获客方式"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback",
+      "node": "material-background",
+      "count": 1,
+      "source": "browser-local-material"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 8,
+      "sample": "合作起点 01 方式 先试点 依据 真实订单 目标 持续合作"
+    },
+    {
+      "slide": 1,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 2,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 10,
+      "sample": "“ 先确认套餐与接待条件 再约定推广、核销与售后 # 我们希望一起做到 让好套餐被更多人看见，让每笔合作都能算清账。 蝴蝶生活 · 商家合作 */ 从实际订单看效果，根据结果决定是否继续 /*"
+    },
+    {
+      "slide": 2,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 2,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 3,
+      "sample": "先确认套餐与接待条件 再约定推广、核销与售后 让好套餐被更多人看见，让每笔合作都能算清账。"
+    },
+    {
+      "slide": 2,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 2,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 3,
+      "sample": "先确认套餐与接待条件 再约定推广、核销与售后 让好套餐被更多人看见，让每笔合作都能算清账。"
+    },
+    {
+      "slide": 2,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 3,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 17,
+      "sample": "01 # 选品方向 首批合作建议 01 先做一个值得买的套餐 兼顾用户体验与门店利润 从酒店自助餐、家庭聚餐和休闲体验中选择。内容清楚、接待稳定、账算得过，才进入试售。 从酒店自助餐、家庭聚餐和休闲体验中选择。内容清楚、接待稳定、账算得过，才进入试售。 套餐有吸引力 商家有合理贡献 库存可控制 预约核销清楚 售后有人负"
+    },
+    {
+      "slide": 3,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 20,
+      "sample": "渠道逻辑 两条路径，分别算账 从看到内容，到完成消费 入口、订单与售后逐一对应 路径 A 视频号商品带货 商品卡 / 橱窗 / 直播 经实际准入渠道完成交易；核对渠道费、达人佣金、订单归属与售后入口。 经实际准入渠道完成交易；核对渠道费、达人佣金、订单归属与售后入口。 × 路径 B 内容进入小程序 图文 / 分享 / "
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 18,
+      "sample": "从看到内容，到完成消费 入口、订单与售后逐一对应 路径 A 视频号商品带货 商品卡 / 橱窗 / 直播 经实际准入渠道完成交易；核对渠道费、达人佣金、订单归属与售后入口。 经实际准入渠道完成交易；核对渠道费、达人佣金、订单归属与售后入口。 × 路径 B 内容进入小程序 图文 / 分享 / 广告 在支持的入口进入小程序购"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 7,
+      "sample": "入口、订单与售后逐一对应 × 路径 B 内容进入小程序 图文 / 分享 / 广告 在支持的入口进入小程序购买；付费广告另算获客成本，用户自愿再次访问。 在支持的入口进入小程序购买；付费广告另算获客成本，用户自愿再次访问。"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 7,
+      "sample": "经实际准入渠道完成交易；核对渠道费、达人佣金、订单归属与售后入口。 在支持的入口进入小程序购买；付费广告另算获客成本，用户自愿再次访问。 逐单可追溯 购买 → 核销 → 结算 → 复购 */ 链路为合作方案说明；具体准入、跳转及能力以实测为准 /*"
+    },
+    {
+      "slide": 4,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 28,
+      "sample": "# 假设例算｜不是正式报价 先算门店每单留下多少 一个套餐的沟通示例 具体成本和结算额由双方确认 01 189 元 消费者实付示例 价格与套餐内容、使用限制一起确认 02 160 元 商家结算示例 假设已扣除约定由渠道侧承担的费用 03 140 元 商家增量成本示例 食材、耗材及额外人工等假设合计 04 20 元 门店"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 25,
+      "sample": "先算门店每单留下多少 具体成本和结算额由双方确认 01 189 元 消费者实付示例 价格与套餐内容、使用限制一起确认 02 160 元 商家结算示例 假设已扣除约定由渠道侧承担的费用 03 140 元 商家增量成本示例 食材、耗材及额外人工等假设合计 04 20 元 门店单笔贡献示例 未扣固定成本、税费及额外损失 */"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 14,
+      "sample": "先算门店每单留下多少 具体成本和结算额由双方确认 01 02 160 元 商家结算示例 假设已扣除约定由渠道侧承担的费用 03 04 20 元 门店单笔贡献示例 未扣固定成本、税费及额外损失"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 15,
+      "sample": "价格与套餐内容、使用限制一起确认 假设已扣除约定由渠道侧承担的费用 03 140 元 商家增量成本示例 食材、耗材及额外人工等假设合计 04 20 元 门店单笔贡献示例 未扣固定成本、税费及额外损失 */ 如商家另承担费用，应继续扣除；本页不是利润保证 /*"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 9,
+      "sample": "160 商家结算示例 假设已扣除约定由渠道侧承担的费用 03 04 20 元 门店单笔贡献示例 未扣固定成本、税费及额外损失"
+    },
+    {
+      "slide": 5,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 34,
+      "sample": "合作分工 您做好接待，我们做好约定协作 把每个人要做的事写进确认单 以实际开通能力及服务约定为准 ✓ 合作团队拟负责 按实际服务范围执行 梳理与上架 整理套餐信息、素材、库存与购买说明 推广协调 确认发布渠道、执行人、排期及预算 订单与售后协作 提供约定查询支持，协调核销和问题处理 ! 商家配合事项 接待体验是合作基础"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 30,
+      "sample": "✓ 合作团队拟负责 按实际服务范围执行 梳理与上架 整理套餐信息、素材、库存与购买说明 推广协调 确认发布渠道、执行人、排期及预算 订单与售后协作 提供约定查询支持，协调核销和问题处理 ! 商家配合事项 接待体验是合作基础 提供真实信息 资质、套餐、价格、图片授权 保障到店履约 库存、预约、接待及核销人员 对账处理问题"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 12,
+      "sample": "! 商家配合事项 接待体验是合作基础 提供真实信息 资质、套餐、价格、图片授权 保障到店履约 库存、预约、接待及核销人员 对账处理问题 退款协作、收款资料和负责人 3 结束后 核对订单、结算与门店反馈"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 12,
+      "sample": "1 开始前 确认基础服务和额外付费项目 2 销售中 库存和接待变化及时告知 3 结束后 核对订单、结算与门店反馈 */ 拍摄、达人、广告及专场直播是否包含需逐项确认 /*"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 8,
+      "sample": "2 销售中 库存和接待变化及时告知 3 结束后 核对订单、结算与门店反馈 拍摄、达人、广告及专场直播是否包含需逐项确认 /*"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 3,
+      "sample": "3 结束后 核对订单、结算与门店反馈"
+    },
+    {
+      "slide": 6,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 24,
+      "sample": "订单怎么走 从购买到到账，都有对应记录 合作前共同查看实际演示 以下为流程说明，不是实测截图 用户看清套餐后支付 明确内容、日期、预约、退款和费用 购买 使用 到店预约与核销 前台按规则核对券码并提供服务 确认可结算订单 核对核销、退款、异常和费用 对账 到账 按约定周期结算 支付主体、触发条件与到账时效写清 问题有入"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 21,
+      "sample": "从购买到到账，都有对应记录 合作前共同查看实际演示 以下为流程说明，不是实测截图 用户看清套餐后支付 明确内容、日期、预约、退款和费用 购买 使用 到店预约与核销 前台按规则核对券码并提供服务 确认可结算订单 核对核销、退款、异常和费用 对账 到账 按约定周期结算 支付主体、触发条件与到账时效写清 问题有入口、有负责人"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 9,
+      "sample": "购买 使用 到店预约与核销 前台按规则核对券码并提供服务 对账 到账 按约定周期结算 支付主体、触发条件与到账时效写清 售后"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 15,
+      "sample": "使用 到店预约与核销 前台按规则核对券码并提供服务 确认可结算订单 核对核销、退款、异常和费用 对账 到账 按约定周期结算 支付主体、触发条件与到账时效写清 问题有入口、有负责人 退款关联原订单，并同步券码与佣金 售后 签约前查看实际支付主体、结算样单和退款演示 不以“自动分账”替代到账周期和责任说明 /*"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 5,
+      "sample": "对账 到账 按约定周期结算 支付主体、触发条件与到账时效写清 售后"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 9,
+      "sample": "到账 按约定周期结算 支付主体、触发条件与到账时效写清 问题有入口、有负责人 退款关联原订单，并同步券码与佣金 售后 签约前查看实际支付主体、结算样单和退款演示 不以“自动分账”替代到账周期和责任说明 /*"
+    },
+    {
+      "slide": 7,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 35,
+      "sample": "商家常见问题 合作前，把疑问问清楚 以确认单为依据 每一项都可以逐条核对 01 已经做其他平台 可以并行 选择适合试售的套餐或闲时时段 02 能保证销量吗 按实绩评估 先小库存测试，不作保量承诺 03 还要付什么费用 逐项列明 额外服务先确认预算与交付 04 要我拍视频吗 按分工执行 拍摄、达人及直播分别约定 05 钱"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 34,
+      "sample": "合作前，把疑问问清楚 以确认单为依据 每一项都可以逐条核对 01 已经做其他平台 可以并行 选择适合试售的套餐或闲时时段 02 能保证销量吗 按实绩评估 先小库存测试，不作保量承诺 03 还要付什么费用 逐项列明 额外服务先确认预算与交付 04 要我拍视频吗 按分工执行 拍摄、达人及直播分别约定 05 钱什么时候到 写"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 12,
+      "sample": "02 能保证销量吗 按实绩评估 先小库存测试，不作保量承诺 04 要我拍视频吗 按分工执行 拍摄、达人及直播分别约定 06 买了没法用怎么办 按约处理 预约、限制和退款提前讲明"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 27,
+      "sample": "01 选择适合试售的套餐或闲时时段 02 先小库存测试，不作保量承诺 03 还要付什么费用 逐项列明 额外服务先确认预算与交付 04 要我拍视频吗 按分工执行 拍摄、达人及直播分别约定 05 钱什么时候到 写清周期 核销、可提现、到账分别确认 06 买了没法用怎么办 按约处理 预约、限制和退款提前讲明 07 没有效果怎"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 10,
+      "sample": "02 先小库存测试，不作保量承诺 04 要我拍视频吗 按分工执行 拍摄、达人及直播分别约定 06 买了没法用怎么办 按约处理 预约、限制和退款提前讲明"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 19,
+      "sample": "03 额外服务先确认预算与交付 04 拍摄、达人及直播分别约定 05 钱什么时候到 写清周期 核销、可提现、到账分别确认 06 买了没法用怎么办 按约处理 预约、限制和退款提前讲明 07 没有效果怎么办 复盘调整 评估后继续、调整或停止新售 */ 现阶段以合作评估和试点沟通为主，政策以书面确认为准 /*"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 6,
+      "sample": "04 拍摄、达人及直播分别约定 06 买了没法用怎么办 按约处理 预约、限制和退款提前讲明"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 11,
+      "sample": "05 核销、可提现、到账分别确认 06 预约、限制和退款提前讲明 07 没有效果怎么办 复盘调整 评估后继续、调整或停止新售 */ 现阶段以合作评估和试点沟通为主，政策以书面确认为准 /*"
+    },
+    {
+      "slide": 8,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 25,
+      "sample": "启动合作 从一个套餐开始 把今天的沟通变成下一步行动 双方确认后安排试售 今天 01 选一个候选品 提供内容、价格和接待时段 明确商家决策人与联系人 完成套餐采集 上线前 02 把规则说清楚 确认结算、售后及费用 演示购买、核销和对账 确认合作方案 试售后 03 一起看真实结果 核对支付、核销、退款与到账 复盘贡献和新"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 21,
+      "sample": "今天 01 选一个候选品 提供内容、价格和接待时段 明确商家决策人与联系人 完成套餐采集 上线前 02 把规则说清楚 确认结算、售后及费用 演示购买、核销和对账 确认合作方案 试售后 03 一起看真实结果 核对支付、核销、退款与到账 复盘贡献和新增客反馈 决定下一轮安排 */ 库存、期限、推广安排和观察指标由双方共同确"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 14,
+      "sample": "上线前 02 把规则说清楚 确认结算、售后及费用 演示购买、核销和对账 确认合作方案 试售后 03 一起看真实结果 核对支付、核销、退款与到账 复盘贡献和新增客反馈 决定下一轮安排 库存、期限、推广安排和观察指标由双方共同确定 /*"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 6,
+      "sample": "试售后 03 一起看真实结果 核对支付、核销、退款与到账 复盘贡献和新增客反馈 决定下一轮安排"
+    },
+    {
+      "slide": 9,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback-text-extracted",
+      "node": "effect-background",
+      "textCount": 22,
+      "sample": "一起开始 给一个好套餐，多一次机会 蝴蝶生活 · 商家合作 欢迎餐饮、酒店与休闲体验商家 01 套餐清单 内容 适用人数、包含项目、可用日期与限制 02 合作条件 价格 商家结算、库存、额外费用与负责人 03 试点安排 行动 确认操作链路、执行计划及复盘时间 请联系本次邀约人，预约15分钟套餐沟通 先告诉我们：您希望增"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback",
+      "node": "effect-background",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 21,
+      "sample": "给一个好套餐，多一次机会 蝴蝶生活 · 商家合作 欢迎餐饮、酒店与休闲体验商家 01 套餐清单 内容 适用人数、包含项目、可用日期与限制 02 合作条件 价格 商家结算、库存、额外费用与负责人 03 试点安排 行动 确认操作链路、执行计划及复盘时间 请联系本次邀约人，预约15分钟套餐沟通 先告诉我们：您希望增加哪个时段"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 14,
+      "sample": "给一个好套餐，多一次机会 欢迎餐饮、酒店与休闲体验商家 适用人数、包含项目、可用日期与限制 02 合作条件 价格 商家结算、库存、额外费用与负责人 03 试点安排 行动 确认操作链路、执行计划及复盘时间 先告诉我们：您希望增加哪个时段的客人，有什么值得推荐的套餐，以及门店可承接多少订单。我们一起把价格、推广和履约方案算"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback-text-extracted",
+      "node": "masked-element",
+      "textCount": 5,
+      "sample": "03 试点安排 行动 确认操作链路、执行计划及复盘时间 先告诉我们：您希望增加哪个时段的客人，有什么值得推荐的套餐，以及门店可承接多少订单。我们一起把价格、推广和履约方案算明白。"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback",
+      "node": "masked-element",
+      "count": 1,
+      "source": "browser-visual-effect"
+    },
+    {
+      "slide": 10,
+      "type": "node-image-fallback",
+      "node": "css-gradient-background",
+      "count": 1
+    }
+  ]
+}
