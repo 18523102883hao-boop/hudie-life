@@ -1,0 +1,89 @@
+<view class="ec-page">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:12rpx;">
+      <view class="ec-nav flex">
+        <view class="ec-back" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="ec-nav-title">兑换商品</view>
+        <view class="ec-nav-title" style="opacity:0;">兑换商品</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成功态 -->
+  <block wx:if="{{result}}">
+    <view class="ec-section ec-ex-done">
+      <view class="ec-ex-done-icon">✓</view>
+      <view class="ec-ex-done-title">兑换成功</view>
+      <view class="ec-ex-done-sub">{{result.product_title}}</view>
+
+      <view class="ec-ex-code-box">
+        <view class="ec-ex-code-label">消费码（门店核销凭证）</view>
+        <view class="ec-ex-code">{{result.code}}</view>
+        <view hover-class="theme-action-hover" class="ec-ex-copy" catchtap="copyCode">复制消费码</view>
+      </view>
+
+      <view class="ec-ex-done-tip">请到店出示消费码完成核销，订单号 {{result.order_no}}</view>
+      <view class="ec-ex-done-btns flex">
+        <view hover-class="theme-action-hover" class="ec-ex-btn-ghost" catchtap="reset">再兑一张</view>
+        <view hover-class="theme-action-hover" class="ec-ex-btn-main" catchtap="goOrders">查看订单</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 兑换态 -->
+  <block wx:else>
+    <view class="ec-section">
+      <view class="ec-ex-tip">输入达人提供的 16 位兑换码，兑换后可在「我的订单」查看，到店出示消费码核销</view>
+      <view class="ec-search">
+        <input
+          class="ec-search-input"
+          value="{{code}}"
+          maxlength="32"
+          placeholder="请输入 16 位兑换码"
+          placeholder-class="ec-search-ph"
+          confirm-type="search"
+          bindinput="onCodeInput"
+          bindconfirm="query"
+        />
+        <view hover-class="theme-action-hover" wx:if="{{code}}" class="ec-search-clear" catchtap="clearCode">清空</view>
+        <view hover-class="theme-action-hover" class="ec-search-btn" catchtap="query">{{querying ? '查询中' : '查询'}}</view>
+      </view>
+    </view>
+
+    <!-- 商品详情 -->
+    <view wx:if="{{info}}" class="ec-section">
+      <view class="ec-rec-head flex">
+        <image wx:if="{{info.img}}" class="ec-rec-img" src="{{info.img}}" mode="aspectFill"></image>
+        <view class="ec-rec-info">
+          <view class="ec-rec-title">{{info.title}}</view>
+          <view class="ec-rec-time">{{info.shop_name || '—'}}</view>
+        </view>
+      </view>
+      <view wx:if="{{info.verify_tips}}" class="ec-ex-verify-tip">{{info.verify_tips}}</view>
+
+      <view class="ec-ex-field">
+        <view class="ec-ex-label">手机号<text class="ec-ex-required">*</text></view>
+        <input
+          class="ec-ex-input"
+          type="number"
+          value="{{mobile}}"
+          maxlength="11"
+          placeholder="请输入 11 位手机号，用于门店核销核对"
+          placeholder-class="ec-search-ph"
+          bindinput="onMobileInput"
+        />
+        <view class="ec-ex-hint">该手机号仅用于本次订单的联系与核销核对，不会修改你的账号手机号</view>
+      </view>
+
+      <view class="ec-ex-pay-tip">兑换免费，无需支付</view>
+    </view>
+
+    <view wx:if="{{info}}" class="ec-ex-footer">
+      <view hover-class="{{submitting ? 'none' : 'theme-action-hover'}}" class="ec-ex-submit {{submitting ? 'ec-ex-submit-off' : ''}}" catchtap="submit">
+        {{submitting ? '兑换中…' : '确认兑换'}}
+      </view>
+    </view>
+  </block>
+</view>

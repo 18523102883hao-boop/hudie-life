@@ -1,0 +1,25 @@
+/* 品牌与选中态用蓝色，按钮使用橙红渐变，禁用状态保留中性色。 */
+page {
+  --brand: #168cf0;
+  --brand-strong: #0879b5;
+  --brand-soft: #eaf8fc;
+  --brand-border: #b9e2f6;
+  --action: #e94b23;
+  --action-pressed: #d4401c;
+  --action-background: linear-gradient(135deg, #f26a2e, #e94b23);
+  --action-pressed-background: linear-gradient(135deg, #df5925, #d4401c);
+  --text: #222222;
+  --muted: #888888;
+  --page-background: #f5f7f9;
+  /* 此变量也被组件描边按钮用作文字颜色，必须保留单色。渐变通过按钮公开属性传入。 */
+  --button-primary-background-color: #e94b23;
+  --button-primary-border-color: #e94b23;
+  --tabbar-item-active-color: #0879b5;
+  --tabs-bottom-bar-color: #0879b5;
+  --checkbox-checked-icon-color: #0879b5;
+  --radio-checked-icon-color: #0879b5;
+  --switch-on-background-color: #0879b5;
+}
+.theme-action-hover { background:var(--action-pressed-background) !important; }
+/* 分享面板只改变图标底色，保留父容器的排版与点击区域。 */
+.theme-share-hover .theme-action-icon { background: var(--action-pressed-background) !important; }

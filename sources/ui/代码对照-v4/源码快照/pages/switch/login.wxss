@@ -1,0 +1,21 @@
+page{background-color:#F5F5F5}
+.views{width:48rpx;height:48rpx}
+.views image{width:100%;height:100%}
+.viewesss{width:750rpx;justify-content:space-between;color:#ffffff}
+.bgc{width:4000rpx;height:4000rpx;top: -3500rpx;left:-1625rpx;z-index:-1;border-radius: 2000rpx;background: var(--brand);}
+.avatar-wrapper{width:180rpx;height:180rpx;padding:0rpx;box-sizing:border-box}
+.avatar{width:180rpx;height:180rpx}
+.view input{flex:1;text-align:center;padding-right:11vw;box-sizing:border-box}
+.btn{width:350rpx;background:var(--action-background);border-radius:44rpx;text-align:center;line-height:80rpx;margin:0 auto;margin-top:300rpx;color:#FFFFFF}
+.top11{width:100rpx;height:100rpx}
+.top11 image{width:100rpx;height:100rpx}
+.top{flex-direction:column;padding:100rpx 80rpx;box-sizing:border-box}
+.top2{color:#fff;text-align:center;font-weight:800;letter-spacing:2rpx}
+.logo{width:200rpx;height:300rpx;margin:0 auto}
+.logo image{width:200rpx;height:300rpx}
+.tips{width:560rpx;font-size:28rpx;line-height:45rpx;bottom:200rpx;left:50%;transform:translate(-50%);font-weight:500;letter-spacing:2rpx}
+.TipsImg{width:36rpx;height:36rpx;margin-right:10rpx}
+.TipsImg image{width:100%;height:100%}
+.tipsBottom{width:80%;margin:0 auto;margin-top:180rpx}
+.TipsTxt{flex:1;font-size:28rpx;line-height:45rpx;font-weight:500;letter-spacing:2rpx;text-align:center}
+

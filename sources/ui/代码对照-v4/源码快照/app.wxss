@@ -1,0 +1,58 @@
+@import "/utils/font.wxss";
+@import "/utils/common.wxss";
+@import "/utils/common/tabbar.wxss";
+@import "/utils/theme.wxss";
+
+/* 商品列表抢购按钮按压时保持橙红色系。 */
+.goods-buy-hover{background:var(--action-pressed-background)!important}
+/* 商品优惠、预约条件与分享入口并排展示。 */
+.product-meta-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12rpx}
+.product-meta-tags{display:flex;flex:1;min-width:0;align-items:center;flex-wrap:wrap;gap:10rpx}
+.product-share-action{flex-shrink:0}
+/* 预约条件使用原商品标签样式，商品标签在价格下方展示。 */
+.product-detail-top-tag{display:inline-block;max-width:100%;box-sizing:border-box;border:1rpx solid #ed5219;color:#ed2519;border-radius:8rpx;padding:4rpx 8rpx;font-size:22rpx;line-height:34rpx;overflow-wrap:anywhere}
+.product-detail-service-row{display:flex;flex-wrap:wrap;align-items:center;margin-top:18rpx;padding-top:16rpx;border-top:1rpx solid #f0f0f0}
+.product-detail-service-item{display:inline-flex;align-items:center;max-width:100%;min-width:0;margin:0 24rpx 8rpx 0;color:#555;font-size:24rpx;line-height:34rpx;overflow-wrap:anywhere}
+.product-detail-service-icon{display:inline-block;flex-shrink:0;margin-right:7rpx;color:var(--brand-strong);font-size:28rpx;font-weight:700;line-height:34rpx}
+
+/* 商品详情底部信息卡片。 */
+.detail-info-card{box-sizing:border-box;width:710rpx;margin-top:20rpx;padding:8rpx 24rpx;background:#fff;border-radius:20rpx;color:#343434}
+.detail-info-row{box-sizing:border-box;display:flex;align-items:center;min-height:82rpx;padding:14rpx 0;font-size:27rpx;line-height:38rpx}
+.detail-info-row+.detail-info-row{border-top:1rpx solid #ededed}
+.detail-info-icon{flex-shrink:0;width:44rpx;color:var(--brand-strong);font-size:34rpx;text-align:left}
+.detail-info-label{flex-shrink:0;font-weight:600}
+.detail-info-value{flex:1;min-width:0;word-break:break-all;font-weight:600}
+.detail-info-copy{flex-shrink:0;margin-left:14rpx;padding:6rpx 0 6rpx 10rpx;color:var(--brand-strong);font-size:24rpx}
+.detail-info-link-text{flex:1;min-width:0}
+.detail-info-arrow{flex-shrink:0;color:#999;font-size:24rpx}
+.detail-partner-mask{position:fixed;top:0;left:0;z-index:100;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6)}
+.detail-partner-panel{box-sizing:border-box;width:650rpx;max-width:90vw;max-height:calc(100vh - 100rpx - env(safe-area-inset-bottom));overflow-y:auto;text-align:center}
+.detail-partner-image{display:block;width:100%}
+.detail-partner-close{box-sizing:border-box;width:68rpx;height:68rpx;line-height:62rpx;margin:20rpx auto 0;border:2rpx solid #fff;border-radius:50%;background:rgba(0,0,0,.35);color:#fff;font-size:42rpx}
+
+page{background: var(--page-background);overflow-x: hidden}
+.CardItem{width:100%;height:280rpx;padding:16rpx 20rpx;box-sizing:border-box;color:#333333}
+.CardItems{color: #fff}
+.mengban{top: 0;left: 0;width: 100%;height: 100%;background-color: #00000040;z-index: 1000;}
+.mengbans{width: 600rpx;border-radius: 20rpx;background-color: #fff;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 99;flex-direction: column;align-items: center;justify-content: center;}
+.top1 {width: 100%;height: 100rpx;border-bottom: 1rpx solid #eeeeee;text-align: center;line-height: 100rpx;align-items: center;justify-content: center;}
+.top1:last-child {border: none;}
+.top1 image{width: 80rpx;height: 80rpx;}
+.tips12{top: 50%;left: 50%;transform: translate(-50%, -50%);width: 620rpx;height: auto;border-radius: 20rpx;z-index: 100002;padding-bottom: 20rpx;box-sizing: border-box;}
+.tips123{text-align: center;font-size: 32rpx;font-family: PingFang SC-Bold, PingFang SC;font-weight: bold;color: var(--brand-strong);}
+.tips2{width: 566rpx;height: auto;font-size: 28rpx;font-family: PingFang SC-Regular, PingFang SC;font-weight: 400;color: #333333;overflow-y: auto;line-height: 40rpx;}
+.tips3 {width: 432rpx;height: 68rpx;background:var(--action-background);border-radius: 50rpx;opacity: 1;margin: 0 auto;margin-top: 10rpx;text-align: center;font-size: 28rpx;font-family: PingFang SC-Regular, PingFang SC;font-weight: 400;color: #fff;line-height: 68rpx;letter-spacing: 5rpx;}
+.tbt1 {width: 620rpx;height: 182rpx;top: 0;left: 0;z-index: 1;background-color: var(--brand);border-radius: 20rpx 20rpx 0 0;}
+.tbt1 image {width: 620rpx;height: 182rpx;}
+.tanboxTop {height: 182rpx}
+.tbt2 {width: 228rpx;height: 165rpx;z-index: 2;left: 50%;bottom: 0;transform: translate(-50%, 0);}
+.tbt2 image {width: 100%;height: 165rpx;}
+.labels{bottom: 5rpx;padding: 20rpx;}
+.label {width: 100rpx;height: 40rpx;background: #333333;border-radius: 10rpx;opacity: 1;font-size: 20rpx;font-family: PingFang SC-Regular, PingFang SC;font-weight: 400;color: #fff;text-align: center;line-height: 40rpx;margin-right: 10rpx;}
+.points {align-items: center;justify-content: center;margin-top: 10rpx;}
+.pointe {width: 30rpx;height: 12rpx;background: var(--brand);border-radius: 4rpx;opacity: 1;margin: 0 5rpx;}
+.point {width: 12rpx;height: 12rpx;background: var(--brand-border);border-radius: 50%;margin: 0 5rpx;}
+.lun{width: 750rpx;height: 300rpx;transform: translateY(0);box-shadow: 0 0 10px spread rgba(0, 0, 0, .2)}
+.luns {width: 100%;height: 100%;}
+.luns image {width: 100%;height: 100%;}
+.platform-one{width: 28rpx;height: 28rpx;font-size: 0;vertical-align: middle;}

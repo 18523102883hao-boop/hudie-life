@@ -1,0 +1,187 @@
+<view style="width: calc(max(1600rpx, 100vw));">
+  <view style="text-align: center;font-size: 44rpx;font-weight: 700;">申请家庭基本情况</view>
+  <view style="text-align: center;border-right: 2rpx solid #ccc;border-bottom: 2rpx solid #ccc;">
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">申请人姓名</view>
+      <view class="td" style="width: 20%;"><input type="text" value="{{data.name}}" bind:input="setValue" data-name="name"/></view>
+      <view class="th" style="width: 10%;">性别</view>
+      <view class="td" style="width: 10%;"><input type="text" value="{{data.sex}}" bind:input="setValue" data-name="sex"/></view>
+      <view class="th" style="width: 15%;">身份证号码</view>
+      <view class="td" style="width: 30%;"><input type="idcard" value="{{data.id_card}}" bind:input="setValue" data-name="id_card"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">户籍地址</view>
+      <view class="td" style="width: 50%;"><input type="text" value="{{data.domiciliary_register}}" bind:input="setValue" data-name="domiciliary_register"/></view>
+      <view class="th" style="width: 15%;">家庭人口</view>
+      <view class="td" style="width: 20%;"><input type="number" value="{{data.person_num}}" bind:input="setValue" data-name="person_num"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">居住地址</view>
+      <view class="td" style="width: 50%;"><input type="text" value="{{data.residential_address}}" bind:input="setValue" data-name="residential_address"/></view>
+      <view class="th" style="width: 15%;">电 话</view>
+      <view class="td" style="width: 20%;"><input type="number" value="{{data.mobile}}" bind:input="setValue" data-name="mobile"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 30%;">家庭可支配收入（元/年）</view>
+      <view class="td" style="width: 18%;"><input type="digit" value="{{data.total_annual_income}}" bind:input="setValue" data-name="total_annual_income"/></view>
+      <view class="th" style="width: 34%;">家庭人均可支配收入（元/年）</view>
+      <view class="td" style="width: 18%;"><input type="digit" value="{{data.per_annual_income}}" bind:input="setValue" data-name="per_annual_income"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 3%;">家庭成员情况</view>
+      <view style="width: 97%;display: flex;flex-wrap: wrap;">
+        <view style="width: 100%;display: flex;">
+          <view class="th" style="width: 8%;">与申请人关系</view>
+          <view class="th" style="width: 10%;">姓名</view>
+          <view class="th" style="width: 25%;">身份证号</view>
+          <view class="th" style="width: 20%;">工作单位</view>
+          <view class="th" style="width: 13%;">年收入（元）</view>
+          <view class="th" style="width: 24%;">备注</view>
+        </view>
+        <view style="width: 100%;display: flex;" wx:for="{{data.person}}" wx:key="index">
+          <view class="td" style="width: 8%;"><input type="text" value="{{item.relation}}" bind:input="setValue" data-name="person.{{index}}.relation"/></view>
+          <view class="td" style="width: 10%;"><input type="text" value="{{item.name}}" bind:input="setValue" data-name="person.{{index}}.name"/></view>
+          <view class="td" style="width: 25%;"><input type="idcard" value="{{item.id_card}}" bind:input="setValue" data-name="person.{{index}}.id_card"/></view>
+          <view class="td" style="width: 20%;"><input type="text" value="{{item.company}}" bind:input="setValue" data-name="person.{{index}}.company"/></view>
+          <view class="td" style="width: 13%;"><input type="digit" value="{{item.annual_income}}" bind:input="setValue" data-name="person.{{index}}.annual_income"/></view>
+          <view class="td" style="width: 24%;"><input type="text" value="{{item.remark}}" bind:input="setValue" data-name="person.{{index}}.remark"/></view>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 3%;">家庭住房情况</view>
+      <view style="width: 97%;display: flex;flex-wrap: wrap;">
+        <view style="width: 100%;display: flex;">
+          <view class="th" style="width: 10%;">家庭成员</view>
+          <view class="th" style="width: 40%;">住房地址</view>
+          <view class="th" style="width: 10%;">居住性质</view>
+          <view class="th" style="width: 10%;">产权人</view>
+          <view class="th" style="width: 10%;">建筑面积（㎡）</view>
+          <view class="th" style="width: 10%;">使用面积（㎡）</view>
+          <view class="th" style="width: 10%;">人均使用面积（㎡）</view>
+        </view>
+        <view style="width: 100%;display: flex;" wx:for="{{data.house}}" wx:key="index">
+          <view class="td" style="width: 10%;"><input type="text" value="{{item.name}}" bind:input="setValue" data-name="house.{{index}}.name"/></view>
+          <view class="td" style="width: 40%;"><input type="text" value="{{item.addr}}" bind:input="setValue" data-name="house.{{index}}.addr"/></view>
+          <view class="td" style="width: 10%;"><input type="text" value="{{item.type}}" bind:input="setValue" data-name="house.{{index}}.type"/></view>
+          <view class="td" style="width: 10%;"><input type="text" value="{{item.property_owner}}" bind:input="setValue" data-name="house.{{index}}.property_owner"/></view>
+          <view class="td" style="width: 10%;"><input type="digit" value="{{item.building_area}}" bind:input="setValue" data-name="house.{{index}}.building_area"/></view>
+          <view class="td" style="width: 10%;"><input type="digit" value="{{item.use_area}}" bind:input="setValue" data-name="house.{{index}}.use_area"/></view>
+          <view class="td" style="width: 10%;"><input type="digit" value="{{item.per_area}}" bind:input="setValue" data-name="house.{{index}}.per_area"/></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="box-sizing: border-box;padding: 20rpx">
+    <view>
+      <text style="font-weight: 700;">家庭成员情况填表说明：</text>填写家庭成员情况一栏时，家庭成员中有残疾的请在备注栏说明；收入来源应在备注栏内注明收入来源为“工薪收入”、“财产性收入”、“劳动报酬”、“其它收入”、“生活困难救助救助”；家庭成员应具有法定的赡养、抚养、收养关系，包括配偶、父母、子女等，并且长期共同居住的成员。
+    </view>
+    <view style="margin-top: 10rpx;">
+      <text style="font-weight: 700;">家庭住房情况说明：</text>居住性质一栏属直管公房和行政、国有企事业单位自管房的应注明“租赁公产”，产权人一栏中注明单位，直管公房在产权人一栏注明“直管公房”；租赁私人房屋的在居住性质一栏注明“租赁私房”，自有住房应注明“自有住房”，租赁私房或自有住房的在产权人一栏应填写产权人姓名。
+    </view>
+  </view>
+  
+  <view style="text-align: center;font-size: 44rpx;font-weight: 700;margin-top: 40rpx;">申请人提供相关证件资料目录</view>
+  <view style="text-align: center;border-right: 2rpx solid #ccc;border-bottom: 2rpx solid #ccc;">
+    <view style="display: flex;">
+      <view class="th" style="width: 5%;">序号</view>
+      <view class="th" style="width: 50%;">证件名称</view>
+      <view class="th" style="width: 7%;">件</view>
+      <view class="th" style="width: 28%;">备注</view>
+      <view class="th" style="width: 10%;">证件</view>
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <view class="td" style="width: 5%;">1</view>
+      <view class="td" style="width: 50%;">本人身份证复印件（户主或家庭成员委托的申请人）</view>
+      <view class="td" style="width: 7%;">{{data.remark_id_card_imgs.length}}</view>
+      <view class="td" style="width: 28%;"><input type="text" value="{{data.remark_id_card}}" bind:input="setValue" data-name="remark_id_card"/></view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);display: flex;flex-wrap: wrap;">
+        <view catchtap="upImg" data-name="remark_id_card_imgs">上传证件</view>
+      </view>
+      <view class="td" style="width: 100%;justify-content: flex-end;" wx:if="{{data.remark_id_card_imgs.length > 0}}">
+        <view>
+          <image wx:for="{{data.remark_id_card_imgs}}" wx:key="index" src="{{item}}" data-field="remark_id_card_imgs" data-src="{{item}}" catchlongtap="delImg" style="width: 80rpx;height: 80rpx;margin-right: 40rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <view class="td" style="width: 5%;">2</view>
+      <view class="td" style="width: 50%;">家庭户口簿复印件（户口本所有页，含户口增减页）</view>
+      <view class="td" style="width: 7%;">{{data.remark_hukou_imgs.length}}</view>
+      <view class="td" style="width: 28%;"><input type="text" value="{{data.remark_hukou}}" bind:input="setValue" data-name="remark_hukou"/></view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);display: flex;flex-wrap: wrap;">
+        <view catchtap="upImg" data-name="remark_hukou_imgs">上传证件</view>
+      </view>
+      <view class="td" style="width: 100%;justify-content: flex-end;" wx:if="{{data.remark_hukou_imgs.length > 0}}">
+        <view>
+          <image wx:for="{{data.remark_hukou_imgs}}" wx:key="index" src="{{item}}" data-field="remark_hukou_imgs" data-src="{{item}}" catchlongtap="delImg" style="width: 80rpx;height: 80rpx;margin-right: 40rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <view class="td" style="width: 5%;">3</view>
+      <view class="td" style="width: 50%;">结婚证、离婚证、未婚证明（由当地民政部门出据加盖鲜章）</view>
+      <view class="td" style="width: 7%;">{{data.remark_marriage_certificate_imgs.length}}</view>
+      <view class="td" style="width: 28%;"><input type="text" value="{{data.remark_marriage_certificate}}" bind:input="setValue" data-name="remark_marriage_certificate"/></view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);display: flex;flex-wrap: wrap;">
+        <view catchtap="upImg" data-name="remark_marriage_certificate_imgs">上传证件</view>
+      </view>
+      <view class="td" style="width: 100%;justify-content: flex-end;" wx:if="{{data.remark_marriage_certificate_imgs.length > 0}}">
+        <view>
+          <image wx:for="{{data.remark_marriage_certificate_imgs}}" wx:key="index" src="{{item}}" data-field="remark_marriage_certificate_imgs" data-src="{{item}}" catchlongtap="delImg" style="width: 80rpx;height: 80rpx;margin-right: 40rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <view class="td" style="width: 5%;">4</view>
+      <view class="td" style="width: 50%;">家庭成员收入证明原件（年满18岁以上均需出据，在校学生证明文件不需出据收入证明）</view>
+      <view class="td" style="width: 7%;">{{data.remark_income_certificate_imgs.length}}</view>
+      <view class="td" style="width: 28%;"><input type="text" value="{{data.remark_income_certificate}}" bind:input="setValue" data-name="remark_income_certificate"/></view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);display: flex;flex-wrap: wrap;">
+        <view catchtap="upImg" data-name="remark_income_certificate_imgs">上传证件</view>
+      </view>
+      <view class="td" style="width: 100%;justify-content: flex-end;" wx:if="{{data.remark_income_certificate_imgs.length > 0}}">
+        <view>
+          <image wx:for="{{data.remark_income_certificate_imgs}}" wx:key="index" src="{{item}}" data-field="remark_income_certificate_imgs" data-src="{{item}}" catchlongtap="delImg" style="width: 80rpx;height: 80rpx;margin-right: 40rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <view class="td" style="width: 5%;">5</view>
+      <view class="td" style="width: 50%;">家庭成员住房证明原件及复印件（含家庭成员的房产证、租房合同等）</view>
+      <view class="td" style="width: 7%;">{{data.remark_house_certificate_imgs.length}}</view>
+      <view class="td" style="width: 28%;"><input type="text" value="{{data.remark_house_certificate}}" bind:input="setValue" data-name="remark_house_certificate"/></view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);display: flex;flex-wrap: wrap;">
+        <view catchtap="upImg" data-name="remark_house_certificate_imgs">上传证件</view>
+      </view>
+      <view class="td" style="width: 100%;justify-content: flex-end;" wx:if="{{data.remark_house_certificate_imgs.length > 0}}">
+        <view>
+          <image wx:for="{{data.remark_house_certificate_imgs}}" wx:key="index" src="{{item}}" data-field="remark_house_certificate_imgs" data-src="{{item}}" catchlongtap="delImg" style="width: 80rpx;height: 80rpx;margin-right: 40rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;flex-wrap: wrap;">
+      <view class="td" style="width: 5%;">6</view>
+      <view class="td" style="width: 50%;">特殊证明文件（低保、重大疾病、残疾、立功受奖）</view>
+      <view class="td" style="width: 7%;">{{data.remark_special_certificate_imgs.length}}</view>
+      <view class="td" style="width: 28%;"><input type="text" value="{{data.remark_special_certificate}}" bind:input="setValue" data-name="remark_special_certificate"/></view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);display: flex;flex-wrap: wrap;">
+        <view catchtap="upImg" data-name="remark_special_certificate_imgs">上传证件</view>
+      </view>
+      <view class="td" style="width: 100%;justify-content: flex-end;" wx:if="{{data.remark_special_certificate_imgs.length > 0}}">
+        <view>
+          <image wx:for="{{data.remark_special_certificate_imgs}}" wx:key="index" src="{{item}}" data-field="remark_special_certificate_imgs" data-src="{{item}}" catchlongtap="delImg" style="width: 80rpx;height: 80rpx;margin-right: 40rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 100%;">
+        <view style="width: 100%;text-align: left;text-indent: 20rpx;">申请人提供证件原件审核无误，证明材料及复印件共 {{data.num}} 件。</view>
+      </view>
+    </view>
+  </view>
+  
+  <view hover-class="theme-action-hover" catchtap="submit" style="background:var(--action-background);color: #fff;width: 400rpx;line-height: 80rpx;margin: 40rpx auto 0;text-align: center;border-radius: 20rpx;">提交申请</view>
+</view>
+
+<view style="width: 1rpx;height: max(calc(env(safe-area-inset-bottom)), 40rpx);"></view>

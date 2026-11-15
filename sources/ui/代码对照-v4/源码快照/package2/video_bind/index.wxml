@@ -1,0 +1,66 @@
+<van-nav-bar
+  placeholder="true"
+  fixed
+  border="{{false}}"
+  title="视频号带货登记"
+  left-arrow
+  bind:click-left="onClickLeft"
+/>
+<view class="page">
+  <view class="notice">
+    本功能仅登记手动填写的达人带货
+    ID，不代表微信官方认证，也不用于结算或业务归属。请核对后填写。
+  </view>
+  <view class="card">
+    <view class="title">
+      {{known && bound ? '已登记视频号' : '视频号登记'}}
+    </view>
+    <view wx:if="{{loading}}" class="hint">正在查询登记状态…</view>
+    <block wx:elif="{{known}}">
+      <view wx:if="{{bound}}" class="current">当前 ID：{{video_sell_id}}</view>
+      <view wx:if="{{!enable || !isAgent}}" class="hint">
+        当前暂不可新增或更换登记，已有登记仍可主动解绑。
+      </view>
+      <block wx:if="{{enable && isAgent}}">
+        <view class="video-id-label">达人带货 ID</view>
+        <input
+          class="input"
+          value="{{input}}"
+          maxlength="-1"
+          disabled="{{busy}}"
+          bindinput="onInput"
+          placeholder="请输入达人带货 ID"
+        />
+        <view class="hint">
+          请勿填写视频号名称或昵称，保存前请核对ID是否正确。
+        </view>
+        <button
+          class="primary"
+          loading="{{busy}}"
+          disabled="{{busy || loading}}"
+          catchtap="submit"
+         hover-class="{{busy || loading ? 'none' : 'theme-action-hover'}}">
+          {{bound ? '确认更换' : '确认登记'}}
+        </button>
+      </block>
+      <button
+        wx:if="{{bound}}"
+        class="secondary"
+        disabled="{{busy || loading}}"
+        catchtap="unbind"
+        hover-class="{{busy || loading ? 'none' : 'theme-action-hover'}}"
+      >
+        解绑当前登记
+      </button>
+    </block>
+    <view wx:if="{{error}}" class="error">{{error}}</view>
+    <button
+      wx:if="{{!known && !loading}}"
+      class="secondary"
+      catchtap="loadStatus"
+      hover-class="theme-action-hover"
+    >
+      重新查询状态
+    </button>
+  </view>
+</view>

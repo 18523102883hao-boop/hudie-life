@@ -1,0 +1,102 @@
+{
+  "project": "hudie-life",
+  "deliverable": "source-grounded-ui-concepts-v4",
+  "date": "2026-11-14",
+  "source": {
+    "filename": "wxapp_clean.zip",
+    "sha256": "6f17457d5040f9b0f208e08ccf2699822b76afd980493ecd93371eb27f18a026",
+    "bytes": 1054351,
+    "extracted_files": 922,
+    "registered_routes": 82
+  },
+  "coverage": {
+    "visual_boards": 6,
+    "screen_states": 9,
+    "core_routes": 6
+  },
+  "review_scope": "Core route inventory, WXML, related JS conditions/actions, shared templates, theme and price helper. Not a full line-by-line review of all files.",
+  "validation": {
+    "visuals_inspected": true,
+    "app_modified": false,
+    "app_executed": false,
+    "live_api_checked": false,
+    "payment_tested": false,
+    "production_released": false
+  },
+  "source_included_in_delivery_zip": false,
+  "files": [
+    {
+      "path": "01-源码对照与页面映射.md",
+      "bytes": 10339,
+      "sha256": "ca015186357d5e65dd955fca690b143f4187ceba73b43602e63b4d235e506094"
+    },
+    {
+      "path": "02-视觉尺寸与开发交接.md",
+      "bytes": 8141,
+      "sha256": "592883c292893253f27db66962379b191cff653330e183d5637879497a7afb56"
+    },
+    {
+      "path": "03-数据口径与待确认事项.md",
+      "bytes": 5047,
+      "sha256": "76918a75f0d547842828810224a4456871955901ed41840eaac7da1aa69c2eea"
+    },
+    {
+      "path": "04-AI出图提示词.md",
+      "bytes": 24330,
+      "sha256": "613949c9f3b6d607bbe74e1235056edfd17dd4d2474f8a91c287711f3bca2890"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4454,
+      "sha256": "4bba0b2babe34f93207e33e3f65c14c0ab94c659ad5b76d5b43db26d39791985"
+    },
+    {
+      "path": "renders/01-home.png",
+      "bytes": 1865917,
+      "sha256": "9f71e8a89704aefbb2122b5a472880841a90d474f6caed7a3aa3b0d56465f067",
+      "width_px": 826,
+      "height_px": 1904,
+      "kind": "AI-generated visual proposal"
+    },
+    {
+      "path": "renders/02-product-detail.png",
+      "bytes": 1694685,
+      "sha256": "4a74f8c074b9bcb61ffafe4dc69d5248013ca150c938d87064e28c8c1e320dab",
+      "width_px": 852,
+      "height_px": 1846,
+      "kind": "AI-generated visual proposal"
+    },
+    {
+      "path": "renders/03-product-packages-and-content.png",
+      "bytes": 1427610,
+      "sha256": "60742e707e689a6e711882371bb0e951dc404d5b2aa81e8c1a039263142c16ff",
+      "width_px": 1649,
+      "height_px": 954,
+      "kind": "AI-generated visual proposal"
+    },
+    {
+      "path": "renders/04-map.png",
+      "bytes": 1336960,
+      "sha256": "61fb548ed73f78c00d907ddfdc8c50bd07c7f086cf659bc216d51384b5ab19f2",
+      "width_px": 826,
+      "height_px": 1904,
+      "kind": "AI-generated visual proposal"
+    },
+    {
+      "path": "renders/05-mine-user-and-agent.png",
+      "bytes": 1375160,
+      "sha256": "b4cab4f0a502a309d42d265a007410b901e71dbdbb815a4fe1ef4fd78515c4be",
+      "width_px": 1321,
+      "height_px": 1191,
+      "kind": "AI-generated visual proposal"
+    },
+    {
+      "path": "renders/06-checkout-and-orders.png",
+      "bytes": 1344054,
+      "sha256": "0e0ade2fd0c7d7fdeacf6be80e47f40992d4527dbbd1a31258965fdac917221b",
+      "width_px": 1672,
+      "height_px": 940,
+      "kind": "AI-generated visual proposal"
+    }
+  ]
+}

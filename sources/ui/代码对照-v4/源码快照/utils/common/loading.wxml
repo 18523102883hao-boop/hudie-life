@@ -1,0 +1,11 @@
+<template name="loading">
+<view wx:if="{{loading}}" style="text-align: center;display: flex;justify-content: space-around;">
+  <view style="display: flex;font-size: 24rpx;line-height: 48rpx;color: #888;">
+    <image src="{{app.domain}}/static/img/loading.gif" style="width: 48rpx;height: 48rpx;"></image>
+    <text style="margin-left: 10rpx;">加载中...</text>
+  </view>
+</view>
+<view wx:if="{{loading == 0 && list.length==0}}">
+  <image src="{{app.domain}}/static/img/nodata.png" style="width: 368rpx;height: 480rpx;margin-left: 191rpx;"></image>
+</view>
+</template>

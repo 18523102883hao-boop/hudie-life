@@ -1,0 +1,5 @@
+.ul{font-size: 24rpx;line-height: 60rpx;margin-top: 10rpx;}
+.ul view:nth-child(2n){width: 60%;text-align: right;}
+.ul view:nth-child(2n-1){width: 40%;color: #888;}
+.refund-one{border-bottom: 2rpx dashed #ccc;padding-bottom: 20rpx;}
+.refund-one:last-child{border-bottom: 0;padding-bottom: 0;}

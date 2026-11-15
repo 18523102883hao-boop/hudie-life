@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "提交年审复核",
+  "usingComponents": {
+    "van-uploader": "@vant/weapp/uploader/index"
+  },
+  "backgroundColor": "#f3f3f3",
+  "backgroundTextStyle": "dark"
+  
+}

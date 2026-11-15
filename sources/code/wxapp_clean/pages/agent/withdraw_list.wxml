@@ -1,0 +1,72 @@
+<view class="root">
+  <van-nav-bar
+    placeholder="true"
+    custom-class="navbar"
+    fixed
+    border="{{false}}"
+    title="{{exchanged ? '已兑现明细' : '提现记录'}}"
+    left-arrow
+    bind:click-left="onClickLeft"
+  />
+  <view wx:if="{{exchanged}}" class="summary">
+    <view class="summary-label">累计已兑现（元）</view>
+    <view class="summary-amount">{{total}}</view>
+    <view class="categories">
+      <view
+        class="category {{category==='subsidy'?'active':''}}"
+        catchtap="changeCategory"
+        data-category="subsidy"
+      >
+        自购补贴
+      </view>
+      <view
+        class="category {{category==='withdraw'?'active':''}}"
+        catchtap="changeCategory"
+        data-category="withdraw"
+      >
+        已提现
+      </view>
+    </view>
+    <view class="category-total">当前分类合计：¥{{category_total}}</view>
+    <view wx:if="{{category==='withdraw'}}" class="scope-note">
+      已提现合计按现有审核通过口径统计，到账状态见记录。
+    </view>
+  </view>
+  <view class="record" wx:for="{{list}}" wx:key="index">
+    <view class="record-top">
+      <text
+        class="record-no"
+        wx:if="{{exchanged && category==='subsidy'}}"
+        catchtap="viewOrder"
+        data-item="{{item}}"
+      >
+        订单 {{item.no || item.order_id}} ›
+      </text>
+      <text wx:else class="record-no">{{item.no}}</text>
+      <text class="record-amount">¥{{item.display_amount}}</text>
+    </view>
+    <view class="record-state">
+      <text wx:if="{{exchanged}}">
+        {{item.state || (category==='subsidy'?'自购补贴':'状态待更新')}}
+      </text>
+      <block wx:else>
+        <text wx:if="{{item.status==1}}">待审核</text>
+        <text wx:elif="{{item.status==2}}">已打款</text>
+        <text wx:elif="{{item.status==3}}">已驳回</text>
+        <text wx:elif="{{item.status==4}}">待打款</text>
+        <text wx:elif="{{item.status==5}}">待用户确认收款</text>
+        <text wx:else>未知</text>
+      </block>
+    </view>
+    <view class="record-time">{{item.add_time}}</view>
+    <view wx:if="{{item.examine_time}}" class="record-time">
+      审核时间：{{item.examine_time}}
+    </view>
+  </view>
+  <view wx:if="{{error}}" class="list-message error" catchtap="getPage">
+    {{error}}，点击重试
+  </view>
+  <view wx:elif="{{loading}}" class="list-message">加载中…</view>
+  <view wx:elif="{{!list.length}}" class="list-message">暂无记录</view>
+  <view wx:elif="{{is_end}}" class="list-message">没有更多了</view>
+</view>

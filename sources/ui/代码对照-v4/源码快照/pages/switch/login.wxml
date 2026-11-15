@@ -1,0 +1,44 @@
+<view class="boxse" style="width: 100%;overflow-x: hidden;">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <!-- 胶囊区域 -->
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 50%;transform: translate(-50%);">
+      <!-- 导航内容区域 -->
+      <view class="viewesss flex">
+        <view class="views" style="opacity: 1;" catchtap="back">
+          <image src="{{app.domain}}static/img/28.png"></image>
+        </view>
+        <view class="title">手机号授权</view>
+        <view class="title" style="opacity: 0;">12情</view>
+      </view>
+    </view>
+  </view>
+  <view style="width: 750rpx;height: 500rpx;overflow: hidden;position: absolute;top: 0;left: 0;z-index:-1">
+    <view class="bgc absolute"></view>
+  </view>
+  <view class="top flex">
+    <view class="top11">
+      <image src="{{app.domain}}static/img/103.png" mode="" />
+    </view>
+    <view class="top2">欢迎使用{{app.name}}</view>
+  </view>
+  <view class="logo">
+    <image src="{{app.domain}}/static/img/logo.png" mode="aspectFit" />
+  </view>
+  <block wx:if="{{userinfo.id > 0}}">
+    <view class="right flex" style="justify-content: center;margin-top: 100rpx;">
+      <van-button  type="info" custom-style="width: 560rpx;height: 80rpx;font-size:32rpx;" color="linear-gradient(135deg, #f26a2e, #e94b23)" hover-class="theme-action-hover" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" round>手机号授权</van-button>
+    </view>
+    <view class="right flex" style="justify-content: center;margin-top: 100rpx;">
+      <van-button  type="info" custom-style="width: 560rpx;height: 80rpx;font-size:32rpx;" color="linear-gradient(135deg, #f26a2e, #e94b23)" hover-class="theme-action-hover" bindtap="toIndex" round>稍后授权</van-button>
+    </view>
+    <!-- <view class="tips absolute">登陆即代表同意授权账号信息(如昵称、头像)进行统一管理</view> -->
+    <view class="tipsBottom flex" catchtap="showChange">
+      <view class="TipsTxt">请授权手机号进入主页</view>
+    </view>
+  </block>
+</view>
+
+<view wx:if="{{show_sub}}" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: #00000066;">
+  <image src="{{app.domain}}static/img/subscript_new.png?t=2" show-menu-by-longpress style="width: 750rpx;height: 727.9rpx;margin-top: calc(({{app.globalData.windowHeight}}px - 727.9rpx - env(safe-area-inset-bottom) - 200rpx) / 2)"></image>
+  <view hover-class="theme-action-hover" catchtap="closeSub" style="color:#fff;background:var(--action-background);border: 4rpx solid #fff;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;border-radius: 50%;margin-left: 342rpx;margin-top: 50rpx;font-size: 36rpx;"><text class="icon iconfont icon-close"></text></view>
+</view>

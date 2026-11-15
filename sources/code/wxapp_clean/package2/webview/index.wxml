@@ -1,0 +1,1 @@
+<web-view bindmessage="doMessage" src="{{url}}"></web-view>

@@ -1,0 +1,108 @@
+<view style="width: 710rpx;padding: 20rpx;">
+  <view style="width: 662rpx;padding: 20rpx;background: #fff;display: flex;border-radius: 20rpx;justify-content: space-between;border: 4rpx solid #eee;">
+    <view style="width: 250rpx;">
+      <image src="{{goods.img}}" style="width: 250rpx;height: 200rpx;border-radius: 20rpx;"></image>
+    </view>
+    <view style="width: 392rpx;">
+      <view style="line-height: 40rpx;height: 120rpx;font-size: 28rpx;color: #222;font-weight: 700;overflow: hidden;word-break: break-all;">{{goods.title || '商品名称暂不可用'}}</view>
+      <view style="height: 60rpx;margin-top: 20rpx">
+        <text style="font-size: 30rpx;color: #fe0a0a;">抢购价</text>
+        <text style="font-size: 36rpx;color: #fe0a0a;">￥{{goods.price}} </text>
+        <text style="font-size: 24rpx;color: #777;text-decoration: line-through;"> 门市价￥{{goods.market_price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="margin-top: 20rpx;font-size: 24rpx;color: #fbb645;border: 1px solid #fbb645;padding: 4rpx 20rpx;border-radius: 20rpx;display: flex;">
+    <view class="icon iconfont icon-info"> 本产品需 <text style="font-weight: 700;">{{goods.group_num}}</text> 人成团</view>
+    <view wx:if="{{goods.is_no_group}}">，或购买满 <text style="font-weight: 700;">{{goods.group_num}}</text> 份即可成团</view>~!
+  </view>
+
+  <view wx:if="{{!reward_id}}" style="width: 622rpx;padding: 40rpx;background: #fff;border-radius: 20rpx;margin-top: 20rpx;border: 4rpx solid #eee;">
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;">
+      <view style="color: #666;">购买数量</view>
+      <view style="line-height: 40rpx;text-align: center;display: flex;">
+        <view hover-class="theme-action-hover" catchtap="dec" style="width: 40rpx;height: 40rpx;flex: 0 0 40rpx;display: flex;align-items: center;justify-content: center;border-radius: 50%;font-size: 20rpx;margin-right: 20rpx;background:var(--action-background);color:#fff;">-</view>
+        {{num}}
+        <view hover-class="theme-action-hover" catchtap="add" style="width: 40rpx;height: 40rpx;flex: 0 0 40rpx;display: flex;align-items: center;justify-content: center;border-radius: 50%;font-size: 20rpx;margin-left: 20rpx;background:var(--action-background);color:#fff;">+</view>
+      </view>
+    </view>
+    <view style="display: flex;justify-content: space-between;">
+      <view style="color: #666;">总ㅤㅤ价</view>
+      <view style="font-weight: 700;">￥{{total_price}}</view>
+    </view>
+  </view>
+  
+  <view style="width: 622rpx;padding: 40rpx;background: #fff;border-radius: 20rpx;margin-top: 20rpx;border: 4rpx solid #eee;">
+    <view style="font-weight: 700;margin-bottom: 20rpx;">使用人信息</view>
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;border-bottom: 2rpx solid #eaeaea;padding-bottom: 20rpx;">
+      <view style="color: #666;width: 200rpx;">姓ㅤ名</view>
+      <view style="font-size: 26rpx;width: 422rpx;"><input type="text" name="name" model:value="{{name}}" placeholder="请输入姓名"/></view>
+    </view>
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;border-bottom: 2rpx solid #eaeaea;padding-bottom: 20rpx;">
+      <view style="color: #666;width: 200rpx;">手机号</view>
+      <view style="font-size: 26rpx;width: 422rpx;"><input type="digit" name="mobile" model:value="{{mobile}}" placeholder="请输入手机号码"/></view>
+    </view>
+    <block wx:if="{{goods.is_virtual == 2}}">
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;border-bottom: 2rpx solid #eaeaea;padding-bottom: 20rpx;">
+      <view style="color: #666;width: 200rpx;">地ㅤ址</view>
+      <view style="font-size: 26rpx;width: 422rpx;" catchtap="ssq"><input type="text" disabled="" name="ssq" model:value="{{ssq}}" placeholder="请选择收货地址"/></view>
+    </view>
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;border-bottom: 2rpx solid #eaeaea;padding-bottom: 20rpx;">
+      <view style="color: #666;width: 200rpx;">门牌号</view>
+      <view style="font-size: 26rpx;width: 422rpx;"><input type="text" name="area" model:value="{{area}}" placeholder="请输入门牌号"/></view>
+    </view>
+    </block>
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;border-bottom: 2rpx solid #eaeaea;padding-bottom: 20rpx;" wx:if="{{goods.need_idcard}}">
+      <view style="color: #666;width: 200rpx;">身份证</view>
+      <view style="font-size: 26rpx;width: 422rpx;"><input type="idcard" name="idcard" model:value="{{idcard}}" placeholder="请输入身份证"/></view>
+    </view>
+    <view style="display: flex;justify-content: space-between;margin-bottom: 20rpx;border-bottom: 2rpx solid #eaeaea;padding-bottom: 20rpx;" wx:if="{{goods.need_playdate}}">
+      <view style="color: #666;width: 200rpx;">游玩日期</view>
+      <view style="font-size: 26rpx;width: 422rpx;">
+        <picker mode="date" value="{{playdate}}" start="{{min_date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{playdate}}">{{playdate}}</text>
+            <text style="color: #808080;" wx:else>请选择游玩日期</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view style="display: flex;justify-content: space-between;">
+      <view style="color: #666;width: 200rpx;">备ㅤ注</view>
+      <view style="font-size: 26rpx;width: 422rpx;"><input type="text" name="remark" model:value="{{remark}}" placeholder="请输入备注（非必填）"/></view>
+    </view>
+  </view>
+  
+  <view style="margin-top: 20rpx;width: 622rpx;padding: 40rpx;background: #fff;border-radius: 20rpx;border: 4rpx solid #eee;">
+    <view style="background-image: url('{{app.domain}}static/img/rule-head.png?t=2');background-size: 100%;height: 259rpx;margin-top: 20rpx;"></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-body.png');background-size: 100%;padding: 0 8.763%;padding-bottom: 20rpx;"><rich-text nodes="{{goods.extend.rule}}"></rich-text></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-bottom.png');background-size: 100%;height: 54.32658rpx;"></view>
+    <view style="width: 100%;margin-top: 20rpx;line-height: 48rpx;">
+      <view>
+        <view style="color: #666;">
+          <checkbox-group bindchange="checkRule">
+            <label style="display: inline-block;">
+              <checkbox value="1"/>
+              <text style="font-size: 28rpx;"> 我已认真阅读并同意上述购买须知</text>
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="font-size: 24rpx;color: #999;margin-top: 20rpx">此套餐为限时限量购买产品，为了避免资源浪费，请您在有效期内及时使用，逾期自动作废</view>
+</view>
+<view style="width: 750rpx;height: 100rpx;position: fixed;bottom: 0;border-bottom: calc(env(safe-area-inset-bottom)) solid #f1f1f1;left: 0;display: flex;text-align: center;background: #fff;">
+  <view style="width: 50%;line-height: 100rpx;color: #fe0a0a;">
+    <view style="font-size: 50rpx;font-weight: 700;" wx:if="{{reward_id}}">奖品领取</view>
+    <view wx:else>
+      <text style="font-size: 24rpx;color: #333;">实付金额：</text>
+      ￥<text style="font-size: 50rpx;font-weight: 700;">{{total_price}} </text>
+    </view>
+  </view>
+  <view style="width: 50%;">
+    <view hover-class="theme-action-hover" catchtap="toPay" style="width: 88%;margin-left: 6%;line-height: 76rpx;margin-top: 12rpx;text-align: center;background:var(--action-background);color: #fff;border-radius: 38rpx;font-size: 30rpx;font-weight: 700;">{{reward_id?'确定领取':'确定支付'}}</view>
+  </view>
+</view>
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom) + 20rpx + 100rpx);"></view>

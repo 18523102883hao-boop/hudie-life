@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "重庆亲子玩乐",
+  "usingComponents": {
+    "van-overlay": "@vant/weapp/overlay/index"
+  }
+}

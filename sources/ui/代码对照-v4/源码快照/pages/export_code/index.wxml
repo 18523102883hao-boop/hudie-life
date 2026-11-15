@@ -1,0 +1,155 @@
+<view class="ec-page">
+  <!-- 自定义导航栏 -->
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:12rpx;">
+      <view class="ec-nav flex">
+        <view class="ec-back" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="ec-nav-title">导出兑换码</view>
+        <view class="ec-nav-title" style="opacity:0;">导出兑换码</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 余额卡（§6.1.4 上半：余额 / 余额明细 / 充值 / 作废） -->
+  <view class="ec-wallet">
+    <view class="ec-wallet-label">导码余额（元）</view>
+    <view class="ec-wallet-num">{{balanceText}}</view>
+    <view class="ec-wallet-btns flex">
+      <view hover-class="theme-action-hover" class="ec-wbtn" catchtap="openLog">余额明细</view>
+      <view hover-class="theme-action-hover" class="ec-wbtn ec-wbtn-main" catchtap="toRecharge">充值</view>
+      <view hover-class="theme-action-hover" class="ec-wbtn" catchtap="toVoid">作废兑换码</view>
+    </view>
+    <view class="ec-wallet-tip">导出时按「导码价」从余额扣款，作废后原路返还；余额不足整批不可导出。</view>
+  </view>
+
+  <!-- 商品列表（§6.1.5 下半）-->
+  <view class="ec-section">
+    <view class="ec-sec-head flex">
+      <view class="ec-sec-title">可导码商品</view>
+      <view class="ec-sec-more" catchtap="toRecord">导出记录<text class="icon iconfont icon-jiantouyou"></text></view>
+    </view>
+
+    <!-- 标题搜索 -->
+    <view class="ec-search flex">
+      <input
+        class="ec-search-input"
+        value="{{keyword}}"
+        placeholder="搜索商品名称"
+        placeholder-class="ec-search-ph"
+        confirm-type="search"
+        bindinput="onKeywordInput"
+        bindconfirm="onKeywordConfirm"
+      />
+      <view hover-class="theme-action-hover" wx:if="{{keyword}}" class="ec-search-clear" catchtap="clearKeyword">清除</view>
+      <view hover-class="theme-action-hover" class="ec-search-btn" catchtap="onKeywordConfirm">搜索</view>
+    </view>
+
+    <view wx:if="{{goodsList.length == 0}}" class="ec-empty">
+      <image class="ec-empty-img" src="{{app.domain}}static/img/nodata.png"></image>
+      <view class="ec-empty-txt">{{goodsLoading ? '加载中…' : (keyword ? '没有找到相关商品' : '暂无可导码商品')}}</view>
+    </view>
+
+    <view wx:else class="ec-goods">
+      <block wx:for="{{goodsList}}" wx:key="id">
+        <view class="ec-goods-item flex">
+          <image class="ec-goods-img" src="{{item.img}}" mode="aspectFill"></image>
+          <view class="ec-goods-info">
+            <view class="ec-goods-title">{{item.title}}</view>
+            <view class="ec-goods-price-line">
+              <text class="ec-goods-price">导码价 ¥{{item.exportPriceText}}</text>
+              <text class="ec-goods-sale">售价 ¥{{item.priceText}}</text>
+            </view>
+            <view class="ec-goods-stat">
+              <text>已导出 {{item.exported}}</text>
+              <text class="ec-dot">·</text>
+              <text>已使用 {{item.used}}</text>
+              <text class="ec-goods-link" catchtap="toRecordByProduct" data-id="{{item.id}}">查看记录</text>
+            </view>
+            <view class="ec-goods-act">
+              <view hover-class="theme-action-hover"
+                wx:if="{{item.can_export_now}}"
+                class="ec-btn-export"
+                catchtap="openExport"
+                data-index="{{index}}"
+              >导出</view>
+              <view wx:else class="ec-btn-export ec-btn-disabled">{{item.unavailable_reason || '暂不可导出'}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view hover-class="{{goodsLoading ? 'none' : 'theme-action-hover'}}" wx:if="{{!goodsEnd}}" class="ec-more {{goodsLoading ? 'ec-more-loading' : ''}}" catchtap="loadMoreGoods">{{goodsLoading ? '加载中…' : '加载更多'}}</view>
+      <view wx:else class="ec-more ec-more-end">没有更多了</view>
+    </view>
+  </view>
+</view>
+
+<!-- 导出弹层（K1-5：输入数量 → 服务端校验余额并一次性扣款） -->
+<view wx:if="{{showExport}}" class="ec-mask" catchtap="maskTap"></view>
+<view wx:if="{{showExport}}" class="ec-popup ec-popup-sm">
+  <view class="ec-popup-head flex">
+    <view class="ec-popup-title">导出兑换码</view>
+    <view hover-class="theme-action-hover" class="ec-popup-close" catchtap="closeExport">关闭</view>
+  </view>
+  <view class="ec-export-body">
+    <view class="ec-export-goods">{{exportItem.title}}</view>
+    <view class="ec-export-row flex">
+      <view class="ec-export-label">导码价</view>
+      <view class="ec-export-value">¥{{exportItem.exportPriceText}} / 个</view>
+    </view>
+    <view class="ec-export-row flex">
+      <view class="ec-export-label">导出数量</view>
+      <view class="ec-stepper flex">
+        <view hover-class="{{exportQty <= 1 ? 'none' : 'theme-action-hover'}}" class="ec-step-btn {{exportQty <= 1 ? 'ec-step-disabled' : ''}}" catchtap="qtyMinus">-</view>
+        <input class="ec-step-input" type="number" value="{{exportQty}}" bindinput="onQtyInput" />
+        <view hover-class="{{exportQty >= exportQtyMax ? 'none' : 'theme-action-hover'}}" class="ec-step-btn {{exportQty >= exportQtyMax ? 'ec-step-disabled' : ''}}" catchtap="qtyPlus">+</view>
+      </view>
+    </view>
+    <view class="ec-export-row flex">
+      <view class="ec-export-label">合计扣款</view>
+      <view class="ec-export-amount">¥{{exportAmountText}}</view>
+    </view>
+    <view class="ec-export-row flex">
+      <view class="ec-export-label">当前余额</view>
+      <view class="ec-export-value">¥{{balanceText}}</view>
+    </view>
+    <view wx:if="{{!exportEnough}}" class="ec-export-warn">
+      余额不足，当前余额最多可导出 {{exportQtyMax}} 个，请先充值。
+    </view>
+    <view wx:else class="ec-export-tip">导出后不可退回余额，仅可通过「作废兑换码」按导码价返还。</view>
+    <view hover-class="{{exportEnough && !exportLoading ? 'theme-action-hover' : 'none'}}"
+      class="ec-export-submit {{exportEnough && !exportLoading ? '' : 'ec-btn-disabled'}}"
+      catchtap="doExport"
+    >{{exportLoading ? '提交中…' : (exportEnough ? '确认导出' : '余额不足')}}</view>
+  </view>
+</view>
+
+<!-- 余额明细弹层 -->
+<view wx:if="{{showLog}}" class="ec-mask" catchtap="closeLog"></view>
+<view wx:if="{{showLog}}" class="ec-popup">
+  <view class="ec-popup-head flex">
+    <view class="ec-popup-title">余额明细</view>
+    <view hover-class="theme-action-hover" class="ec-popup-close" catchtap="closeLog">关闭</view>
+  </view>
+  <scroll-view scroll-y class="ec-popup-body">
+    <view wx:if="{{logList.length == 0}}" class="ec-empty">
+      <view class="ec-empty-txt">{{logLoading ? '加载中…' : '暂无余额变动'}}</view>
+    </view>
+    <block wx:else>
+      <view wx:for="{{logList}}" wx:key="id" class="ec-log-item flex">
+        <view class="ec-log-left">
+          <view class="ec-log-type">{{item.typeText}}</view>
+          <view class="ec-log-time">{{item.time}}</view>
+          <view wx:if="{{item.remark}}" class="ec-log-remark">{{item.remark}}</view>
+        </view>
+        <view class="ec-log-right">
+          <view class="ec-log-amount {{item.amount > 0 ? 'ec-in' : 'ec-out'}}">{{item.amountText}}</view>
+          <view class="ec-log-balance">余额 {{item.balanceText}}</view>
+        </view>
+      </view>
+      <view hover-class="{{logLoading ? 'none' : 'theme-action-hover'}}" wx:if="{{!logEnd}}" class="ec-more {{logLoading ? 'ec-more-loading' : ''}}" catchtap="loadMoreLog">{{logLoading ? '加载中…' : '加载更多'}}</view>
+      <view wx:else class="ec-more ec-more-end">没有更多了</view>
+    </block>
+  </scroll-view>
+</view>

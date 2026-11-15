@@ -1,0 +1,9 @@
+.root .van-icon-arrow-left{color:var(--nav-bar-icon-color,#000) !important;z-index:10}
+.root .van-nav-bar{color:rgba(0,0,0,1) !important;background-color:#fff !important}
+.Arr{width:690rpx;background:#fff;border-radius:20rpx;opacity:1;margin-left:30rpx;padding:20rpx;box-sizing:border-box;flex-direction:column}
+.Arr .item:not(:last-child){border-bottom:2rpx dashed #EEEEEE}
+.item{width:100%;flex-direction:row;justify-content:space-between;align-items:center}
+.price{width:68rpx;height:34rpx;font-size:24rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#333333;line-height:34rpx}
+.createTime{width:214rpx;height:32rpx;font-size:24rpx;font-family:Roboto-Regular,Roboto;font-weight:400;color:#333333;line-height:32rpx;margin-top:10rpx}
+.state{height:34rpx;font-size:24rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;width: 150rpx;color: #666;text-align: right;line-height:34rpx}
+

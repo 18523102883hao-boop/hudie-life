@@ -1,0 +1,154 @@
+<view style="width: 1600rpx;">
+  <view style="display: flex;">
+    <view style="display: flex;">
+      <view style="border-top: 40rpx solid #f7c643;border-bottom: 40rpx solid #f7c643;border-left: 40rpx solid transparent;border-right: 40rpx solid #f7c643;width: 0;height: 0;"></view>
+      <view style="background: #f7c643;height: 80rpx;font-size: 20rpx;line-height: 30rpx;color: #fff;text-indent: -20rpx;">
+        <view style="text-align: center;margin-top: 10rpx;">提交申请</view>
+        <view>{{data.info.add_time}}</view>
+      </view>
+      <view style="border-top: 40rpx solid transparent;border-bottom: 40rpx solid transparent;border-left: 40rpx solid #f7c643;border-right: 40rpx solid transparent;width: 0;height: 0;"></view>
+    </view>
+    <view style="display: flex;" wx:for="{{data.examine}}" wx:key="index" catchtap="showReason" data-item="{{item}}">
+      <view style="border-top: 40rpx solid {{item.color}};border-bottom: 40rpx solid {{item.color}};border-left: 40rpx solid transparent;border-right: 40rpx solid {{item.color}};width: 0;height: 0;"></view>
+      <view style="background: {{item.color}};height: 80rpx;font-size: 20rpx;line-height: 30rpx;color: #fff;text-indent: -20rpx;">
+        <view style="text-align: center;margin-top: 10rpx;">{{item.state}}</view>
+        <view>{{item.add_time}}</view>
+      </view>
+      <view style="border-top: 40rpx solid transparent;border-bottom: 40rpx solid transparent;border-left: 40rpx solid {{item.color}};border-right: 40rpx solid transparent;width: 0;height: 0;"></view>
+    </view>
+  </view>
+
+  <view style="text-align: center;font-size: 44rpx;font-weight: 700;">申请家庭基本情况</view>
+  <view style="text-align: center;border-right: 2rpx solid #ccc;border-bottom: 2rpx solid #ccc;">
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">申请人姓名</view>
+      <view class="td" style="width: 20%;">{{data.info.name}}</view>
+      <view class="th" style="width: 10%;">性别</view>
+      <view class="td" style="width: 10%;">{{data.info.sex}}</view>
+      <view class="th" style="width: 15%;">身份证号码</view>
+      <view class="td" style="width: 30%;">{{data.info.id_card}}</view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">户籍地址</view>
+      <view class="td" style="width: 50%;">{{data.info.domiciliary_register}}</view>
+      <view class="th" style="width: 15%;">家庭人口</view>
+      <view class="td" style="width: 20%;">{{data.info.person_num}}</view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">居住地址</view>
+      <view class="td" style="width: 50%;">{{data.info.residential_address}}</view>
+      <view class="th" style="width: 15%;">电 话</view>
+      <view class="td" style="width: 20%;">{{data.info.mobile}}</view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 30%;">家庭可支配收入（元/年）</view>
+      <view class="td" style="width: 18%;">{{data.info.total_annual_income}}</view>
+      <view class="th" style="width: 34%;">家庭人均可支配收入（元/年）</view>
+      <view class="td" style="width: 18%;">{{data.info.per_annual_income}}</view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 3%;">家庭成员情况</view>
+      <view style="width: 97%;display: flex;flex-wrap: wrap;">
+        <view style="width: 100%;display: flex;">
+          <view class="th" style="width: 8%;">与申请人关系</view>
+          <view class="th" style="width: 10%;">姓名</view>
+          <view class="th" style="width: 25%;">身份证号</view>
+          <view class="th" style="width: 20%;">工作单位</view>
+          <view class="th" style="width: 13%;">年收入（元）</view>
+          <view class="th" style="width: 24%;">备注</view>
+        </view>
+        <view style="width: 100%;display: flex;" wx:for="{{data.info.person}}" wx:key="index">
+          <view class="td" style="width: 8%;">{{item.relation?item.relation:'ㅤ'}}</view>
+          <view class="td" style="width: 10%;">{{item.name?item.name:'ㅤ'}}</view>
+          <view class="td" style="width: 25%;">{{item.id_card?item.id_card:'ㅤ'}}</view>
+          <view class="td" style="width: 20%;">{{item.company?item.company:'ㅤ'}}</view>
+          <view class="td" style="width: 13%;">{{item.annual_income?item.annual_income:'ㅤ'}}</view>
+          <view class="td" style="width: 24%;">{{item.remark?item.remark:'ㅤ'}}</view>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 3%;">家庭住房情况</view>
+      <view style="width: 97%;display: flex;flex-wrap: wrap;">
+        <view style="width: 100%;display: flex;">
+          <view class="th" style="width: 10%;">家庭成员</view>
+          <view class="th" style="width: 40%;">住房地址</view>
+          <view class="th" style="width: 10%;">居住性质</view>
+          <view class="th" style="width: 10%;">产权人</view>
+          <view class="th" style="width: 10%;">建筑面积（㎡）</view>
+          <view class="th" style="width: 10%;">使用面积（㎡）</view>
+          <view class="th" style="width: 10%;">人均使用面积（㎡）</view>
+        </view>
+        <view style="width: 100%;display: flex;" wx:for="{{data.info.house}}" wx:key="index">
+          <view class="td" style="width: 10%;">{{item.name?item.name:'ㅤ'}}</view>
+          <view class="td" style="width: 40%;">{{item.addr?item.addr:'ㅤ'}}</view>
+          <view class="td" style="width: 10%;">{{item.type?item.type:'ㅤ'}}</view>
+          <view class="td" style="width: 10%;">{{item.property_owner?item.property_owner:'ㅤ'}}</view>
+          <view class="td" style="width: 10%;">{{item.building_area?item.building_area:'ㅤ'}}</view>
+          <view class="td" style="width: 10%;">{{item.use_area?item.use_area:'ㅤ'}}</view>
+          <view class="td" style="width: 10%;">{{item.per_area?item.per_area:'ㅤ'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view style="text-align: center;font-size: 44rpx;font-weight: 700;margin-top: 40rpx;">申请人提供相关证件资料目录</view>
+  <view style="text-align: center;border-right: 2rpx solid #ccc;border-bottom: 2rpx solid #ccc;">
+    <view style="display: flex;">
+      <view class="th" style="width: 5%;">序号</view>
+      <view class="th" style="width: 50%;">证件名称</view>
+      <view class="th" style="width: 7%;">件</view>
+      <view class="th" style="width: 28%;">备注</view>
+      <view class="th" style="width: 10%;">证件</view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 5%;">1</view>
+      <view class="td" style="width: 50%;">本人身份证复印件（户主或家庭成员委托的申请人）</view>
+      <view class="td" style="width: 7%;">{{data.catalog.remark_id_card.num}}</view>
+      <view class="td" style="width: 28%;">{{data.catalog.remark_id_card.remark}}</view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);"><view wx:if="{{data.catalog.remark_id_card.imgs.length > 0}}" catchtap="viewImgs" data-item="{{data.catalog.remark_id_card.imgs}}">查看证件</view></view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 5%;">2</view>
+      <view class="td" style="width: 50%;">家庭户口簿复印件（户口本所有页，含户口增减页）</view>
+      <view class="td" style="width: 7%;">{{data.catalog.remark_hukou.num}}</view>
+      <view class="td" style="width: 28%;">{{data.catalog.remark_hukou.remark}}</view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);"><view wx:if="{{data.catalog.remark_hukou.imgs.length > 0}}" catchtap="viewImgs" data-item="{{data.catalog.remark_hukou.imgs}}">查看证件</view></view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 5%;">3</view>
+      <view class="td" style="width: 50%;">结婚证、离婚证、未婚证明（由当地民政部门出据加盖鲜章）</view>
+      <view class="td" style="width: 7%;">{{data.catalog.remark_marriage_certificate.num}}</view>
+      <view class="td" style="width: 28%;">{{data.catalog.remark_marriage_certificate.remark}}</view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);"><view wx:if="{{data.catalog.remark_marriage_certificate.imgs.length > 0}}" catchtap="viewImgs" data-item="{{data.catalog.remark_marriage_certificate.imgs}}">查看证件</view></view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 5%;">4</view>
+      <view class="td" style="width: 50%;">家庭成员收入证明原件（年满18岁以上均需出据，在校学生证明文件不需出据收入证明）</view>
+      <view class="td" style="width: 7%;">{{data.catalog.remark_income_certificate.num}}</view>
+      <view class="td" style="width: 28%;">{{data.catalog.remark_income_certificate.remark}}</view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);"><view wx:if="{{data.catalog.remark_income_certificate.imgs.length > 0}}" catchtap="viewImgs" data-item="{{data.catalog.remark_income_certificate.imgs}}">查看证件</view></view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 5%;">5</view>
+      <view class="td" style="width: 50%;">家庭成员住房证明原件及复印件（含家庭成员的房产证、租房合同等）</view>
+      <view class="td" style="width: 7%;">{{data.catalog.remark_house_certificate.num}}</view>
+      <view class="td" style="width: 28%;">{{data.catalog.remark_house_certificate.remark}}</view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);"><view wx:if="{{data.catalog.remark_house_certificate.imgs.length > 0}}" catchtap="viewImgs" data-item="{{data.catalog.remark_house_certificate.imgs}}">查看证件</view></view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 5%;">6</view>
+      <view class="td" style="width: 50%;">特殊证明文件（低保、重大疾病、残疾、立功受奖）</view>
+      <view class="td" style="width: 7%;">{{data.catalog.remark_special_certificate.num}}</view>
+      <view class="td" style="width: 28%;">{{data.catalog.remark_special_certificate.remark}}</view>
+      <view class="td" style="width: 10%;color: var(--brand-strong);"><view wx:if="{{data.catalog.remark_special_certificate.imgs.length > 0}}" catchtap="viewImgs" data-item="{{data.catalog.remark_special_certificate.imgs}}">查看证件</view></view>
+    </view>
+    <view style="display: flex;">
+      <view class="td" style="width: 100%;">
+        <view style="width: 100%;text-align: left;text-indent: 20rpx;">申请人提供证件原件审核无误，证明材料及复印件共 {{data.num}} 件。</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style="width: 1rpx;height: max(calc(env(safe-area-inset-bottom)), 20rpx);"></view>

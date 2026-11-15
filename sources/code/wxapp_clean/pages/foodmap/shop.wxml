@@ -1,0 +1,17 @@
+<view class="shop-page">
+  <image wx:if="{{cover}}" class="shop-cover" src="{{cover}}" mode="aspectFill" />
+  <view wx:else class="shop-cover cover-placeholder">发现城市好去处</view>
+  <view class="info-card"><view class="shop-name">{{shop.name || '商家首页'}}</view><view wx:if="{{store}}" class="source-store">当前门店 · {{store.name}}</view>
+    <scroll-view wx:if="{{imgs.length}}" class="gallery" scroll-x="{{true}}"><image wx:for="{{imgs}}" wx:key="*this" src="{{item}}" class="gallery-image" mode="aspectFill" data-src="{{item}}" bindtap="previewImage" /></scroll-view>
+    <view wx:if="{{shop.business_hours}}" class="info-line">营业时间：{{shop.business_hours}}</view><view wx:if="{{hasConsume}}" class="info-line">人均消费：¥{{consumeText}}</view>
+    <view class="address-block">
+      <view class="address-copy"><block wx:if="{{store}}"><view class="address-text">{{store.address || '门店暂无详细地址'}}</view><text wx:if="{{distance}}" class="distance">{{distanceLabel}}{{distance}}</text></block><view wx:else class="address-empty">暂无门店信息</view></view>
+      <view class="address-actions"><view wx:if="{{license}}" class="shop-action" bindtap="previewLicense"><text class="action-icon">证</text><text>资质</text></view><view class="shop-action" bindtap="navigate"><text class="action-icon">➤</text><text>导航</text></view><view class="shop-action" bindtap="phone"><text class="action-icon">☎</text><text>电话</text></view></view>
+    </view>
+    <view class="all-stores" bindtap="openStores"><text>商家所有门店</text><text class="muted">共 {{stores.length}} 家 ›</text></view>
+  </view>
+  <view class="package-section"><view class="section-title">团购套餐</view><view wx:if="{{loading}}" class="state">加载中…</view><view wx:if="{{error}}" class="state">{{error}}<text class="link" bindtap="load">重试</text></view><view wx:elif="{{!loading && !packages.length}}" class="state">暂无在售套餐</view>
+    <view wx:for="{{packages}}" wx:key="key" class="package-card"><view class="package-image-wrap"><image wx:if="{{item.img}}" class="package-image" src="{{item.img}}" mode="aspectFill" /><view wx:else class="package-image cover-placeholder">团购套餐</view><view class="countdown">{{item.countdown}}</view></view><view class="package-body"><view class="package-name">{{item.title}}</view><view class="sales">已售：{{item.sale_num || 0}} 件<text wx:if="{{item.need_book}}"> · 需预约</text></view><view class="purchase-line"><view class="purchase-amount"><text class="price">¥{{item.priceText}}</text><text wx:if="{{item.market_price > item.price}}" class="market-price">¥{{item.marketPriceText}}</text></view><button class="buy-button {{item.expired ? 'expired' : ''}}" hover-class="theme-action-hover" disabled="{{item.expired}}" data-item="{{item}}" bindtap="buy">{{item.expired ? '已结束' : '立即购买'}}</button></view></view></view>
+  </view>
+  <view class="share-footer"><button class="share-button" open-type="share" hover-class="theme-action-hover">分享商家</button></view>
+</view>

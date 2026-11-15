@@ -1,0 +1,103 @@
+<view class="ec-page">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:12rpx;">
+      <view class="ec-nav flex">
+        <view class="ec-back" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="ec-nav-title">作废兑换码</view>
+        <view class="ec-nav-title" style="opacity:0;">作废兑换码</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 输入区 -->
+  <view class="ec-section">
+    <view class="ec-void-tip">仅可作废本人导出的「未使用」兑换码，作废后导码价将退回导码余额</view>
+    <view class="ec-search">
+      <input
+        class="ec-search-input"
+        value="{{code}}"
+        maxlength="32"
+        placeholder="请输入 16 位兑换码"
+        placeholder-class="ec-search-ph"
+        confirm-type="search"
+        bindinput="onCodeInput"
+        bindconfirm="query"
+      />
+      <view hover-class="theme-action-hover" wx:if="{{code}}" class="ec-search-clear" catchtap="clearCode">清空</view>
+      <view hover-class="theme-action-hover" class="ec-search-btn" catchtap="query">{{querying ? '查询中' : '查询'}}</view>
+    </view>
+  </view>
+
+  <!-- 兑换码详情 -->
+  <view wx:if="{{info}}" class="ec-section">
+    <view class="ec-rec-head flex">
+      <image wx:if="{{info.product_img}}" class="ec-rec-img" src="{{info.product_img}}" mode="aspectFill"></image>
+      <view class="ec-rec-info">
+        <view class="ec-rec-title">{{info.product_title}}</view>
+        <view class="ec-rec-time">导出时间 {{info.created_time || '—'}}</view>
+      </view>
+      <view class="ec-rec-badge ec-st-{{info.status}}">{{info.statusText}}</view>
+    </view>
+
+    <view class="ec-rec-code-row flex">
+      <text class="ec-rec-code">{{info.code}}</text>
+      <text hover-class="theme-action-hover" class="ec-rec-copy" catchtap="copyCode">复制</text>
+    </view>
+
+    <view class="ec-void-row flex">
+      <text class="ec-void-label">导码价</text>
+      <text class="ec-void-price">¥{{info.exportPriceText}}</text>
+    </view>
+    <view wx:if="{{info.used_time}}" class="ec-void-row flex">
+      <text class="ec-void-label">兑换时间</text>
+      <text class="ec-void-value">{{info.used_time}}</text>
+    </view>
+    <view wx:if="{{info.void_time}}" class="ec-void-row flex">
+      <text class="ec-void-label">作废时间</text>
+      <text class="ec-void-value">{{info.void_time}}</text>
+    </view>
+    <view wx:if="{{info.void_reason}}" class="ec-void-row flex">
+      <text class="ec-void-label">作废原因</text>
+      <text class="ec-void-value">{{info.void_reason}}</text>
+    </view>
+
+    <!-- 作废成功提示 -->
+    <view wx:if="{{refunded}}" class="ec-void-success">
+      已作废，导码价 ¥{{refunded.amountText}} 已退回余额，当前余额 ¥{{refunded.balanceText}}
+    </view>
+
+    <!-- 状态提示 -->
+    <view wx:if="{{!info.can_void && !refunded}}" class="ec-void-hint">
+      {{info.status === 'used' ? '该兑换码已被兑换，不可作废' : (info.status === 'voided' ? '该兑换码已作废，无需重复操作' : '该兑换码当前不可作废')}}
+    </view>
+  </view>
+
+  <!-- 作废原因 + 提交（仅未使用可操作） -->
+  <view wx:if="{{info && info.can_void}}" class="ec-section">
+    <view class="ec-void-label-row flex">
+      <text class="ec-void-label">作废原因</text>
+      <text class="ec-void-count">{{reasonLen}}/200</text>
+    </view>
+    <textarea
+      class="ec-void-textarea"
+      value="{{reason}}"
+      maxlength="200"
+      placeholder="请填写作废原因（如：顾客取消、码发错人等）"
+      placeholder-class="ec-search-ph"
+      bindinput="onReasonInput"
+    ></textarea>
+    <view hover-class="{{submitting ? 'none' : 'theme-action-hover'}}" class="ec-void-btn {{submitting ? 'ec-btn-disabled' : ''}}" catchtap="submit">
+      {{submitting ? '提交中…' : '确认作废并退款'}}
+    </view>
+  </view>
+
+  <!-- 空态 -->
+  <view wx:if="{{!info && !querying}}" class="ec-section">
+    <view class="ec-empty">
+      <image class="ec-empty-img" src="{{app.domain}}static/img/nodata.png"></image>
+      <view class="ec-empty-txt">请输入兑换码查询（仅未使用的码可作废）</view>
+    </view>
+  </view>
+</view>

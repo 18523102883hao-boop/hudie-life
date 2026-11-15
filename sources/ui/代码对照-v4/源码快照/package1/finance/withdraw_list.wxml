@@ -1,0 +1,22 @@
+<view class="root">
+  <view class="background"></view>
+  <van-nav-bar placeholder="true" custom-class="navbar" fixed border="{{false}}" title="提现记录" left-arrow bind:click-left="onClickLeft" />
+  <view class="Arr mt flex" wx:for="{{list}}" wx:key="index">
+    <view class="item flex">
+      <view style="display: flex;flex-wrap: wrap;">
+        <view style="width: 500rpx;font-weight: 700;font-size: 26rpx;">{{item.no}}</view>
+        <view wx:if="{{item.status==1}}" style="color: #666;" class="state">待审核</view>
+        <view wx:elif="{{item.status==2}}" style="color: #ed2519;" class="state">已打款</view>
+        <view wx:elif="{{item.status==3}}" style="color: #26a23b;" class="state">已驳回</view>
+        <view wx:elif="{{item.status==4}}" style="color: #0381e5;" class="state">待打款</view>
+        <view wx:else style="color: #999;" class="state">未知</view>
+        <view style="width: 500rpx;font-weight: 700;font-size: 36rpx;color: #fe0a0a;"><text style="font-size: 24rpx;">￥</text>{{item.amount}}</view>
+        <view style="width: 325rpx;font-size: 24rpx;color: var(--brand-strong);">{{item.examine_time}}</view>
+        <view style="width: 325rpx;font-size: 24rpx;color: #999;text-align: right;">{{item.add_time}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>

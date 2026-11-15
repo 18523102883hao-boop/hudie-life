@@ -1,0 +1,3 @@
+<view class="box">
+  <rich-text nodes="{{node}}"></rich-text>
+</view>

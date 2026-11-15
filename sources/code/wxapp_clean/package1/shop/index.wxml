@@ -1,0 +1,79 @@
+<view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+  <!-- 胶囊区域 -->
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <!-- 导航内容区域 -->
+    <view class="view flex">
+      <view class="view1" catchtap="back" style="line-height: 32px;">
+        <image style="height: 20px;width: 20px;margin-top: 6px;" src="{{app.domain}}static/img/28.png"></image>
+      </view>
+      <view class="view2">{{shop.name}}</view>
+      <view class="view3" style="opacity: 0;">我的</view>
+    </view>
+  </view>
+</view>
+<view style="width: 750rpx;height: 500rpx;overflow: hidden;position: absolute;top: 0;left: 0;z-index:-1">
+  <view class="bgc absolute"></view>
+</view>
+<view class="userinfo mt mb flex">
+  <view class="avatar ml">
+    <image src="{{account.img}}"></image>
+  </view>
+  <view>
+    <view class="nickname ml">{{account.nickname}}</view>
+  </view>
+</view>
+<view class="shop mtrbl">
+  <view class="item_top flex">
+    <view class="top_address relative">订单管理</view>
+  </view>
+  <view class="shop_list flex flexw">
+    <view class="icon_item flex" bindtap="goto" data-url="/package1/order/hotel_booking_list">
+      <view class="icon_img" style="background:var(--brand-soft);"><view class="icon_img_box"><text class="icon iconfont icon-catalog-check" style="color:#fff;line-height:56rpx;font-size:36rpx;"></text></view></view>
+      <view class="icon_tit">酒店预约</view>
+    </view>
+    <view class="icon_item flex" bindtap="goto" data-url="/package1/order/verify">
+      <view class="icon_img" style="background: var(--brand-soft);">
+        <view class="icon_img_box">
+          <text class="icon iconfont icon-scan" style="color: #fff;line-height: 56rpx;font-size: 36rpx;"></text>
+        </view>
+      </view>
+      <view class="icon_tit">券码核销</view>
+    </view>
+    <view class="icon_item flex" bindtap="goto" data-url="/package1/order/verify_list">
+      <view class="icon_img" style="background: var(--brand-soft);">
+        <view class="icon_img_box" style="background: var(--brand-strong);">
+          <text class="icon iconfont icon-catalog-check" style="color: #fff;line-height: 56rpx;font-size: 36rpx;"></text>
+        </view>
+      </view>
+      <view class="icon_tit">核销记录</view>
+    </view>
+  </view>
+</view>
+
+<view class="shop mtrbl" wx:if="{{info.job == '管理员'}}">
+  <view class="item_top flex">
+    <view class="top_address relative">财务管理</view>
+  </view>
+  <view class="shop_list flex flexw">
+    <view class="icon_item flex" bindtap="goto" data-url="/package1/finance/balance_list">
+      <view class="icon_img" style="background: var(--brand-soft);">
+        <view class="icon_img_box" style="background: var(--brand-strong);">
+          <text class="icon iconfont icon-youzhimaoyiqu" style="color: #fff;line-height: 56rpx;font-size: 36rpx;"></text>
+        </view>
+      </view>
+      <view class="icon_tit">收入明细</view>
+    </view>
+    <view class="icon_item flex" bindtap="goto" data-url="/package1/finance/cash">
+      <view class="icon_img" style="background: var(--brand-soft);">
+        <view class="icon_img_box" style="background: var(--brand-strong);">
+          <text class="icon iconfont icon-money-rmb-symbol" style="color: #fff;line-height: 56rpx;font-size: 36rpx;"></text>
+        </view>
+      </view>
+      <view class="icon_tit">余额提现</view>
+    </view>
+  </view>
+</view>
+
+
+<import src="/utils/common/tabbar"></import>
+<template is="tabbar" data="{{tabbarData,selected}}"></template>

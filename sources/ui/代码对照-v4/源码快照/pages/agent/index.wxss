@@ -1,0 +1,53 @@
+.views{width:48rpx;height:48rpx}
+.views image{width:100%;height:100%}
+.view{width:750rpx;justify-content:space-between;color:#000}
+.user_img{width:64rpx;height:64rpx;border:2rpx solid #fff;border-radius:50%}
+.user_img image{width:100%;height:100%;border-radius:50%}
+.user{padding-left:48rpx;box-sizing:border-box;align-items:center;line-height: 64rpx;}
+.user_name{font-size:32rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#000;font-weight: 700;}
+.user_tel{font-size:32rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#333}
+.mymoney{width:710rpx;height:160rpx;background-repeat:no-repeat;background-size:cover;margin:0 auto;}
+.shu{width:4rpx;height:68rpx;background:var(--brand-border)}
+.mymoney{align-items:center}
+.money_item{flex:1;flex-direction:column;align-items:center;justify-content:center}
+.money_price{font-size:40rpx;font-family:Roboto-Regular,Roboto;font-weight:400;color:var(--brand-strong)}
+.money_me{font-size:24rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:var(--brand-strong)}
+.zidong{width:710rpx;height:500rpx;background:#fff;border-radius:20rpx;opacity:1;padding:20rpx;box-sizing:border-box;flex-direction:column}
+.item_top{justify-content:space-between}
+.top_address{font-size:28rpx;font-family:PingFang SC-Bold,PingFang SC;font-weight:bold;color:#333333;margin-left:28rpx}
+.top_address::after{position:absolute;content:'';left:-20rpx;top:8rpx;width:8rpx;height:28rpx;background:var(--brand)}
+.icon_img{width:64rpx;height:64rpx;background:var(--brand-soft);border-radius:50%;text-align: center}
+.icon_img .iconfont{color: var(--brand);line-height: 64rpx;font-size: 44rpx}
+.icon_img image{width:100%;height:100%;width:40rpx;height:40rpx;margin:12rpx}
+.icon_item{flex-direction:column;align-items:center;justify-content:center;width:167.5rpx;}
+.z_icon{flex:1}
+.icon_tit{font-size:28rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#000;margin-top:10rpx}
+.shop{width:710rpx;background:#fff;border-radius:20rpx;opacity:1;padding:20rpx;box-sizing:border-box;flex-direction:column}
+.shop_list{flex:1}
+.t_cha{width:20rpx;height:20rpx;margin-top:-25rpx}
+.t_cha image{width:100%;height:100%}
+.picker{flex-direction:column;align-items:center;justify-content:center}
+.wrapper{align-items:center;justify-content:center;height:100%}
+.block{width:520rpx;height:400rpx;background:#fff;border-radius:20rpx;opacity:1}
+.blocks{width:520rpx;height:320rpx;background:#fff;border-radius:20rpx;opacity:1}
+.tips{align-items:center;justify-content:space-between;padding:0 24rpx;box-sizing:border-box}
+.tips1{font-size:36rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#AAAAAA}
+.tips22{font-size:32rpx;font-family:PingFang SC-Bold,PingFang SC;font-weight:bold;color:#333333}
+.txts{flex-direction:column;margin-top:60rpx;margin-left:88rpx}
+.txtZ{justify-content:center;margin-top:60rpx}
+.txt{font-size:28rpx;font-family:PingFang SC-Bold,PingFang SC;font-weight:bold;color:#333333}
+.txty{text-align:center}
+.btn{width:326rpx;height:74rpx;background:var(--action-background);border-radius:50rpx;opacity:1;text-align:center;line-height:74rpx;margin:0 auto;margin-top:40rpx;font-size:28rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#FFFFFF}
+.mengban{z-index:99}
+.check-in-box{width: 82rpx;margin-right: 16rpx;text-align: center;}
+.check-in-box .check-in-day{width: 100%;height: 140rpx;background: #eaeaea;flex-wrap: wrap;display: flex;justify-content: center;border-radius: 10rpx;}
+.check-in-box .check-in-day .check-in-icon{width: 60rpx;height: 60rpx;background: #fff;border-radius: 50%;margin-top: 10rpx;}
+.check-in-box .check-in-day .check-in-icon image{width: 40rpx;height: 40rpx;margin: 10rpx;}
+.check-in-box .check-in-day .check-in-img image{width: 40rpx;height: 34rpx;margin: 10rpx;}
+.check-in-box .check-in-day .check-in-text{font-size: 28rpx;}
+.check-in-box .check-in-txt{font-size: 24rpx;margin-top: 10rpx;}
+.check-in-btn{width: 300rpx;text-align: center;background:var(--action-background);color: #fff;line-height: 60rpx;border-radius: 30rpx;}
+.check-in-btn.on{background: #ddd;}
+.check-in-box:last-child{margin-right: 0;}
+.check-in-box.on .check-in-day{background: var(--brand);color: #fff;}
+.check-in-box.on .check-in-txt{color: var(--brand);}

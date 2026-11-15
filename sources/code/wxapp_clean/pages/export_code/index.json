@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "导出兑换码",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f3f3f3",
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": 100
+}

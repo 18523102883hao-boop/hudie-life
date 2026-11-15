@@ -1,0 +1,60 @@
+<view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+  <!-- 胶囊区域 -->
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <!-- 导航内容区域 -->
+    <view class="view flex">
+      <view class="view1" catchtap="back" style="line-height: 32px;">
+        <image style="height: 20px;width: 20px;margin-top: 6px;" src="{{app.domain}}static/img/28.png"></image>
+      </view>
+      <view class="view2">{{shop.name}}</view>
+      <view class="view3" style="opacity: 0;">我的</view>
+    </view>
+  </view>
+</view>
+<view style="width: 750rpx;height: 500rpx;overflow: hidden;position: absolute;top: 0;left: 0;z-index:-1">
+  <view class="bgc absolute"></view>
+</view>
+<view class="userinfo mt mb flex">
+  <view class="avatar ml">
+    <image src="{{account.img}}"></image>
+  </view>
+  <view>
+    <view class="nickname ml">{{account.nickname}}</view>
+  </view>
+</view>
+<view class="shop mtrbl">
+  <view class="item_top flex" style="justify-content: space-between;">
+    <view class="top_address relative">商户收益</view>
+    <view style="background:var(--action-background);color: #fff;font-size: 24rpx;padding: 0 20rpx;line-height: 40rpx;border-radius: 28rpx;" catchtap="switchTab" data-path="/package1/finance/cash" hover-class="theme-action-hover">立即提现</view>
+  </view>
+  <view class="shop_list flex flexw" style="text-align: center;">
+    <view style="width: 50%;box-sizing: border-box;border-right: 2rpx solid #ddd;margin: 20rpx 0;">
+      <view style="font-size: 36rpx;font-weight: 700;">{{stat.today==0?'0.0':stat.today}}</view>
+      <view style="font-size: 24rpx;">今日收益(元)</view>
+    </view>
+    <view style="width: 50%;margin: 20rpx 0;">
+      <view style="font-size: 36rpx;font-weight: 700;">{{stat.month==0?'0.0':stat.month}}</view>
+      <view style="font-size: 24rpx;">本月收益(元)</view>
+    </view>
+    <view style="width: 100%;height: 2rpx;background: #ddd;margin: 20rpx"></view>
+    <view style="width: 100%;margin-top: 20rpx;">
+      <view class="flex" style="justify-content: space-around;">
+        <view style="width: 33%;box-sizing: border-box;border-right: 2rpx solid #ddd;">
+          <view style="font-size: 36rpx;font-weight: 700;">{{stat.total==0?'0.0':stat.total}}</view>
+          <view style="font-size: 24rpx;">累计收益(元)</view>
+        </view>
+        <view style="width: 33%;box-sizing: border-box;border-right: 2rpx solid #ddd;">
+          <view style="font-size: 36rpx;font-weight: 700;">{{stat.withdraw==0?'0.0':stat.withdraw}}</view>
+          <view style="font-size: 24rpx;">累计提现(元)</view>
+        </view>
+        <view style="width: 33%;">
+          <view style="font-size: 36rpx;font-weight: 700;">{{stat.balance==0?'0.0':stat.balance}}</view>
+          <view style="font-size: 24rpx;">账户余额(元)</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<import src="/utils/common/tabbar"></import>
+<template is="tabbar" data="{{tabbarData,selected}}"></template>

@@ -1,0 +1,12 @@
+<view style="text-align: center;line-height: 80rpx;">当前序号：<text style="font-weight: 700;font-size: 40rpx;">{{index}}</text></view>
+
+<view style="width: 710rpx;margin: 20rpx;margin-bottom: 100rpx;">
+  <view>分值：</view>
+  <view style="display: flex;flex-wrap: wrap;">
+    <view class="score-one {{score==item?'on':''}}" wx:for="{{score_list}}" wx:key="index" catchtap="setScore" data-score="{{item}}">{{item}}</view>
+  </view>
+</view>
+
+<view hover-class="{{disabled ? 'none' : 'theme-action-hover'}}" style="width: 550rpx;line-height: 80rpx;position: fixed;bottom: calc(env(safe-area-inset-bottom));background: {{disabled?'#ccc':'var(--action-background)'}};text-align: center;color: #fff;left: 100rpx;border-radius: 20rpx;" catchtap="score">上传评分</view>
+
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom));"></view>

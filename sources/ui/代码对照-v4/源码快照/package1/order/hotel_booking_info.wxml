@@ -1,0 +1,22 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="card">加载中…</view>
+  <view wx:if="{{error}}" class="card" bindtap="load">{{error}}，点击重试</view>
+  <view wx:if="{{info.id}}" class="card">
+    <view class="title">{{info.status_text}}</view><view>订单号：{{info.order_no}}</view>
+    <view>房型：{{info.room_type_name}} · {{info.room_count}}间</view><view>入住：{{info.checkin}}</view><view>离店：{{info.checkout}}</view>
+    <view>入住人：{{info.guest_name}}</view><view>联系电话：{{info.guest_mobile}}</view>
+    <block wx:if="{{info.status==='pending' || info.status==='notify_pending'}}">
+      <button class="primary" disabled="{{busy || loading}}" bindtap="confirmBooking">确认预约</button>
+      <textarea value="{{reason}}" bindinput="changeReason" maxlength="200" placeholder="拒绝预约时请填写原因"/>
+      <button disabled="{{busy || loading}}" bindtap="rejectBooking">拒绝预约</button>
+    </block>
+  </view>
+  <view wx:if="{{info.cancel_application}}" class="card">
+    <view class="title">取消申请</view><view>申请原因：{{info.cancel_application.reason}}</view>
+    <block wx:if="{{info.cancel_application.status==='pending'}}">
+      <textarea value="{{auditReason}}" bindinput="changeAuditReason" maxlength="200" placeholder="请填写审核说明，拒绝时必填"/>
+      <button class="primary" disabled="{{busy || loading}}" bindtap="approveCancel">同意取消</button>
+      <button disabled="{{busy || loading}}" bindtap="rejectCancel">拒绝取消</button>
+    </block>
+  </view>
+</view>

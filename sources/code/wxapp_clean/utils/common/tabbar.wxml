@@ -1,0 +1,26 @@
+<template name="tabbar">
+<view class="tab-bar-view"></view>
+<view class="tab-bar">
+  <view class="tab-bar-border"></view>
+  <view wx:for="{{tabbarData.icon_list}}" wx:key="index" class="tab-bar-item {{selected === index ? 'box-on' : ''}}" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <block wx:if="{{selected === index}}">
+      <block wx:if="{{!item.img}}">
+        <view class="icon-on icon iconfont {{item.iconPath}}" style="color: {{tabbarData.selectedColor}}"></view>
+      </block>
+      <block wx:else>
+        <image src="{{item.img_on}}" style="width: {{item.size[0]}}rpx;height: {{item.size[1]}}rpx;"></image>
+      </block>
+      <view style="color: {{tabbarData.selectedColor}}" class="on">{{item.text}}</view>
+    </block>
+    <block wx:else>
+      <block wx:if="{{!item.img}}">
+        <view class="icon iconfont {{item.iconPath}};" style="color: {{tabbarData.color}}"></view>
+      </block>
+      <block wx:else>
+        <image src="{{item.img}}" style="width: {{item.size[0]}}rpx;height: {{item.size[1]}}rpx;"></image>
+      </block>
+      <view style="color: {{tabbarData.color}}">{{item.text}}</view>
+    </block>
+  </view>
+</view>
+</template>

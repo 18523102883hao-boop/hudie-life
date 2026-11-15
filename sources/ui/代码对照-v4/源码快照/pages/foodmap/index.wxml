@@ -1,0 +1,46 @@
+<import src="../../utils/common/tabbar.wxml" />
+<template name="store-card">
+  <view class="store-card {{selectedStore == item.store_id ? 'store-selected' : ''}}" id="store-{{item.store_id}}" data-item="{{item}}" bindtap="openShop">
+    <image wx:if="{{item.img}}" class="store-image" src="{{item.img}}" mode="aspectFill" />
+    <view wx:else class="store-image image-placeholder">合作门店</view>
+    <view class="store-body">
+      <view class="store-name">{{item.name}}</view>
+      <view class="store-meta">{{item.cate_name || ''}}<text wx:if="{{item.county}}"> · {{item.county}}</text></view>
+      <view class="address-row"><text class="address">{{item.address}}</text><text wx:if="{{item.distanceText}}" class="distance">{{item.distanceText}}</text></view>
+      <view class="package-summary"><text class="price">¥{{item.priceText}}</text><text wx:if="{{item.discount}}" class="discount">{{item.discount}}</text><text class="package-title">{{item.title}}</text></view>
+    </view>
+  </view>
+</template>
+<view class="map-page">
+  <view class="search-bar"><view class="city-button" bindtap="openCities">{{city || '选择城市'}} ▾</view><input class="search-input" placeholder="搜索门店名 / 地址" maxlength="100" value="{{keyword}}" bindinput="inputKeyword" bindconfirm="search" confirm-type="search" /><view class="search-submit" bindtap="search">搜索</view></view>
+  <view class="filter-bar"><view class="filter-button {{cateId ? 'filter-active' : ''}}" bindtap="toggleCategory"><text>{{categoryLabel}}</text><text>{{popup === 'category' ? '▴' : '▾'}}</text></view><view class="filter-button {{radius || county ? 'filter-active' : ''}}" bindtap="toggleArea"><text>{{areaLabel}}</text><text>{{popup === 'area' ? '▴' : '▾'}}</text></view></view>
+  <view wx:if="{{cityMessage}}" class="city-message">{{cityMessage}}<text wx:if="{{cityStatus === 'error'}}" class="link" bindtap="retryCity">重试</text><text wx:else class="link" bindtap="goHome">回首页切换</text></view>
+  <view class="location-bar"><text class="location-note">{{locationMessage}}<text wx:if="{{originLabel}}"> · {{originLabel}}</text></text><text class="link" bindtap="enableLocation">{{locationBusy ? '定位中' : hasOrigin ? '重新定位' : '开启定位'}}</text></view>
+  <view class="map-space">
+    <map wx:if="{{mapReady && !popup && !searchOpen}}" id="foodmap" class="foodmap" latitude="{{latitude}}" longitude="{{longitude}}" scale="{{scale}}" markers="{{markers}}" include-points="{{includePoints}}" bindmarkertap="markerTap" bindcallouttap="markerTap" enable-zoom="{{true}}" enable-scroll="{{true}}" />
+    <view wx:elif="{{!mapReady}}" class="map-placeholder"><text>{{loading ? '门店地图加载中' : '当前暂无可展示的门店坐标'}}</text></view>
+    <view wx:if="{{viewMessage}}" class="view-message">{{viewMessage}}</view>
+  </view>
+  <view class="store-panel {{expanded ? 'panel-expanded' : ''}}">
+    <view class="panel-handle" bindtap="togglePanel" bindtouchstart="panelStart" bindtouchend="panelEnd"><view class="handle-line"></view><view class="panel-title">当前区域合作门店 · <text class="count">{{total}}</text> 家</view><view class="panel-hint">{{expanded ? '下拉收起地图列表' : '上拉查看全部'}} {{expanded ? '⌄' : '⌃'}}</view></view>
+    <scroll-view class="store-scroll" scroll-y="{{true}}" scroll-into-view="{{scrollTarget}}" scroll-with-animation="{{true}}" bindscrolltolower="loadMore" lower-threshold="100">
+      <view id="selected-card" wx:if="{{selectedCard || cardLoading || cardError}}" class="selected-section"><view class="selected-title">当前选中门店</view><template wx:if="{{selectedCard}}" is="store-card" data="{{item:selectedCard, selectedStore:selectedStore}}" /><view wx:if="{{cardLoading}}" class="state">正在加载选中门店…</view><view wx:if="{{cardError}}" class="state">{{cardError}}<text class="link" bindtap="retryCard">重试</text></view></view>
+      <block wx:for="{{list}}" wx:key="store_id"><template is="store-card" data="{{item:item, selectedStore:selectedStore}}" /></block>
+      <view wx:if="{{error}}" class="state">{{error}}<text class="link" bindtap="loadMore">点击重试</text></view>
+      <view wx:elif="{{loading}}" class="state">加载中…</view>
+      <view wx:elif="{{!list.length}}" class="empty"><view>当前条件下暂无合作门店</view><text class="link" bindtap="clearFilters">清空筛选</text><text class="link" bindtap="openCities">切换城市</text></view>
+      <view wx:elif="{{done}}" class="state">已展示全部门店</view>
+      <view wx:else class="state link" bindtap="loadMore">加载更多</view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{popup}}" class="popup-shade" bindtap="closePopup"></view>
+  <view wx:if="{{popup}}" class="filter-popup">
+    <view wx:if="{{filterError && popup !== 'city'}}" class="state">{{filterError}}<text class="link" bindtap="loadFilters">重试</text></view>
+    <scroll-view wx:if="{{popup === 'city'}}" class="city-list" scroll-y="{{true}}"><view wx:for="{{cities}}" wx:key="city" class="option {{city === item.city ? 'active' : ''}}" data-city="{{item.city}}" bindtap="selectCity">{{item.city}}</view><view wx:if="{{!cities.length}}" class="state">暂无可切换城市<text class="link" bindtap="retryCity">重新加载</text></view></scroll-view>
+    <view wx:elif="{{popup === 'category'}}" class="two-columns"><scroll-view class="option-left" scroll-y="{{true}}"><view class="option {{!parentId ? 'active' : ''}}" data-id="0" bindtap="chooseParent">全部类目</view><view wx:for="{{categories}}" wx:key="id" class="option {{parentId == item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="chooseParent">{{item.name}}</view></scroll-view><scroll-view class="option-right" scroll-y="{{true}}"><block wx:if="{{parentId}}"><view class="option {{cateId == parentId && !secondId ? 'active' : ''}}" data-id="0" bindtap="chooseChild">全部{{parentName}}</view><view wx:for="{{children}}" wx:key="id" class="option {{secondId == item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="chooseChild">{{item.name}}</view></block><view wx:else class="state">请选择类目</view></scroll-view></view>
+    <view wx:elif="{{popup === 'area'}}" class="two-columns"><view class="option-left"><view class="option {{areaTab === 'distance' ? 'active' : ''}}" data-tab="distance" bindtap="changeAreaTab">距离</view><view class="option {{areaTab === 'county' ? 'active' : ''}}" data-tab="county" bindtap="changeAreaTab">行政区</view></view><scroll-view class="option-right" scroll-y="{{true}}"><block wx:if="{{areaTab === 'distance'}}"><view wx:for="{{radii}}" wx:key="*this" class="option {{radius === item ? 'active' : ''}} {{item && !hasOrigin ? 'need-location' : ''}}" data-radius="{{item}}" bindtap="chooseRadius">{{item ? item + 'km' : '不限'}}<text wx:if="{{item && !hasOrigin}}" class="permission-hint">开启定位后使用</text></view><view class="option link" bindtap="chooseAddress">选择地址</view></block><block wx:else><view class="option {{!county ? 'active' : ''}}" data-county="" bindtap="chooseCounty">不限</view><view wx:for="{{counties}}" wx:key="county" class="option {{county === item.county ? 'active' : ''}}" data-county="{{item.county}}" bindtap="chooseCounty">{{item.county}}</view></block></scroll-view></view>
+  </view>
+  <view wx:if="{{searchOpen}}" class="search-shade" bindtap="closeSearch"></view>
+  <view wx:if="{{searchOpen}}" class="search-results"><view class="results-header">搜索门店<text class="link" bindtap="closeSearch">收起</text></view><scroll-view class="result-scroll" scroll-y="{{true}}"><view wx:if="{{searchLoading}}" class="state">搜索中…</view><view wx:elif="{{searchError}}" class="state">{{searchError}}<text class="link" bindtap="search">重试</text></view><view wx:elif="{{!searchResults.length}}" class="empty">未找到门店，可尝试门店名或地址<view class="link" bindtap="clearFilters">清空筛选</view></view><view wx:for="{{searchResults}}" wx:key="store_id" class="result-item" data-id="{{item.store_id}}" bindtap="selectSearch"><view>{{item.name}}</view><view class="store-meta">{{item.address}}</view></view></scroll-view></view>
+  <template is="tabbar" data="{{tabbarData:tabbarData, selected:selected}}" />
+</view>

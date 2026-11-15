@@ -1,0 +1,8 @@
+.box{padding:20rpx;box-sizing:border-box}
+.main{width:710rpx;height:auto;background:#fff;border-radius:20rpx 20rpx 20rpx 20rpx;opacity:1;padding:0 20rpx;box-sizing:border-box}
+.item{justify-content:space-between;height:132rpx;align-items:center;border-bottom:2rpx solid #eeeeee}
+.l_t{font-size:28rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#333333}
+.l_time{font-size:24rpx;font-family:Roboto-Regular,Roboto;font-weight:400;color:#AAAAAA;margin-top:12rpx}
+.item_r{font-size:28rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#FF0000}
+.item:last-child{border-bottom:none}
+

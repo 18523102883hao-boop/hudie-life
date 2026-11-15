@@ -1,0 +1,56 @@
+<view style="width: 630rpx;margin: 20rpx;border-radius: 20rpx;background: #fff;padding: 40rpx;">
+  <view style="font-weight: 700;padding-bottom: 40rpx;border-bottom: 2rpx dashed #ccc;display: flex;justify-content: space-between;">
+    <view>账单基本信息</view>
+    <view wx:if="{{data.status == 2}}" style="background: #f6ffed;border-color: #b7eb8f;color: #52c41a;font-size: 26rpx;">部分退款</view>
+    <view wx:if="{{data.status == 3}}" style="background: #f3f1e3;border-color: #efedc7;color: #ffbd00;font-size: 26rpx;">部分退款</view>
+    <view wx:if="{{data.status == 4}}" style="background: #fff1f0;border-color: #ffa39e;color: #f5222d;font-size: 26rpx;">已退款</view>
+  </view>
+  <view class="flex flexw ul">
+    <view>项目名称</view>
+    <view>{{data.project}}</view>
+    <view>计费开始时间</view>
+    <view>{{data.start_date}}</view>
+    <view>计费结束时间</view>
+    <view>{{data.end_date}}</view>
+    <view>应收费用</view>
+    <view>￥{{data.amount}}</view>
+    <view>实收费用</view>
+    <view>￥{{data.pay_amount}}</view>
+    <view>账单生成时间</view>
+    <view>{{data.add_date}}</view>
+    <block wx:if="{{data.pay_type > 0}}">
+      <view>支付方式</view>
+      <view>
+        {{data.pay_type == 1 ? '微信支付' : '线下支付'}}
+        <block wx:if="{{data.offline_type == 1}}">
+        - 扫码
+        </block>
+        <block wx:if="{{data.offline_type == 2}}">
+        - 现金
+        </block>
+      </view>
+      <view>支付时间</view>
+      <view>{{data.pay_date}}</view>
+    </block>
+  </view>
+  <block wx:if="{{data.refund_amount > 0}}">
+  <view style="width: 100%;height: 40rpx;border-bottom: 2rpx dashed #ccc;margin-bottom: 40rpx;position: relative;">
+    <view style="width: 40rpx;height: 40rpx;background: #f3f3f3;border-radius: 50%;position: absolute;left: -60rpx;bottom: -20rpx;"></view>
+    <view style="width: 40rpx;height: 40rpx;background: #f3f3f3;border-radius: 50%;position: absolute;right: -60rpx;bottom: -20rpx;"></view>
+  </view>
+  <view style="font-weight: 700;padding-bottom: 40rpx;border-bottom: 2rpx dashed #ccc;display: flex;justify-content: space-between;">
+    <view>退款明细</view>
+    <text style="font-weight: 100;font-size: 28rpx;">『 退款总金额:￥{{data.refund_amount}} 』</text>
+  </view>
+  <view class="flex flexw ul refund-one" wx:for="{{list}}" wx:key="index">
+    <view>退款金额</view>
+    <view>{{item.amount}}</view>
+    <view>退款原因</view>
+    <view>{{item.reason}}</view>
+    <view>退款时间</view>
+    <view>{{item.refund_date}}</view>
+  </view>
+  </block>
+</view>
+
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom));"></view>

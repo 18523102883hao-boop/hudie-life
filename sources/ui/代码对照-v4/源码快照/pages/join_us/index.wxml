@@ -1,0 +1,19 @@
+<view style="width: 750rpx;height: 1660.7142857rpx;background-image: url({{app.domain}}static/img/join-us.jpg?t=1);background-size: 100%;position: relative;">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <!-- 胶囊区域 -->
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 50%;transform: translate(-50%);">
+      <!-- 导航内容区域 -->
+      <view class="view flex">
+        <view class="views" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="title" style="opacity: 0;">我的</view>
+        <view class="title" style="opacity: 0;">12情</view>
+      </view>
+    </view>
+  </view>
+
+  <image src="{{app.domain}}qrcode/customer.png" show-menu-by-longpress="true" style="width: 220rpx;height: 220rpx;position: absolute;right: 110rpx;top: 490rpx;"></image>
+  
+  <!-- <button style="width: 320rpx;height: 100rpx;position: absolute;right: 214rpx;bottom: 50rpx;opacity: 0;" plain="true" open-type="share" hover-class="none"></button> -->
+</view>

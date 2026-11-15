@@ -1,0 +1,41 @@
+<view class="nav">
+  <view catchtap="selNav" data-i="1" class="nav-one {{i==1?'on':''}}">房屋申请</view>
+  <!-- <view style="width: 2rpx;background: #f1f1f1;height: 60rpx;margin-top: 10rpx;"></view> -->
+  <view catchtap="selNav" data-i="2" class="nav-one {{i==2?'on':''}}">年审复核</view>
+</view>
+
+<image wx:if="{{list.length == 0}}" src="{{app.domain}}admin/static/images/404.svg" style="width: 423rpx;height: 341rpx;margin: 80rpx 163.5rpx;"></image>
+
+<view wx:for="{{list}}" catchtap="detail" data-item="{{item}}" wx:key="index" style="width: 670rpx;margin: 20rpx;background: #fff;padding: 20rpx;border-radius: 20rpx;">
+  <view style="display: inline-block;font-weight: 700;">申请登记编号：{{item.no}}</view>
+  <view style="font-size: 24rpx;margin-top: 20rpx;color: #666;display: flex;justify-content: space-between;">
+    <view>街道：{{item.street}}</view>
+    <view>社区：{{item.community}}</view>
+  </view>
+  <view style="font-size: 24rpx;margin-top: 20rpx;color: #666;display: flex;justify-content: space-between;">
+    <view>小区：{{item.residential_name}}</view>
+    <view>人口：{{item.person_num}}</view>
+  </view>
+  <view style="font-size: 24rpx;margin-top: 20rpx;color: #666;display: flex;justify-content: space-between;">
+    <view>申请时间：{{item.apply_time}}</view>
+    <view wx:if="{{item.status == 1}}" style="background: #fcedc4;border-color: #fbe2a1;color: #f7c643;">待受理</view>
+    <view wx:if="{{item.status == 2}}" style="background: #d3edff;border-color: #54c5fd;color: #00a1f3;">已受理</view>
+    <view wx:if="{{item.status == -2}}" style="background: #fff1f0;border-color: #ffa39e;color: #f5222d;">已驳回</view>
+    <view wx:if="{{item.status == 3}}" style="background: #fcedc4;border-color: #fbe2a1;color: #f7c643;">初审公示中</view>
+    <view wx:if="{{item.status == 4}}" style="background: #ebe8fd;border-color: #b0a5f3;color: #6f57ff;">初审通过</view>
+		<view wx:if="{{item.status == -4}}" style="background: #fff1f0;border-color: #ffa39e;color: #f5222d;">初审驳回</view>
+    <view wx:if="{{item.status == 5}}" style="background: #fcedc4;border-color: #fbe2a1;color: #f7c643;">复审公示中</view>
+    <view wx:if="{{item.status == 6}}" style="background: #ebfdeb;border-color: #96fb96;color: #1aad19;">复审通过</view>
+    <view wx:if="{{item.status == -6}}" style="background: #fff1f0;border-color: #ffa39e;color: #f5222d;">复审驳回</view>
+    <view wx:if="{{item.status == 7}}" style="background: #eaf6ff;border-color: #9fd5ff;color: #001e36;">终审通过</view>
+    <view wx:if="{{item.status == -7}}" style="background: #fff1f0;border-color: #ffa39e;color: #f5222d;">终审驳回</view>
+  </view>
+</view>
+
+<view style="text-align: center;font-size: 24rpx;color: #aaa;" wx:if="{{is_end && list.length > 10}}">-- 已经到底了 --</view>
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom));"></view>
+
+<view hover-class="theme-action-hover" catchtap="toApply" style="position: fixed;width: 100rpx;height: 100rpx;bottom: calc(env(safe-area-inset-bottom) + 140rpx);right: 20rpx;background:var(--action-background);color: #fff;border-radius: 50%;text-align: center;" wx:if="{{show_btn}}">
+  <view class="icon iconfont icon-message-reply-template-fill" style="margin-top: 10rpx;font-size: 40rpx;"></view>
+  <view style="font-size: 20rpx;">提交{{i==1?'申请':'年审'}}</view>
+</view>

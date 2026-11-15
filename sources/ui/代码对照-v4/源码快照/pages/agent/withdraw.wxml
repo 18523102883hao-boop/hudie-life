@@ -1,0 +1,30 @@
+<view class="root">
+  <view class="background"></view>
+  <van-nav-bar placeholder="true" custom-class="navbar" fixed border="{{false}}" title="提现平台" left-arrow bind:click-left="onClickLeft" />
+  <view class="card mt relative">
+    <view class="c_title ml">账户余额</view>
+    <view class="price mt ml flex">{{userinfo.coin || 0}} <text style="font-size: 32rpx;">元</text></view>
+    <view class="list absolute flex">
+      <view bindtap="goto" data-url="/pages/agent/withdraw_list" style="margin-top:-1rpx;">提现记录<text class="icon iconfont icon-right"></text></view>
+    </view>
+  </view>
+  <view class="t_title">提现金额</view>
+  <view class="content flex">
+    <view>￥</view>
+    <input type="digit" model:value="{{amount}}" placeholder="请输入提现金额" placeholder-style="color: #888;" />
+  </view>
+  <view class="withdraw-rule">
+    <view class="withdraw-rule-title">提现规则</view>
+    <view wx:if="{{!ruleReady}}" class="withdraw-rule-text">正在加载提现规则…</view>
+    <view wx:elif="{{ruleError}}" class="withdraw-rule-text">提现规则暂不可用，请稍后重试</view>
+    <view wx:else class="withdraw-rule-text">{{userinfo.withdraw_rule || '暂无提现规则'}}</view>
+  </view>
+  <view hover-class="theme-action-hover" class="submit fixed" bindtap="save">提交</view>
+  <van-toast id="van-toast" duration="0"></van-toast>
+</view>
+
+
+<view wx:if="{{show_sub}}" style="position: fixed;z-index: 1;top: 0;left: 0;width: 100%;height: 100%;background: #00000066;">
+  <image src="{{app.domain}}static/img/subscript_withdraw.png?t=2" show-menu-by-longpress style="width: 750rpx;height: 990.22rpx;margin-left: 54rpx;margin-top: calc(({{app.globalData.windowHeight}}px - 1008rpx - env(safe-area-inset-bottom) - 200rpx) / 2)"></image>
+  <view hover-class="theme-action-hover" catchtap="closeSub" style="color:#fff;background:var(--action-background);border: 4rpx solid #fff;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;border-radius: 50%;margin-left: 342rpx;margin-top: -140rpx;font-size: 36rpx;"><text class="icon iconfont icon-close"></text></view>
+</view>

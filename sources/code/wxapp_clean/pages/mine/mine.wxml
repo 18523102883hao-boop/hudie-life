@@ -1,0 +1,156 @@
+<view class="mine-page">
+  <view class="nav-main" style="height:{{app.globalData.navBarHeight}}px;">
+    <view
+      class="nav-title"
+      style="height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;"
+    >
+      我的
+    </view>
+  </view>
+  <block wx:if="{{ready}}">
+    <view
+      class="profile"
+      id="mine-profile"
+      catchtap="toPage"
+      data-entry="profile"
+      data-page="/package2/userinfo/index"
+    >
+      <view class="avatar">
+        <image
+          wx:if="{{!avatarFailed}}"
+          src="{{userinfo.img || defaultAvatar}}"
+          mode="aspectFill"
+          binderror="avatarError"
+        />
+        <text wx:else>人</text>
+      </view>
+      <view class="profile-body">
+        <view class="nickname">{{userinfo.nickname || '用户昵称'}}</view>
+        <view class="mobile">{{userinfo.mobile || '暂未绑定手机号'}}</view>
+        <view class="badges">
+          <text wx:if="{{certified}}" class="badge certified">已认证</text>
+          <text wx:if="{{isAgent}}" class="badge agent">达人</text>
+        </view>
+      </view>
+      <text class="arrow">›</text>
+    </view>
+    <view wx:if="{{isAgent}}" class="assets" id="mine-assets">
+      <view class="asset-main">
+        <view class="asset-title">
+          我获得的蝴蝶币总数
+          <text
+            class="eye iconfont {{showAmount ? 'icon-view' : 'icon-hide'}}"
+            catchtap="toggleAmount"
+          ></text>
+        </view>
+        <view class="asset-top">
+          <text class="main-amount">{{showAmount ? stat.total : '****'}}</text>
+          <view hover-class="theme-action-hover" class="vault" catchtap="viewVault">我的金库 ›</view>
+        </view>
+        <text class="exchange-hint">1 蝴蝶币可兑换 1 元</text>
+      </view>
+      <view class="metrics">
+        <view
+          class="metric"
+          catchtap="toPage"
+          data-entry="withdraw"
+          data-page="/pages/agent/withdraw"
+        >
+          <text class="metric-label">可兑现 ›</text>
+          <text class="metric-value">{{stat.available}}</text>
+        </view>
+        <view class="metric">
+          <view class="metric-label" catchtap="tipExchanged">
+            <text>已兑现 ⓘ</text>
+          </view>
+          <text class="metric-value"
+            catchtap="toPage"
+            data-entry="exchanged"
+            data-page="/pages/agent/withdraw_list?source=exchanged"
+          >{{stat.exchanged_withdrew}}</text>
+        </view>
+        <view class="metric" catchtap="tipWithdrawing">
+          <text class="metric-label">兑现中 ⓘ</text>
+          <text class="metric-value">{{stat.withdrawing}}</text>
+        </view>
+        <view class="metric" catchtap="tipCoin">
+          <text class="metric-label">预收获 ⓘ</text>
+          <text class="metric-value">{{stat.coin}}</text>
+        </view>
+      </view>
+    </view>
+    <view
+      wx:if="{{isAgent && video_bind_enable}}"
+      class="video-card"
+      id="mine-video"
+      catchtap="toPage"
+      data-entry="video"
+      data-page="/package2/video_bind/index"
+    >
+      <view class="video-icon iconfont icon-video"></view>
+      <view class="video-body">
+        <view class="video-title">绑定视频号带货</view>
+        <view class="video-detail">
+          {{videoError ? '状态查询失败，点击重试' : video ? (video.bound ?
+          '已绑定：' + video.video_sell_id : '填写达人带货 ID') :
+          '正在查询绑定状态…'}}
+        </view>
+      </view>
+      <view class="video-action">
+        {{videoError ? '查看' : video && video.bound ? '管理' : '去绑定'}} ›
+      </view>
+    </view>
+    <view class="panel" id="mine-orders">
+      <view class="panel-title">我的订单</view>
+      <view class="order-grid">
+        <view
+          class="grid-item"
+          wx:for="{{orders}}"
+          wx:key="status"
+          catchtap="toOrder"
+          data-status="{{item.status}}"
+        >
+          <text class="order-icon iconfont {{item.icon}}"></text>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="panel" id="mine-services">
+      <view class="panel-title">我的服务</view>
+      <view class="service-grid">
+        <view
+          class="grid-item service"
+          id="mine-entry-{{item.key}}"
+          wx:for="{{services}}"
+          wx:key="key"
+        >
+          <picker
+            wx:if="{{item.shop && shop_list.length > 1}}"
+            bindchange="bindPickerChange"
+            data-type="{{item.type}}"
+            range="{{shop_list}}"
+            range-key="name"
+          >
+            <view class="service-content">
+              <text class="service-icon iconfont {{item.icon}}"></text>
+              <text>{{item.name}}</text>
+            </view>
+          </picker>
+          <view
+            wx:else
+            class="service-content"
+            catchtap="toService"
+            data-index="{{index}}"
+          >
+            <text class="service-icon iconfont {{item.icon}}"></text>
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view wx:elif="{{infoLoading}}" class="empty-state">正在加载个人信息…</view>
+  <view wx:else class="empty-state" catchtap="retry">个人信息加载失败，点击重试</view>
+</view>
+<import src="/utils/common/tabbar" />
+<template is="tabbar" data="{{tabbarData,selected}}" />

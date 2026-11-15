@@ -1,0 +1,32 @@
+<view class="lun" style="z-index: 0;" wx:if="{{swiperList && swiperList.length>0}}">
+  <swiper class="luns" autoplay="play" circular interval="3000" bindchange="swiperchange">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index" class="luns" bindtap="toPage" data-item="{{item}}">
+      <image mode="widthFix" src="{{item.img}}"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图标签 -->
+  <view class="labels absolute flex">
+    <view class="label" wx:if="{{index <= 6}}" wx:for="{{labelAll}}" wx:key="index">{{item}}</view>
+  </view>
+</view>
+
+<view wx:if="{{act == 'offline'}}" style="width: 710rpx;margin: 20rpx;background-image: linear-gradient(to bottom, #8a6fd1, #c3b1ec);border-radius: 20rpx;padding: 20rpx;color: #fff;">
+  <view style="display: flex;justify-content: space-between;align-items: center;">
+    <view style="font-weight: 700;font-size: 32rpx;">即将下线</view>
+    <view style="font-size: 24rpx;background: #fff;color: #6a4fb0;line-height: 40rpx;padding: 0 20rpx;border-radius: 20rpx;">15天内停售·抓紧囤</view>
+  </view>
+  <view style="font-size: 24rpx;margin-top: 10rpx;opacity: 0.95;">以下商品将在 15 天内结束售卖，错过不再补货~</view>
+</view>
+
+<import src="/utils/common/goods_list"></import>
+<template is="goods_list" data="{{app,list,show_cut_msg,sec,cut_price,show_share,goods}}"></template>
+
+<view wx:if="{{show_customer}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000066;z-index: 99;">
+  <image src="{{customer.img}}" style="width: 550rpx;height: 550rpx;position: absolute;left: 100rpx;top: calc(50vh - 275rpx - env(safe-area-inset-bottom) - 100rpx);" show-menu-by-longpress></image>
+  <view catchtap="hideCustomer" style="position: absolute;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 40rpx;border-radius: 50%;border: 2rpx solid #fff;color: #fff;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 100rpx + 40rpx);left: 345rpx;"><text class="icon iconfont icon-x"></text></view>
+</view>
+
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>
+
+<view style="width: 1rpx;height: calc(max(env(safe-area-inset-bottom), 20rpx));"></view>

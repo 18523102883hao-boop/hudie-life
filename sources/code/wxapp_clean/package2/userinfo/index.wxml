@@ -1,0 +1,39 @@
+<view class="boxse" style="width: 100%;overflow-x: hidden;">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <!-- 胶囊区域 -->
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 50%;transform: translate(-50%);">
+      <!-- 导航内容区域 -->
+      <view class="viewesss flex">
+        <view class="views" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="title">用户信息</view>
+        <view class="title" style="opacity: 0;">12情</view>
+      </view>
+    </view>
+  </view>
+  <button style="margin-top: 100rpx;width: 180rpx;height: 180rpx;box-sizing: border-box;" class="avatar-wrapper" bind:chooseavatar="onChooseAvatar" open-type="chooseAvatar">
+    <image class="avatar" src="{{avatarUrl}}"></image>
+  </button>
+
+	<view class="input mta0 flex" style="margin-top: 120rpx;">
+		<view class="input1"></view>
+		<view class="input2">
+			<input type="nickname" placeholder="昵称" placeholder-style="color: #888888;" bindinput="nick" model:value="{{nick}}" />
+		</view>
+		<view class="input3 mr" catchtap="saosao" style="background:var(--action-background);color:#fff;" hover-class="theme-action-hover">
+			<text class="icon iconfont icon-iconwonor"></text>
+		</view>
+	</view>
+  <view class="input mta0 flex phone-row {{phoneLoading ? 'phone-row-disabled' : ''}}">
+    <view class="input1"></view>
+    <view class="input2 phone-number {{phone ? '' : 'phone-placeholder'}}">
+      {{phone || '授权绑定手机号'}}
+    </view>
+    <view class="input3 mr phone-arrow">
+      <text class="icon iconfont icon-shouji"></text>
+    </view>
+    <button class="phone-button" hover-class="{{phoneLoading ? 'none' : 'theme-action-hover'}}" aria-label="{{phone ? '更换手机号' : '授权绑定手机号'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" loading="{{phoneLoading}}" disabled="{{phoneLoading}}"></button>
+  </view>
+  <view class="btn" catchtap="insertUser" hover-class="theme-action-hover">确定</view>
+</view>

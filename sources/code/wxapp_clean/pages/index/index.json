@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "蝴蝶优选",
+  "usingComponents": {
+    "van-overlay": "@vant/weapp/overlay/index",
+    "catalog-filter": "/utils/common/filter/index"
+  },
+  "navigationStyle": "custom",
+  "onReachBottomDistance": 100,
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f3f3f3",
+  "backgroundTextStyle": "dark"
+}

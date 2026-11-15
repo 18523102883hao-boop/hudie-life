@@ -1,0 +1,12 @@
+<view class="page">
+  <picker range="{{filters}}" range-key="name" value="{{filterIndex}}" disabled="{{loading}}" bindchange="changeFilter"><view class="card">预约状态：{{filters[filterIndex].name}} ▾</view></picker>
+  <view wx:for="{{items}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="open">
+    <view class="heading"><text>{{item.guest_name}}</text><text>{{item.status_text}}</text></view>
+    <view>{{item.room_type_name}} · {{item.room_count}}间</view><view>{{item.checkin}} 至 {{item.checkout}}</view>
+    <view class="muted">订单号：{{item.order_no}}</view>
+  </view>
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+  <view wx:elif="{{error}}" class="empty" bindtap="getList">{{error}}，点击重试</view>
+  <view wx:elif="{{!items.length}}" class="empty">暂无预约</view>
+  <button wx:elif="{{!ended}}" bindtap="getList">加载更多</button>
+</view>

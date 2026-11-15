@@ -1,0 +1,41 @@
+<view class="bgc absolute"></view>
+<view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+  <!-- 胶囊区域 -->
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <!-- 导航内容区域 -->
+    <view class="view" catchtap="back">
+      <text class="icon iconfont icon-fanhui" style="color: #fff;"></text>
+    </view>
+  </view>
+</view>
+<view class="logo" style="opacity: 1;margin-top: 25px;padding: 10px;">
+  <image style="height: 240rpx;width: 240rpx;border-radius: 50%;" mode="aspectFit" src='{{app.domain}}static/img/logo.png'></image>
+</view>
+<view class="name flex">
+  <view class="name_img">
+    <text class="icon iconfont icon-shouji"></text>
+  </view>
+  <view class="name_input">
+    <input type="text" placeholder="请输入手机号" model:value="{{mobile}}" />
+  </view>
+</view>
+<view class="names flex relative">
+  <view class="name_img">
+    <text class="icon iconfont icon-success1"></text>
+  </view>
+  <view class="name_input" style="justify-content: space-between;">
+    <input type="text" placeholder="请输入图形验证码"  model:value="{{img_code}}" />
+    <image src="{{captcha.content}}" catchtap="getCaptcha" style="width: 200rpx;height: 62.5rpx;position: absolute;right: 20rpx;bottom: 20rpx;"></image>
+  </view>
+</view>
+<view class="names flex relative">
+  <view class="name_img">
+    <text class="icon iconfont icon-yanzhengma"></text>
+  </view>
+  <view class="name_input" style="justify-content: space-between;">
+    <input type="text" placeholder="请输入短信验证码"  model:value="{{code}}" />
+    <view catchtap="getCode" style="width: 200rpx;height: 62.5rpx;position: absolute;right: 20rpx;bottom: 20rpx;line-height: 62.5rpx;text-align: center;border-radius: 20rpx;background:{{sec > 0 ? '#e1e1e1' : 'var(--action-background)'}};color:{{sec > 0 ? '#999' : '#fff'}};" hover-class="{{sec > 0 ? 'none' : 'theme-action-hover'}}">{{sec <= 0 ? '获取验证码' : (sec+'s')}}</view>
+  </view>
+</view>
+<!-- 登录 -->
+<view class="submit" catchtap="login" hover-class="theme-action-hover">确认绑定</view>

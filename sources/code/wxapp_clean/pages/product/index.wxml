@@ -1,0 +1,276 @@
+<view class="nav-main relative" style="height:calc({{app.globalData.navBarHeight}}px);background: #f3f3f3;">
+  <!-- <image src="{{swiperList[0].img}}" style="position: absolute;left: 0;top: 0;width: 100%;height: 90%;filter: blur(5rpx);"></image> -->
+  <view style="width: 750rpx;height:{{app.globalData.navBarHeight}}px;background: var(--brand-soft);position: fixed;z-index: 2;top: 0">
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px; min-height:{{app.globalData.menuHeight}}px; line-height:{{app.globalData.menuHeight}}px;bottom: 4px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <view class="view flex">
+        <view class="views" catchtap="searchAddress">
+          <view class="flex" style="width: {{area_width}}rpx;font-size: 30rpx;font-weight: 700;">
+            <view style="line-height: 60rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;text-overflow: ellipsis;"><text class="icon iconfont ">{{county?county:(city?city:province)}}</text></view>
+            <text class="icon iconfont icon-sanjiaoxing" style="transform: rotate(180deg);font-size: 16rpx;margin-left: 10rpx;"></text>
+          </view>
+        </view>
+        <view class="title" style="color: #333;font-weight: 700;letter-spacing: 4rpx;width: {{150-area_width+360}}rpx;text-align: center;">
+          <view style="width: 100%;background: #ffffff88;border-radius: 40rpx;display: flex;border:  {{scroll_top>0?'1rpx solid #f1f1f1;':'none'}}">
+            <input type="text" style="width: {{150-area_width+360-60-80}}rpx;margin-left: 60rpx;font-size: 24rpx;font-weight: 100;line-height:{{app.globalData.menuHeight}}px;height:{{app.globalData.menuHeight}}px;" placeholder="搜索" bindinput="setKeywords" bindconfirm="search"/>
+            <text class="icon iconfont icon-search" style="width: 80rpx;" catchtap="search"></text>
+          </view>
+        </view>
+        <!-- <view catchtap="showCustomer" style="width: 64rpx;height: 64rpx;text-align: center;background: #ffffff88;border-radius: 50%;font-size: 40rpx;">
+          <text class="icon iconfont icon-customer-service-fill"></text>
+        </view> -->
+        <view class="title" style="opacity: 0;width: 180rpx;margin-top: 0;">
+          <view class="flex">
+            <text class="icon iconfont icon-dingwei">重庆站</text>
+            <text class="icon iconfont icon-down"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 轮播图 -->
+<view class="lun" wx:if="{{swiperList && swiperList.length>0}}">
+  <swiper class="luns" autoplay="play" circular interval="3000" bindchange="swiperchange">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index" class="luns" bindtap="toPage" data-item="{{item}}">
+      <image src="{{item.img}}"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图标签 -->
+  <view class="labels absolute flex">
+    <view class="label" wx:if="{{index <= 6}}" wx:for="{{labelAll}}" wx:key="index">{{item}}</view>
+  </view>
+  <!-- 轮播图下点 -->
+  <view class="points pointss flex" wx:if="{{swiperList.length > 1}}">
+    <view class="{{swiperIndex == index ?'pointe':'point'}}" wx:for="{{swiperList.length}}" wx:key="index">
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{show_cate}}" style="width: 750rpx;height: {{nav_index==0?'172rpx':'314rpx'}};margin-top: 20rpx;position: relative;z-index: 1;">
+  <view style="width: 750rpx;height: {{nav_index==0?'192rpx':'334rpx'}};position: absolute;background-image: linear-gradient(to top, #fbfbfb 70%, #ffffff00);top: -30rpx"></view>
+  <swiper style="width: 690rpx;height: {{nav_index==0?'172rpx':'314rpx'}};margin-left: 30rpx;border-radius: 20rpx;overflow: hidden;" bindchange="swiperchange1">
+    <swiper-item>
+      <view class="flex flexw" style="text-align: center;justify-content: space-around;font-size: 24rpx;background: #fff;padding: 20rpx 0;">
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="餐饮美食" src="/img/cyms-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '餐饮美食' ? 'var(--brand-strong)' : '#000'}};">餐饮美食</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="娱乐休闲" src="/img/xxyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '娱乐休闲' ? 'var(--brand-strong)' : '#000'}};">娱乐休闲</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="酒店住宿" src="/img/jdzs-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '酒店住宿' ? 'var(--brand-strong)' : '#000'}};">酒店住宿</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="景区娱乐" src="/img/jqyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '景区娱乐' ? 'var(--brand-strong)' : '#000'}};">景区娱乐</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="电商好物" src="/img/dshw-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '电商好物' ? 'var(--brand-strong)' : '#000'}};">电商好物</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="flex flexw" style="text-align: center;justify-content: space-around;font-size: 24rpx;background: #fff;padding: 20rpx 0;">
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="餐饮美食" src="/img/cyms-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '餐饮美食' ? 'var(--brand-strong)' : '#000'}};">餐饮美食</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="娱乐休闲" src="/img/xxyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '娱乐休闲' ? 'var(--brand-strong)' : '#000'}};">娱乐休闲</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="酒店住宿" src="/img/jdzs-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '酒店住宿' ? 'var(--brand-strong)' : '#000'}};">酒店住宿</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="景区娱乐" src="/img/jqyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '景区娱乐' ? 'var(--brand-strong)' : '#000'}};">景区娱乐</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="电商好物" src="/img/dshw-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '电商好物' ? 'var(--brand-strong)' : '#000'}};">电商好物</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="天天特惠" src="/img/ttth-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '天天特惠' ? 'var(--brand-strong)' : '#000'}};">天天特惠</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="充值专区" src="/img/czzq-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '充值专区' ? 'var(--brand-strong)' : '#000'}};">充值专区</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="电影专区" src="/img/dyzq-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '电影专区' ? 'var(--brand-strong)' : '#000'}};">电影专区</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="加油专区" src="/img/jyzq-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '加油专区' ? 'var(--brand-strong)' : '#000'}};">加油专区</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="全部" src="/img/more-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '全部' ? 'var(--brand-strong)' : '#000'}};">全部</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class="points flex" style="position: absolute;bottom: 5rpx;width: 690rpx;left: 30rpx">
+    <view class="{{nav_index == index ?'pointe':'point'}}" wx:for="{{2}}" wx:key="index">
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{new_list.length > 0}}" style="width: 710rpx;display: flex;margin: 20rpx;justify-content: space-between;color: #fff7ea;">
+  <view style="width: 305rpx;background: var(--brand-strong);padding: 10rpx 20rpx;border-radius: 20rpx;line-height: 36rpx;">
+    <view style="display: flex;justify-content: space-between;line-height: 36rpx;">
+      <view style="font-weight: 700;font-size: 24rpx;line-height: 30rpx;letter-spacing: 2rpx;">
+        <image src="{{app.domain}}static/img/hg.png" mode="aspectFit" style="width: 27rpx;height: 30rpx;vertical-align: middle;margin-right: 6rpx;"></image>
+        爆品排行榜
+      </view>
+      <view hover-class="theme-action-hover" data-path="/pages/product/top" bindtap="switchTab" style="font-size: 24rpx;line-height: 30rpx;padding: 0 15rpx;border-radius: 20rpx;background:var(--action-background);color:#fff;">more</view>
+    </view>
+    <view style="width: 100%;overflow-x: scroll;overflow-y: hidden;">
+      <view style="margin-top: 10rpx;width: calc(166rpx * {{top_goods.length}} - 10rpx);">
+        <view style="width: 156rpx;height: 156rpx;display: inline-block;margin-right: {{top_goods.length == index+1 ? '0' : '10rpx'}};" wx:for="{{top_goods}}" wx:key="index" catchtap="viewGoods" data-type="{{item.type}}" data-id="{{item.id}}">
+          <view style="width: 156rpx;height: 156rpx;position: relative;">
+            <image src="{{item.img}}" style="width: 156rpx;height: 156rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 10rpx;"></image>
+            <view style="font-size: 20rpx;padding: 0 10rpx;text-align: center;font-weight: 700;background: var(--brand-strong);color: #fff;position: absolute;top: 0;left: 0;border-radius: 10rpx 0 10rpx 0;z-index: 1;line-height: 28rpx;">TOP {{index+1}}</view>
+          </view>
+        </view>
+      </view>
+      <swiper wx:if="{{0}}" style="width: 310rpx;height: 156rpx;overflow: hidden;" autoplay="play" circular interval="3000">
+        <swiper-item wx:for="{{top_goods}}" wx:key="index">
+          <view style="width: 310rpx;height: 156rpx;position: relative;left: 10rpx;" catchtap="viewGoods" data-type="1" data-id="{{item.id}}">
+            <view style="width: 290rpx;height: 136rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);position: absolute;left: 10rpx;top: 10rpx;"></view>
+            <image src="{{item.img}}" mode="aspectFit" style="width: 310rpx;height: 156rpx;position: absolute;z-index: 1;top: 0;left: 0;"></image>
+            <view style="font-size: 20rpx;width: 80rpx;text-align: center;font-weight: 700;background: var(--brand-strong);color: #fff;position: absolute;top: 0;left: 10rpx;border-radius: 0 0 10rpx 10rpx;z-index: 1;">TOP {{index+1}}</view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view style="width: 305rpx;background: var(--brand-strong);padding: 10rpx 20rpx;border-radius: 20rpx;position: relative;">
+    <view style="width: 58rpx;height: 57rpx;position: absolute;left: -2rpx;top: -2rpx;z-index: 1;background: var(--brand-strong);color: #fff;font-size: 18rpx;line-height: 57rpx;text-align: center;border-radius: 10rpx 0 16rpx 0;">NEW</view>
+    <view style="display: flex;justify-content: space-between;line-height: 36rpx;">
+      <view style="font-weight: 700;font-size: 24rpx;line-height: 30rpx;text-indent: 30rpx;letter-spacing: 2rpx;">
+        今日上新
+      </view>
+      <view hover-class="theme-action-hover" data-path="/pages/product/new" bindtap="switchTab" style="font-size: 24rpx;line-height: 30rpx;padding: 0 15rpx;border-radius: 20rpx;background:var(--action-background);color:#fff;">more</view>
+    </view>
+    <view style="width: 100%;overflow-x: scroll;overflow-y: hidden;">
+      <view style="margin-top: 10rpx;width: calc(166rpx * {{new_list.length}} - 10rpx);">
+        <view style="width: 156rpx;display: inline-block;margin-right: {{new_list.length == index+1 ? '0' : '10rpx'}};" wx:for="{{new_list}}" wx:key="index" catchtap="viewGoods" data-type="{{item.type}}" data-id="{{item.id}}">
+          <view style="width: 156rpx;height: 156rpx;position: relative;">
+            <image src="{{item.img}}" style="width: 156rpx;height: 156rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 10rpx;"></image>
+            <view style="font-size: 20rpx;padding: 0 10rpx;text-align: center;font-weight: 700;background: #ed2514;color: #fff;position: absolute;bottom: 0;left: 0;border-radius: 0 10rpx 0 10rpx;z-index: 1;">￥{{item.subsidy_price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>
+  <view style="width: 670rpx;padding: 20rpx;margin: 20rpx 20rpx 0;background: #fff;border-radius: 20rpx;display: flex;justify-content: space-between;" wx:for="{{list}}" wx:key="index" catchtap="viewGoods" data-id="{{item.id}}" data-type="{{item.type}}">
+    <view style="width: 200rpx;height: 200rpx;position: relative;">
+      <view style="width: 180rpx;height: 180rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);margin: 10rpx"></view>
+      <image src="{{item.img}}" style="width: 200rpx;height: 200rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 20rpx;"></image>
+    </view>
+    <view style="width: 450rpx;height: 200rpx;position: relative;">
+      <view style="font-size: 30rpx;font-weight: 700;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;text-overflow: ellipsis;line-height: 35rpx;height: 70rpx;">
+        <text style="color: var(--brand-strong);">{{item.shop_name}}</text><text style="color: #9f9f9f;font-weight: 100;">丨</text>{{item.title}}
+      </view>
+      <view style="display: flex;font-size: 21rpx;flex-wrap: wrap;">
+        <view wx:if="{{item.distant}}" style="margin-right: 6rpx;line-height: 32rpx;color: #666;">
+          <text class="icon iconfont icon-location"></text>{{item.distant}}
+        </view>
+        <view style="color: #ed2519;border: 1rpx solid #ed5219;line-height: 30rpx;padding: 0 10rpx;border-radius: 10rpx;margin-right: 6rpx;" wx:for="{{item.tag}}" wx:key="i_tag" wx:for-item="tag" wx:if="{{tag}}">{{tag}}</view>
+      </view>
+      <view wx:if="{{0&&item.distant}}" style="font-size: 24rpx;color: #666;">
+        <text class="icon iconfont icon-location">{{item.distant}}</text>
+      </view>
+      <view style="display: flex;justify-content: space-between;font-size: 24rpx;color: #999;line-height: 44rpx;flex-wrap: wrap;position: absolute;bottom: 0;height: 90rpx;background-image: linear-gradient(to right, #fff, #fdeee9);border-radius: 38rpx;">
+        <view style="width: 336rpx;">
+          <view style="font-weight: 700;color: #ff3d24;width: 336rpx;margin-top: 4rpx;">
+            ￥<text style="font-size: 38rpx;">{{item.subsidy_price}} </text>
+            <text style="color: #777;text-decoration: line-through;font-weight: 100;">￥{{item.market_price}}</text>
+          </view>
+          <view style="width: 336rpx;line-height: 20rpx;font-size: 20rpx;display: flex;">
+            <view style="color: #ff0a0a;border-radius: 10rpx;margin-right: 6rpx;margin-top: 6rpx;font-weight: 700;font-size: 22rpx;background-image: url({{app.domain}}static/img/icon-commission.png);background-size: 20rpx 20rpx;background-repeat: no-repeat;padding-left: 26rpx;" wx:if="{{item.commission}}">优选补贴 {{item.commission}}</view>
+            <!-- <text style="color: #777;text-decoration: line-through;font-weight: 100;">门市价￥{{item.market_price}}</text>
+            <text class="icon iconfont icon-location" style="margin-left: 20rpx;" wx:if="{{item.distant}}">{{item.distant}}</text> -->
+          </view>
+        </view>
+        <view wx:if="{{item.status!=1}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+          <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">{{item.start_time <= now_time ? '已下架' : '未上架'}}</view>
+        </view>
+        <view wx:elif="{{item.end_time<now_time}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+          <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">已下架</view>
+        </view>
+        <view wx:elif="{{item.start_time>now_time}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+          <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">未开售</view>
+        </view>
+        <view wx:elif="{{item.stock<=item.today_sale_num}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+          <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">已抢光</view>
+        </view>
+        <view hover-class="theme-action-hover" wx:else style="width: 114rpx;height: 90rpx;background:var(--action-background);border-radius: 0 45rpx 45rpx 0;background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;vertical-align: middle;position: relative;" catchtap="toPage" data-path="/pages/product/info?scene={{item.id}}_0">
+          <view style="font-size: 40rpx;line-height: 90rpx;padding-right: 40rpx;">抢<text class="icon iconfont icon-jiantouyou" style="font-size: 20rpx;position: absolute;right: 18rpx;"></text></view>
+        </view>
+        <view style="width: 150rpx;position: relative;display: none;">
+          <view style="position: absolute;width: {{item.cut_amount > 0 ? '150rpx' : '120rpx'}};bottom: 50rpx;right: 0;line-height: 30rpx;background: var(--brand-soft);text-align: center;color: var(--brand-strong);border-radius: 10rpx 10rpx 0 0;padding-bottom: 10rpx;"><text class="icon iconfont icon-view-fill">{{item.view_num}}</text></view>
+          <view wx:if="{{item.status!=1}}" style="line-height: 60rpx;background-image: linear-gradient(to bottom right, #cacaca, #dadada);color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">{{item.start_time <= now_time ? '已下架' : '未上架'}}</view>
+          <view wx:elif="{{item.end_time<now_time}}" style="line-height: 60rpx;background-image: linear-gradient(to bottom right, #cacaca, #dadada);color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">已下架</view>
+          <view wx:elif="{{item.start_time>now_time}}" style="line-height: 60rpx;background: #ffaa00;color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">未开售</view>
+          <view wx:elif="{{item.stock<=item.today_sale_num}}" style="line-height: 60rpx;background-image: linear-gradient(to bottom right, #cacaca, #dadada);color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">已抢光</view>
+          <view hover-class="theme-action-hover" wx:else style="line-height: 60rpx;background:var(--action-background);color: #fff;width: {{item.cut_amount > 0 ? '150rpx' : '120rpx'}};text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;" catchtap="cutAmount" data-id="{{item.id}}" data-type="{{item.type}}">
+            <block wx:if="{{item.type == 1}}">
+            <image src="{{app.domain}}static/img/dao.png" style="width: 30rpx;height: 30rpx;position: absolute;top: 15rpx"></image>
+            <text style="padding-left: 36rpx;">{{item.cut_amount > 0 ? '邀请帮砍' : '砍价'}}</text>
+            </block>
+            <text wx:elif="{{item.type==3}}">{{item.group_num}}人团</text>
+            <text wx:else>马上抢</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{0}}" style="width: 670rpx;padding: 20rpx;margin: 20rpx 20rpx 0;background: #fff;border-radius: 20rpx;display: flex;justify-content: space-between;" wx:for="{{list}}" wx:key="index" catchtap="viewGoods" data-id="{{item.id}}">
+    <view style="width: 200rpx;height: 200rpx;position: relative;">
+      <view style="width: 200rpx;height: 200rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);"></view>
+      <image src="{{item.img}}" mode="aspectFit" style="width: 200rpx;height: 200rpx;position: absolute;z-index: 1;top: 0;left: 0;"></image>
+    </view>
+    <view style="width: 450rpx;height: 200rpx;">
+      <view style="font-size: 30rpx;font-weight: 700;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;text-overflow: ellipsis;line-height: 40rpx;height: 80rpx;">{{item.title}}</view>
+      <view style="display: flex;justify-content: space-between;font-size: 24rpx;color: #999;line-height: 34rpx;">
+        <view><text class="icon iconfont icon-view-fill"> {{item.view_num}}</text></view>
+        <view>{{item.distant}}</view>
+      </view>
+      <view style="display: flex;justify-content: space-between;font-size: 24rpx;line-height: 36rpx;">
+        <view style="color: #fb7627;border: 1px solid #fb7627;padding: 0 20rpx;border-radius: 10rpx;">分享得{{item.commission}}</view>
+      </view>
+      <view style="display: flex;justify-content: space-between;font-size: 24rpx;color: #999;line-height: 50rpx;">
+        <view style="font-weight: 700;color: #fe0a0a;">
+          ￥<text style="font-size: 40rpx;">{{item.subsidy_price}} </text>
+          <text style="color: #777;text-decoration: line-through;font-weight: 100;">门市价￥{{item.market_price}}</text>
+        </view>
+        <view hover-class="theme-action-hover" style="width: 100rpx;background:var(--action-background);color: #fff;text-align: center;border-radius: 25rpx;">马上抢</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{show_customer}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000066;z-index: 99;">
+  <image src="{{customer.img}}" style="width: 550rpx;height: 550rpx;position: absolute;left: 100rpx;top: calc(50vh - 275rpx - env(safe-area-inset-bottom) - 100rpx);" show-menu-by-longpress></image>
+  <view catchtap="hideCustomer" style="position: absolute;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 40rpx;border-radius: 50%;border: 2rpx solid #fff;color: #fff;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 100rpx + 40rpx);left: 345rpx;"><text class="icon iconfont icon-x"></text></view>
+</view>
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>
+<import src="/utils/common/area"></import>
+<template is="area" data="{{showArea,app,cityList,province,city,county}}"></template>
+<import src="/utils/common/tabbar"></import>
+<template is="tabbar" data="{{tabbarData,selected}}"></template>

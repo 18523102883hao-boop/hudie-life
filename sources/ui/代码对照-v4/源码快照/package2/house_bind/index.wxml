@@ -1,0 +1,58 @@
+<view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+  <!-- 胶囊区域 -->
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 50%;transform: translate(-50%);">
+    <!-- 导航内容区域 -->
+    <view class="view flex" style="justify-content: space-between;">
+      <view class="views" catchtap="back">
+        <text class="icon iconfont icon-fanhui" style="color: #000;"></text>
+      </view>
+      <view class="title">{{title_arr[step]}}</view>
+      <view class="title" style="opacity: 0;">12情</view>
+    </view>
+  </view>
+</view>
+<view style="width: 710rpx;margin: 0 20rpx;background: var(--brand-soft);font-size: 24rpx;line-height: 60rpx;border-radius: 20rpx;text-indent: 40rpx;color: var(--brand-strong)" wx:if="{{step > 1}}">
+  您已选择：{{path_name}}
+</view>
+<view class="flex" style="width: 750rpx;height: calc(100vh - {{app.globalData.navBarHeight}}px {{step > 1 ? '- 60rpx' : ''}});">
+  <view class="residential" wx:if="{{step==1}}">
+    <view catchtap="sel" data-path_name="{{item.name}}" data-step="2" data-field="residential_id" data-value="{{item.id}}" wx:for="{{residential_list}}" wx:key="index" class="one {{item.id == residential_id ? 'on' : ''}}">{{item.name}}</view>
+  </view>
+  <view class="building" wx:if="{{step>=2 && step!=6}}">
+    <view catchtap="sel" data-path_name="{{item.path_name}} | {{item.name}}" data-step="3" data-field="building_id" data-value="{{item.id}}" wx:for="{{building_list}}" wx:key="index" class="one {{item.id == building_id ? 'on' : ''}}">{{item.name}}</view>
+  </view>
+  <view class="unit" wx:if="{{step>=3 && step!=6}}">
+    <view catchtap="sel" data-path_name="{{item.path_name}} | {{item.name}}" data-step="4" data-field="unit_id" data-value="{{item.id}}" wx:for="{{unit_list}}" wx:key="index" class="one {{item.id == unit_id ? 'on' : ''}}">{{item.name}}</view>
+  </view>
+  <view class="floor" wx:if="{{step>=4 && step!=6}}">
+    <view catchtap="sel" data-path_name="{{item.path_name}} | {{item.name}}" data-step="5" data-field="floor_id" data-value="{{item.id}}" wx:for="{{floor_list}}" wx:key="index" class="one {{item.id == floor_id ? 'on' : ''}}">{{item.name}}</view>
+  </view>
+  <view class="house" wx:if="{{step>=5 && step!=6}}">
+    <view catchtap="sel" data-index="{{index}}" data-path_name="{{item.path_name}} | {{item.room}}" data-step="6" data-field="house_id" data-value="{{item.id}}" wx:for="{{house_list}}" wx:key="index" class="one {{item.id == house_id ? 'on' : ''}}">{{item.room}}</view>
+  </view>
+  <view wx:if="{{step == 6}}">
+    <view class="form mt flex">
+      <view class="input flex" style="border-bottom: 2rpx solid #EEEEEE;">
+        <view class="title flex">
+          <text style="color: #FF0000;">*</text>
+          <view>承租人姓名</view>
+        </view>
+        <input type="text" model:value="{{name}}" placeholder="请填写承租人姓名" placeholder-style="placeholder" />
+      </view>
+      <view class="input flex" style="border-bottom: 2rpx solid #EEEEEE;">
+        <view class="title flex">
+          <view>承租人手机号</view>
+        </view>
+        <input type="text" disabled="{{true}}" model:value="{{mobile}}" placeholder-style="placeholder" />
+      </view>
+      <view class="input flex" style="border-bottom: 2rpx solid #EEEEEE;">
+        <view class="title flex">
+          <text style="color: #FF0000;">*</text>
+          <view>身份证后六位</view>
+        </view>
+        <input type="text" maxlength="6" model:value="{{id_card}}" placeholder-style="placeholder" />
+      </view>
+    </view>
+    <view class="submit fixed" bindtap="submit" hover-class="theme-action-hover">提交</view>
+  </view>
+</view>

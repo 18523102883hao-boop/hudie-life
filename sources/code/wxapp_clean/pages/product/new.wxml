@@ -1,0 +1,79 @@
+<view class="lun" style="z-index: 0;" wx:if="{{swiperList && swiperList.length>0}}">
+  <swiper class="luns" autoplay="play" circular interval="3000" bindchange="swiperchange">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index" class="luns" bindtap="toPage" data-item="{{item}}">
+      <image mode="widthFix" src="{{item.img}}"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图标签 -->
+  <view class="labels absolute flex">
+    <view class="label" wx:if="{{index <= 6}}" wx:for="{{labelAll}}" wx:key="index">{{item}}</view>
+  </view>
+</view>
+<view style="width: 670rpx;padding: 20rpx;margin: 20rpx 20rpx 0;background: #fff;border-radius: 20rpx;display: flex;justify-content: space-between;" wx:for="{{list}}" wx:key="index" catchtap="viewGoods" data-id="{{item.id}}" data-type="{{item.type}}">
+  <view style="width: 200rpx;height: 200rpx;position: relative;">
+    <view style="width: 180rpx;height: 180rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);margin: 10rpx"></view>
+    <image src="{{item.img}}" style="width: 200rpx;height: 200rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 20rpx;"></image>
+  </view>
+  <view style="width: 450rpx;height: 200rpx;position: relative;">
+    <view style="font-size: 30rpx;font-weight: 700;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;text-overflow: ellipsis;line-height: 35rpx;height: 70rpx;">
+      <text style="color: var(--brand-strong);">{{item.shop_name}}</text><text style="color: #9f9f9f;font-weight: 100;">丨</text>{{item.title}}
+    </view>
+    <view style="display: flex;font-size: 21rpx;flex-wrap: wrap;">
+      <view wx:if="{{item.distant}}" style="margin-right: 6rpx;line-height: 32rpx;color: #666;">
+        <text class="icon iconfont icon-location"></text>{{item.distant}}
+      </view>
+      <view style="color: #ed2519;border: 1rpx solid #ed5219;line-height: 30rpx;padding: 0 10rpx;border-radius: 10rpx;margin-right: 6rpx;" wx:for="{{item.tag}}" wx:key="i_tag" wx:for-item="tag" wx:if="{{tag}}">{{tag}}</view>
+    </view>
+    <view wx:if="{{0&&item.distant}}" style="font-size: 24rpx;color: #666;">
+      <text class="icon iconfont icon-location">{{item.distant}}</text>
+    </view>
+    <view style="display: flex;justify-content: space-between;font-size: 24rpx;color: #999;line-height: 44rpx;flex-wrap: wrap;position: absolute;bottom: 0;height: 90rpx;background-image: linear-gradient(to right, #fff, #fdeee9);border-radius: 38rpx;">
+      <view style="width: 336rpx;">
+        <view style="font-weight: 700;color: #ff3d24;width: 336rpx;margin-top: 4rpx;">
+          ￥<text style="font-size: 38rpx;">{{item.subsidy_price}} </text>
+          <text style="color: #777;text-decoration: line-through;font-weight: 100;">￥{{item.market_price}}</text>
+        </view>
+        <view style="width: 336rpx;line-height: 20rpx;font-size: 20rpx;display: flex;">
+          <view style="color: #ff0a0a;border-radius: 10rpx;margin-right: 6rpx;margin-top: 6rpx;font-weight: 700;font-size: 22rpx;background-image: url({{app.domain}}static/img/icon-commission.png);background-size: 20rpx 20rpx;background-repeat: no-repeat;padding-left: 26rpx;" wx:if="{{item.commission}}">优选补贴 {{item.commission}}</view>
+          <!-- <text style="color: #777;text-decoration: line-through;font-weight: 100;">门市价￥{{item.market_price}}</text>
+          <text class="icon iconfont icon-location" style="margin-left: 20rpx;" wx:if="{{item.distant}}">{{item.distant}}</text> -->
+        </view>
+      </view>
+      <view wx:if="{{item.status!=1}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+        <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">{{item.start_time <= now_time ? '已下架' : '未上架'}}</view>
+      </view>
+      <view wx:elif="{{item.end_time<now_time}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+        <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">已下架</view>
+      </view>
+      <view wx:elif="{{item.start_time>now_time}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+        <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">未开售</view>
+      </view>
+      <view wx:elif="{{item.stock<=item.today_sale_num}}" style="width: 114rpx;height: 90rpx;background-image: url({{app.domain}}static/img/btn2.png);background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;">
+        <view style="font-size: 26rpx;line-height: 90rpx;padding-right: 14rpx;">已抢光</view>
+      </view>
+      <view hover-class="theme-action-hover" wx:else style="width: 114rpx;height: 90rpx;background:var(--action-background);border-radius: 0 45rpx 45rpx 0;background-size: 114rpx 90rpx;color: #fff;text-align: right;font-weight: 700;vertical-align: middle;position: relative;" catchtap="toPage" data-path="/pages/product/info?scene={{item.id}}_0">
+        <view style="font-size: 40rpx;line-height: 90rpx;padding-right: 40rpx;">抢<text class="icon iconfont icon-jiantouyou" style="font-size: 20rpx;position: absolute;right: 18rpx;"></text></view>
+      </view>
+      <view style="width: 150rpx;position: relative;display: none;">
+        <view style="position: absolute;width: {{item.cut_amount > 0 ? '150rpx' : '120rpx'}};bottom: 50rpx;right: 0;line-height: 30rpx;background: var(--brand-soft);text-align: center;color: var(--brand-strong);border-radius: 10rpx 10rpx 0 0;padding-bottom: 10rpx;"><text class="icon iconfont icon-view-fill">{{item.view_num}}</text></view>
+        <view wx:if="{{item.status!=1}}" style="line-height: 60rpx;background-image: linear-gradient(to bottom right, #cacaca, #dadada);color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">{{item.start_time <= now_time ? '已下架' : '未上架'}}</view>
+        <view wx:elif="{{item.end_time<now_time}}" style="line-height: 60rpx;background-image: linear-gradient(to bottom right, #cacaca, #dadada);color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">已下架</view>
+        <view wx:elif="{{item.start_time>now_time}}" style="line-height: 60rpx;background: #ffaa00;color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">未开售</view>
+        <view wx:elif="{{item.stock<=item.today_sale_num}}" style="line-height: 60rpx;background-image: linear-gradient(to bottom right, #cacaca, #dadada);color: #fff;width: 120rpx;text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;">已抢光</view>
+        <view hover-class="theme-action-hover" wx:else style="line-height: 60rpx;background:var(--action-background);color: #fff;width: {{item.cut_amount > 0 ? '150rpx' : '120rpx'}};text-align: center;border-radius: 10rpx;position: absolute;bottom: 0;right: 0;" catchtap="cutAmount" data-id="{{item.id}}" data-type="{{item.type}}">
+          <block wx:if="{{item.type == 1}}">
+          <image src="{{app.domain}}static/img/dao.png" style="width: 30rpx;height: 30rpx;position: absolute;top: 15rpx"></image>
+          <text style="padding-left: 36rpx;">{{item.cut_amount > 0 ? '邀请帮砍' : '砍价'}}</text>
+          </block>
+          <text wx:elif="{{item.type==3}}">{{item.group_num}}人团</text>
+          <text wx:else>马上抢</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>
+
+<view style="width: 1rpx;height: calc(max(env(safe-area-inset-bottom), 20rpx));"></view>

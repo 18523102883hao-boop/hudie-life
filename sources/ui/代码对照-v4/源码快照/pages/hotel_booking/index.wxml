@@ -1,0 +1,28 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="card">正在加载预约信息…</view>
+  <view wx:if="{{error}}" class="card" bindtap="load">{{error}}，点击重试</view>
+  <block wx:if="{{loaded && !external && !error}}">
+    <view wx:if="{{booking.latest}}" class="card">
+      <view class="title">{{booking.latest.status_text || '预约处理中'}}</view>
+      <view>{{booking.latest.checkin}} 至 {{booking.latest.checkout}}</view>
+      <view>{{booking.latest.room_type_name}} · {{booking.latest.room_count}}间</view>
+      <view>{{booking.latest.guest_name}} {{booking.latest.guest_mobile}}</view>
+      <view wx:if="{{booking.latest.reject_reason}}">{{booking.latest.reject_reason}}</view>
+      <block wx:if="{{booking.can_apply_cancel}}"><textarea value="{{cancelReason}}" bindinput="changeReason" maxlength="200" placeholder="请输入取消原因"/><button disabled="{{busy}}" bindtap="applyCancel">申请取消预约</button></block>
+    </view>
+    <view wx:if="{{booking.can_submit}}" class="card">
+      <view class="title">预约入住</view>
+      <picker range="{{roomTypes}}" range-key="name" value="{{roomIndex}}" bindchange="changeRoom"><view class="field">房型：{{roomName}}</view></picker>
+      <picker mode="date" start="{{today}}" value="{{form.checkin}}" bindchange="changeCheckin"><view class="field">入住：{{form.checkin}}</view></picker>
+      <picker mode="date" start="{{minCheckout}}" value="{{form.checkout}}" bindchange="changeCheckout"><view class="field">离店：{{form.checkout}}</view></picker>
+      <view class="field">房间数<input value="{{form.room_count}}" data-field="room_count" bindinput="changeField" type="number" maxlength="3"/></view>
+      <view class="field">入住人<input value="{{form.guest_name}}" data-field="guest_name" bindinput="changeField" maxlength="40" placeholder="请输入入住人姓名"/></view>
+      <view class="field">手机号<input value="{{form.guest_mobile}}" data-field="guest_mobile" bindinput="changeField" type="number" maxlength="11" placeholder="请输入手机号"/></view>
+      <view class="muted">{{calendarLoading ? '正在查询可约房量…' : (available ? '所选日期可预约' : '所选日期房量不足或暂不可预约，请更换日期或房型')}}</view>
+      <view wx:for="{{selectedDays}}" wx:key="date" class="day">{{item.date}}：{{item.is_open && item.remain>0 ? '剩余'+item.remain+'间' : '不可预约'}}</view>
+      <button class="primary" disabled="{{busy || !available}}" bindtap="submit">{{busy ? '提交中…' : '提交预约'}}</button>
+      <view class="muted">提交后需等待商家确认，确认结果以预约状态为准。</view>
+    </view>
+    <view wx:elif="{{!booking.latest}}" class="card muted">当前订单暂不可预约</view>
+  </block>
+</view>

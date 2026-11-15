@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "房屋申请",
+  "usingComponents": {},
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f3f3f3",
+  "backgroundTextStyle": "dark"
+}

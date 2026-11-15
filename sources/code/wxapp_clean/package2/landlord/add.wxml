@@ -1,0 +1,27 @@
+<view style="width: 750rpx;background: #fff;padding: 20rpx 0">
+  <view style="color: #999;font-size: 24rpx;margin-bottom: 20rpx;width: 710rpx;margin-left: 20rpx;">当前选择房屋</view>
+  <view style="width: 710rpx;margin-left: 20rpx;">{{path_name}}</view>
+</view>
+
+<view class="form mt flex">
+  <view class="input flex" style="border-bottom: 2rpx solid #EEEEEE;">
+    <view class="title flex">
+      <text style="color: #FF0000;">*</text>
+      <view>姓名</view>
+    </view>
+    <input type="text" model:value="{{name}}" placeholder="请填写姓名" placeholder-style="placeholder" />
+  </view>
+  <view class="input flex" style="border-bottom: 2rpx solid #EEEEEE;">
+    <view class="title flex">
+      <view>手机号</view>
+    </view>
+    <input type="text" model:value="{{mobile}}" placeholder="请填写手机号" placeholder-style="placeholder" />
+  </view>
+  <view class="input flex" style="border-bottom: 2rpx solid #EEEEEE;">
+    <view class="title flex">
+      <view>身份证</view>
+    </view>
+    <input type="text" maxlength="18" model:value="{{id_card}}" placeholder="请填写身份证" placeholder-style="placeholder" />
+  </view>
+</view>
+<view class="submit fixed" bindtap="add" hover-class="theme-action-hover">提交</view>

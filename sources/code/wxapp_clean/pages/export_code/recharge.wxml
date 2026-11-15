@@ -1,0 +1,21 @@
+<view class="ec-page">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:12rpx;">
+      <view class="ec-nav flex">
+        <view class="ec-back" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="ec-nav-title">余额充值</view>
+        <view class="ec-nav-title" style="opacity:0;">余额充值</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="ec-section">
+    <!-- K1-4：金额输入（元）→ 快捷金额 → 立即充值 → 倒计时取 pay_expire_time 剩余秒 → 到 0 禁用 -->
+    <view class="ec-empty">
+      <image class="ec-empty-img" src="{{app.domain}}static/img/nodata.png"></image>
+      <view class="ec-empty-txt">充值入口开通后可在此充值导码余额</view>
+    </view>
+  </view>
+</view>

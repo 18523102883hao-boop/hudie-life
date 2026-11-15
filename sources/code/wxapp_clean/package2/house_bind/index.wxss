@@ -1,0 +1,8 @@
+.view{width:710rpx;align-items:center;justify-content:space-between}
+.one{line-height: 80rpx;font-size: 30rpx;text-indent: 20rpx;border-bottom: 2rpx solid #ccc;}
+.one.on{color: var(--brand-strong);font-weight: 700;}
+.residential,.building,.unit,.floor,.house{width: 94%;margin-left: 3%;height: 100%;overflow-y: scroll;}
+.form{width:710rpx;height:auto;background:#fff;border-radius:20rpx;opacity:1;margin-left:20rpx;flex-direction:column;justify-content:center;align-items:center}
+.input{width:650rpx;height:120rpx;flex-direction:row;justify-content:space-between;align-items:center}
+.placeholder{height:40rpx;font-size:28rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#AAAAAA;line-height:40rpx}
+.submit{width:440rpx;height:72rpx;background:var(--action-background);box-shadow:0rpx 0rpx 12rpx 2rpx rgba(0,0,0,0.16);border-radius:46rpx 46rpx 46rpx 46rpx;opacity:1;font-size:32rpx;font-family:PingFang SC-Regular,PingFang SC;font-weight:400;color:#fff;line-height:72rpx;text-align:center;top:88%;left:50%;transform:translate(-50%,-50%)}

@@ -1,0 +1,17 @@
+<view style="background: #fef5e6;font-size: 24rpx;text-align: center;line-height: 60rpx;">订单号：{{data.order_no}}</view>
+<view style="text-align: center;padding: 20rpx;background: #fff;color: #666;font-size: 24rpx;">
+  <block wx:if="{{succ == 1}}">
+  <view class="icon iconfont icon-selected" style="font-size: 80rpx;width: 170rpx;height: 170rpx;text-align: center;background: #03c15f;line-height: 170rpx;border-radius: 50%;color: #fff;margin: 20rpx 270rpx 40rpx;"></view>
+  <view style="font-size: 40rpx;font-weight: 700;color: #03c15f;">支付成功</view>
+  <view style="margin: 20rpx 0;">{{sec}}秒后跳转 <text hover-class="theme-action-hover" catchtap="toBill" style="line-height: 40rpx;border: 2rpx solid var(--action);border-radius: 10rpx;display: inline-block;padding: 0 10rpx;background:var(--action-background);color:#fff;">查看账单</text></view>
+  </block>
+  <view wx:else>支付剩余时间：{{time_str}}</view>
+  <view style="font-size: 60rpx;color: #ed2519;margin: 20rpx 0">
+    <text style="font-size: 24rpx;">￥</text> 
+    {{data.pay_amount}}
+  </view>
+  <view>生活缴费支付</view>
+</view>
+
+
+<view style="position: fixed;bottom: calc(max(env(safe-area-inset-bottom), 20rpx));width: 550rpx;margin-left: 100rpx;text-align: center;line-height: 80rpx;background:var(--action-background);color: #fff;border-radius: 20rpx;margin-top: 80rpx;">去支付 ￥{{data.pay_amount}}</view>

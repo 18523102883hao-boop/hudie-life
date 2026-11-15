@@ -1,0 +1,28 @@
+<view style="width: 750rpx;background: #fff;">
+  <view class="flex flexw" style="justify-content: space-between;font-size: 24rpx;margin-bottom: 20rpx;width: 710rpx;padding: 20rpx">
+    <view style="color: #999;">当前选择房屋</view>
+    <view style="color: var(--brand-strong);" catchtap="record">缴费记录</view>
+    <view style="width: 100%;font-size: 30rpx;margin-top: 14rpx;">{{path_name}}</view>
+  </view>
+</view>
+
+<view wx:key="index" style="width: 670rpx;margin: 20rpx;background: #fff;padding: 20rpx;border-radius: 20rpx;">
+  <view style="display: inline-block;font-weight: 700;display: flex;justify-content: space-between;line-height: 40rpx;border-bottom: 2rpx solid #ccc;padding-bottom: 40rpx;padding-top: 20rpx;">
+    <view style="line-height: 48rpx;">租金</view>
+    <view hover-class="theme-action-hover" catchtap="advance" data-subject="1" style="font-size: 24rpx;border: 2rpx solid var(--action);border-radius: 20rpx;padding: 0 20rpx;background:var(--action-background);color:#fff;">
+      去预缴
+      <text class="icon iconfont icon-right" style="color: #fff;"></text>
+    </view>
+  </view>
+  <view style="margin-top: 20rpx;color: #999;font-size: 24rpx;">当前服务到期时间：{{last.last_rent_time}}</view>
+</view>
+<view wx:key="index" style="width: 670rpx;margin: 20rpx;background: #fff;padding: 20rpx;border-radius: 20rpx;">
+  <view style="display: inline-block;font-weight: 700;display: flex;justify-content: space-between;line-height: 40rpx;border-bottom: 2rpx solid #ccc;padding-bottom: 40rpx;padding-top: 20rpx;">
+    <view style="line-height: 48rpx;">物业费</view>
+    <view hover-class="theme-action-hover" catchtap="advance" data-subject="2" style="font-size: 24rpx;border: 2rpx solid var(--action);border-radius: 20rpx;padding: 0 20rpx;background:var(--action-background);color:#fff;">
+      去预缴
+      <text class="icon iconfont icon-right" style="color: #ccc;"></text>
+    </view>
+  </view>
+  <view style="margin-top: 20rpx;color: #999;font-size: 24rpx;">当前服务到期时间：{{last.last_fee_time}}</view>
+</view>

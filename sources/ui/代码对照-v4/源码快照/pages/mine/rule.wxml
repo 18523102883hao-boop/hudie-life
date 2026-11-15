@@ -1,0 +1,47 @@
+<view style="width: 710rpx;padding: 20rpx;line-height: 50rpx;">
+  <view style="font-size: 40rpx;font-weight: 700;text-align: center;">使用指南</view>
+  <view style="font-weight: 700;margin-top: 40rpx;">第1步 当达人，新征程</view>
+  <view style="font-weight: 700;font-size: 30rpx;">注册步骤</view>
+  <view>关注【蝴蝶优选】公众号，联系团团-申请团长-扫码添加团团-提交报名申请。</view>
+  <view style="display: flex;justify-content: space-around;">
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/1.png');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/2.jpg');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/3.png');background-size: 100% 100%;"></view>
+  </view>
+  <view style="font-weight: 700;margin-top: 40rpx;">第2步 推好品 赚收益</view>
+  <view style="font-weight: 700;font-size: 30rpx;">选择商品 分享商品</view>
+  <view>浏览商品列表→点击要分享的商品→点击【立即分享】</view>
+  <view>分享至微信朋友圈：点击【保存图片】或【转发给朋友】即可分享。</view>
+  <view>分享至好友/微信群：点击右上角三点【转发给朋友】即可；</view>
+  <view style="display: flex;justify-content: space-around;flex-wrap: wrap;">
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/4.png');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/5.png');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/6.png');background-size: 100% 100%;"></view>
+  </view>
+  <view style="font-weight: 700;margin-top: 40rpx;">第3步 邀朋友 赚更多</view>
+  <view style="font-weight: 700;font-size: 30rpx;">1、邀请好友</view>
+  <view>点击【我的】→【邀请好友】→生成邀请海报或卡片→转发至好友/微信群/朋友圈，即可完成邀请操作；</view>
+  <view style="font-weight: 700;font-size: 30rpx;">2、查看成员</view>
+  <view>点击【我的】→【我的团队】即可查看具体名单；</view>
+  <view>注：团队成员分为普通用户及下级团长，可享受普通用户的一级分佣，以及下级团长的二级分佣，其中一级分佣＞二级分佣。</view>
+  <view style="display: flex;justify-content: space-around;flex-wrap: wrap;">
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/9.png');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/13.png');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/10.png');background-size: 100% 100%;"></view>
+  </view>
+  <view style="font-weight: 700;margin-top: 40rpx;">第4步 查收益，提现金</view>
+  <view style="font-weight: 700;font-size: 30rpx;">1、查看收益、操作提现</view>
+  <view>点击【收益】→【收益明细】，可查看总收益和收益明细；</view>
+  <view>点击【收益】→【提现】，即可进行提现。</view>
+  <view style="font-weight: 700;font-size: 30rpx;">2、温馨提示</view>
+  <view>提现【个人分享收益】需完成实名认证；</view>
+  <view style="display: flex;justify-content: space-around;flex-wrap: wrap;">
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/11.png');background-size: 100% 100%;"></view>
+    <view style="width: 230rpx;height: 498.51rpx;background-image: url('{{app.domain}}static/img/rule/12.png');background-size: 100% 100%;"></view>
+  </view>
+  <view style="font-weight: 700;margin-top: 40rpx;">第5步 有问题，找客服</view>
+  <view style="font-weight: 700;font-size: 30rpx;">常见问题、联系客服</view>
+  <view>更多达人问题，请在【我的】→【其他疑问，联系客服】中进行自助/人工解决。</view>
+
+</view>
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom));"></view>

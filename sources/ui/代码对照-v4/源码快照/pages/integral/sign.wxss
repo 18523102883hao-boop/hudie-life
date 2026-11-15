@@ -1,0 +1,15 @@
+.check-in-box{width: 162.5rpx;margin-right: 20rpx;text-align: center;color: #333;}
+.check-in-box:nth-child(4n){margin-right: 0;}
+.check-in-box:nth-child(7n){margin-right: 0;}
+.check-in-box:nth-child(n+5){margin-top: 20rpx;}
+.check-in-box .check-in-day{width: 100%;height: 180rpx;background: #eaeaea;flex-wrap: wrap;justify-content: center;border-radius: 10rpx;padding-top: 10rpx;}
+.check-in-box .check-in-day .check-in-icon{width: 100rpx;height: 80rpx;margin: 20rpx 31.25rpx 10rpx;}
+.check-in-box .check-in-day .check-in-icon image{width: 70rpx;height: 70rpx;font-size: 0;}
+.check-in-box .check-in-day .check-in-img image{width: 80rpx;height: 80rpx;font-size: 0;}
+.check-in-box .check-in-day .check-in-text{font-size: 28rpx;}
+.check-in-box .check-in-txt{font-size: 24rpx;width: 100%;}
+.check-in-btn{width: 300rpx;text-align: center;background:var(--action-background);color: #fff;line-height: 60rpx;border-radius: 30rpx;margin: 60rpx auto 0;}
+.check-in-btn.on{background: #ddd;}
+.check-in-box:last-child{margin-right: 0;}
+.check-in-box.on .check-in-day{background: #26a23b;color: #fff;}
+.check-in-box.on .check-in-txt{color: #fff;}

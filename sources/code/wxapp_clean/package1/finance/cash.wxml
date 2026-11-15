@@ -1,0 +1,18 @@
+<view class="root">
+  <view class="background"></view>
+  <van-nav-bar placeholder="true" custom-class="navbar" fixed border="{{false}}" title="提现平台" left-arrow bind:click-left="onClickLeft" />
+  <view class="card mt relative">
+    <view class="c_title ml">账户余额</view>
+    <view class="price mt ml flex">{{shop.balance || 0}} <text style="font-size: 32rpx;">元</text></view>
+    <view class="list absolute flex">
+      <view bindtap="goto" data-url="/package1/finance/withdraw_list" style="margin-top:-1rpx;background:var(--action-background);color:#fff;border-radius:10rpx;" hover-class="theme-action-hover">提现记录<text class="icon iconfont icon-right"></text></view>
+    </view>
+  </view>
+  <view class="t_title">提现金额</view>
+  <view class="content flex">
+    <view>￥</view>
+    <input type="digit" model:value="{{amount}}" placeholder="请输入提现金额" placeholder-style="color: #AAAAAA;" />
+  </view>
+  <view class="submit fixed" bindtap="save" hover-class="theme-action-hover">提交</view>
+  <van-toast id="van-toast" duration="0"></van-toast>
+</view>

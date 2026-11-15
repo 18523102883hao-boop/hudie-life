@@ -1,0 +1,89 @@
+.root .van-icon-arrow-left {
+  color: var(--nav-bar-icon-color, #000) !important;
+  z-index: 10;
+}
+.root .van-nav-bar {
+  color: rgba(0, 0, 0, 1) !important;
+  background-color: #fff !important;
+}
+.summary {
+  background: #fff;
+  margin: 24rpx;
+  padding: 28rpx;
+  border-radius: 20rpx;
+}
+.summary-label {
+  color: #888;
+  font-size: 24rpx;
+}
+.summary-amount {
+  font-size: 48rpx;
+  font-weight: 600;
+  margin: 16rpx 0;
+}
+.categories {
+  display: flex;
+  border-bottom: 1rpx solid #eee;
+}
+.category {
+  width: 50%;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}
+.category.active {
+  color: var(--brand-strong);
+  border-bottom: 4rpx solid var(--brand-strong);
+}
+.category-total {
+  font-size: 26rpx;
+  margin-top: 24rpx;
+}
+.scope-note {
+  font-size: 23rpx;
+  color: #888;
+  line-height: 1.7;
+  margin-top: 16rpx;
+}
+.record {
+  margin: 20rpx 24rpx;
+  background: white;
+  border-radius: 18rpx;
+  padding: 26rpx;
+}
+.record-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+.record-no {
+  font-size: 25rpx;
+  word-break: break-all;
+  flex: 1;
+}
+.record-amount {
+  font-size: 32rpx;
+  color: #be8041;
+  flex-shrink: 0;
+}
+.record-state {
+  font-size: 24rpx;
+  color: #ba864e;
+  margin: 16rpx 0;
+}
+.record-time {
+  font-size: 22rpx;
+  color: #999;
+  line-height: 1.7;
+}
+.list-message {
+  text-align: center;
+  padding: 40rpx;
+  font-size: 25rpx;
+  color: #999;
+}
+.error {
+  color: #b76e3d;
+}

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@vant/weapp": "^1.10.14",
+    "wxmp-rsa": "^2.1.0"
+  }
+}

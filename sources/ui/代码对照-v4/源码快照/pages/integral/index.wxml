@@ -1,0 +1,17 @@
+<view style="width: 710rpx;background:#fff;padding: 0 20rpx;line-height: 60rpx;display: flex;border-top: 1rpx solid #f3f3f3;justify-content: space-between;">
+  <view>我的积分：{{userinfo.integral}}</view>
+  <view style="color: #ed2519;font-size: 24rpx;" wx:if="{{userinfo.expire_integral}}">{{userinfo.expire_integral}}积分即将过期</view>
+</view>
+<view class="box">
+  <view class="main">
+    <view class="item flex" wx:for="{{list}}" wx:key="index">
+      <view class="item_l">
+        <view class="l_t">{{item.msg}}</view>
+        <view class="l_time">{{item.add_time}}</view>
+      </view>
+      <view class="item_r" style="color:{{item.type == 1 ? '#f00' : '#26a23b'}};">{{item.type == 1 ? '+' : '-'}}{{item.integral}}</view>
+    </view>
+  </view>
+</view>
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>

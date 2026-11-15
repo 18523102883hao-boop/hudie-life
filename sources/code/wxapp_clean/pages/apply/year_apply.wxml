@@ -1,0 +1,191 @@
+<view style="width: calc(max(1600rpx, 100vw));">
+  <view style="text-align: center;font-size: 44rpx;font-weight: 700;">申请家庭基本情况</view>
+  <view style="text-align: center;border-right: 2rpx solid #ccc;border-bottom: 2rpx solid #ccc;">
+    <view style="display: flex;">
+      <view class="th" style="width: 10%;">申请人</view>
+      <view class="td" style="width: 15%;"><input type="text" value="{{data.name}}" bind:input="setValue" data-name="name"/></view>
+      <view class="th" style="width: 15%;">保障编号</view>
+      <view class="td" style="width: 15%;">NBJY-1-A-1003</view>
+      <view class="th" style="width: 15%;">身份证号码</view>
+      <view class="td" style="width: 30%;"><input type="idcard" value="{{data.id_card}}" bind:input="setValue" data-name="id_card"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 20%;">户口所在地社区</view>
+      <view class="td" style="width: 45%;"><input type="text" value="{{data.community}}" bind:input="setValue" data-name="community"/></view>
+      <view class="th" style="width: 15%;">家庭类别</view>
+      <view class="td" style="width: 20%;"><input type="text" value="{{data.home_type}}" bind:input="setValue" data-name="home_type"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 15%;">家庭现住址</view>
+      <view class="td" style="width: 50%;"><input type="text" value="{{data.residential_address}}" bind:input="setValue" data-name="residential_address"/></view>
+      <view class="th" style="width: 15%;">联系电话</view>
+      <view class="td" style="width: 20%;"><input type="number" value="{{data.mobile}}" bind:input="setValue" data-name="mobile"/></view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 3%;">基本情况</view>
+      <view style="width: 97%;display: flex;flex-wrap: wrap;">
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 10%;justify-content: flex-start;">
+            <checkbox-group bindchange="change0">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;" >
+              <checkbox color="#0879b5" value="house_status.0.is_rent.1" checked="{{data.house_status[0].is_rent == 1}}" />租住
+            </label>
+            </checkbox-group>
+          </view>
+          <view style="width: 90%;">
+            <view style="display: flex;">
+              <view class="td" style="width: 30%;">ㅤ</view>
+              <view class="td" style="width: 35%;">现住房面积</view>
+              <view class="td" style="width: 35%;">同住人口数</view>
+            </view>
+            <view style="display: flex;">
+              <view class="td" style="width: 30%;">
+                <radio-group bindchange="checkChange">
+                <label class="radio" style="width: 130rpx;display: inline-block;" >
+                  <radio color="#0879b5" value="house_status.0.type.1" checked="{{data.house_status[0].type == 1}}" />合租
+                </label>
+                <label class="radio" style="width: 130rpx;display: inline-block;" >
+                  <radio color="#0879b5" value="house_status.0.type.2" checked="{{data.house_status[0].type == 2}}" />独租
+                </label>
+                </radio-group>
+              </view>
+              <view class="td" style="width: 35%;"><input type="digit" value="{{data.house_status[0].area}}" bind:input="setValue" data-name="house_status.0.area"/></view>
+              <view class="td" style="width: 35%;"><input type="number" value="{{data.house_status[0].person_num}}" bind:input="setValue" data-name="house_status.0.person_num"/></view>
+            </view>
+          </view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 37%;justify-content: flex-start;">
+            <checkbox-group bindchange="change1">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="house_status.1.is_owner.1" checked="{{data.house_status[1].is_owner == 1}}" />自有住房
+            </label>
+            </checkbox-group>
+          </view>
+          <view class="td" style="width: 31.5%;"><input type="digit" value="{{data.house_status[1].area}}" bind:input="setValue" data-name="house_status.1.area"/></view>
+          <view class="td" style="width: 31.5%;"><input type="number" value="{{data.house_status[1].person_num}}" bind:input="setValue" data-name="house_status.1.person_num"/></view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 37%;justify-content: flex-start;">
+            <checkbox-group bindchange="change2">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="house_status.2.is_company.1" checked="{{data.house_status[2].is_company == 1}}" />租住单位公房
+            </label>
+            </checkbox-group>
+          </view>
+          <view class="td" style="width: 31.5%;"><input type="digit" value="{{data.house_status[2].area}}" bind:input="setValue" data-name="house_status.2.area"/></view>
+          <view class="td" style="width: 31.5%;"><input type="number" value="{{data.house_status[2].person_num}}" bind:input="setValue" data-name="house_status.2.person_num"/></view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 37%;justify-content: flex-start;">
+            <checkbox-group bindchange="change3">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="house_status.3.is_rental.1" checked="{{data.house_status[3].is_rental == 1}}" />租赁廉租住房
+            </label>
+            </checkbox-group>
+          </view>
+          <view class="td" style="width: 31.5%;"><input type="digit" value="{{data.house_status[3].area}}" bind:input="setValue" data-name="house_status.3.area"/></view>
+          <view class="td" style="width: 31.5%;"><input type="number" value="{{data.house_status[3].person_num}}" bind:input="setValue" data-name="house_status.3.person_num"/></view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;">
+            <checkbox-group bindchange="change4">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="is_reside.1" checked="{{data.is_reside == 1}}" />该家庭不在已配租的廉租住房内居住
+            </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;">
+            <checkbox-group bindchange="change5">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="is_change.1" checked="{{data.is_change == 1}}" />该家庭改变实物配租房源的用途
+            </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;">
+            <checkbox-group bindchange="change6">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="is_basic.1" checked="{{data.is_basic == 1}}" />该家庭停止享受低保待遇
+            </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;">
+            <checkbox-group bindchange="change7">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="is_hardship.1" checked="{{data.is_hardship == 1}}" />该家庭停止享受特困救助待遇
+            </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;padding-left: 20rpx;">
+            家庭人均收入<input type="digit" value="{{data.per_annual_income}}" bind:input="setValue" data-name="per_annual_income" style="border-bottom: 2rpx solid #ccc;display: inline-block;vertical-align: bottom;width: 200rpx;"/>元/年，
+            上年人均收入高于认定标准<input type="digit" value="{{data.prev_overtop}}" bind:input="setValue" data-name="prev_overtop" style="border-bottom: 2rpx solid #ccc;display: inline-block;vertical-align: bottom;width: 200rpx;"/>元
+          </view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;padding-left: 20rpx;">
+            来源情况：
+            <checkbox-group bindchange="change8">
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="工资" checked="{{source_of_income[0]}}" />工资
+            </label>
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="股票" checked="{{source_of_income[1]}}" />股票
+            </label>
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="经营性收入" checked="{{source_of_income[2]}}" />经营性收入
+            </label>
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <checkbox color="#0879b5" value="其他" checked="{{source_of_income[3]}}" />其他<input type="digit" value="{{data.other}}" bind:input="setValue" data-name="other" style="border-bottom: 2rpx solid #ccc;display: inline-block;vertical-align: bottom;width: 200rpx;"/>
+            </label>
+            </checkbox-group>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="display: flex;">
+      <view class="th" style="width: 3%;">家庭住房情况</view>
+      <view style="width: 97%;display: flex;flex-wrap: wrap;">
+        <view style="width: 100%;display: flex;">
+          <view class="td" style="width: 100%;justify-content: flex-start;padding-left: 20rpx;">该家庭原保障人口为：<input type="digit" value="{{data.old_person_num}}" bind:input="setValue" data-name="old_person_num" style="border-bottom: 2rpx solid #ccc;display: inline-block;vertical-align: bottom;width: 100rpx;"/>人，现人口增加（减少）<input type="digit" value="{{data.change_person_num}}" bind:input="setValue" data-name="change_person_num" style="border-bottom: 2rpx solid #ccc;display: inline-block;vertical-align: bottom;width: 100rpx;"/>人，现需保障<input type="digit" value="{{data.person_num}}" bind:input="setValue" data-name="person_num" style="border-bottom: 2rpx solid #ccc;display: inline-block;vertical-align: bottom;width: 100rpx;"/>人。</view>
+        </view>
+        <view style="width: 100%;display: flex;">
+          <view class="th" style="width: 10%;">姓名</view>
+          <view class="th" style="width: 10%;">与户主关系</view>
+          <view class="th" style="width: 8%;">姓别</view>
+          <view class="th" style="width: 28%;">身份证号</view>
+          <view class="th" style="width: 28%;">工作单位</view>
+          <view class="th" style="width: 16%;">共同居住</view>
+        </view>
+        <view style="width: 100%;display: flex;" wx:for="{{data.person}}" wx:key="index">
+          <view class="td" style="width: 10%;"><input type="text" value="{{item.name}}" bind:input="setValue" data-name="person.{{index}}.name"/></view>
+          <view class="td" style="width: 10%;"><input type="text" value="{{item.relation}}" bind:input="setValue" data-name="house.{{index}}.relation"/></view>
+          <view class="td" style="width: 8%;"><input type="text" value="{{item.sex}}" bind:input="setValue" data-name="house.{{index}}.sex"/></view>
+          <view class="td" style="width: 28%;"><input type="text" value="{{item.id_card}}" bind:input="setValue" data-name="house.{{index}}.id_card"/></view>
+          <view class="td" style="width: 28%;"><input type="digit" value="{{item.company}}" bind:input="setValue" data-name="house.{{index}}.company"/></view>
+          <view class="td" style="width: 16%;">
+            <radio-group bindchange="checkChange">
+            <label class="radio" style="display: inline-block;">
+              <radio color="#0879b5" value="person.{{index}}.is_reside.1" checked="{{item.is_reside == 1}}" />是
+            </label>
+            <label class="radio" style="display: inline-block;margin-left: 20rpx;">
+              <radio color="#0879b5" value="person.{{index}}.is_reside.2" checked="{{item.is_reside == 2}}" />否
+            </label>
+            </radio-group>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view hover-class="theme-action-hover" catchtap="submit" style="background:var(--action-background);color: #fff;width: 400rpx;line-height: 80rpx;margin: 40rpx auto 0;text-align: center;border-radius: 20rpx;">提交年审</view>
+</view>
+
+<view style="width: 1rpx;height: max(calc(env(safe-area-inset-bottom)), 40rpx);"></view>

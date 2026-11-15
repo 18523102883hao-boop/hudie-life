@@ -1,0 +1,149 @@
+<view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;background-color: #fff;">
+  <!-- 胶囊区域 -->
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <!-- 导航内容区域 -->
+    <view class="view flex" catchtap="back">
+      <view class="view2 flex">
+        <view class="view4" style="font-size: 34rpx;">
+          <text class="icon iconfont icon-left" style="color: #000;font-weight: 100;"></text>
+          <text style="color: #000;padding-left: 10rpx;">幸运抽奖</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--抽奖-->
+<view>
+  <view style="background: var(--brand-soft);" wx:if="{{reward_list.length>0}}">
+    <view style="width: 710rpx;padding: 20rpx;height: 60rpx;line-height: 60rpx;">
+      <view style="width: 670rpx;height: 100%;padding: 0 20rpx;background: #fff;border-radius: 10rpx;">
+        <view class="scroll-container">
+          <view class="scroll-icon">
+            <view style="background: var(--brand-strong);color: #fff;display: inline-block;line-height: 40rpx;font-size: 24rpx;width: 120rpx;text-align: center;border-radius: 10rpx;">中奖信息</view>
+          </view>
+          <view class="scroll-content relative">
+            <view class="scroll-item absolute">
+              <swiper autoplay="{{true}}" vertical="{{true}}" style="height: 60rpx;">
+                <swiper-item wx:for="{{reward_list}}" wx:key="index"><view>用户{{item.mobile}}抽中{{item.msg}}</view></swiper-item>
+              </swiper>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="width: 710rpx;margin: 20rpx;height: 887.5rpx;background-image: url('{{app.domain}}static/img/nine_bg.png?t=1');background-size: 100% 100%;position: relative;">
+    <view style="width: 528rpx;height: 348rpx;position: absolute;top: 230rpx;left: 96rpx;display: flex;justify-content: space-between;flex-wrap: wrap;">
+      <view class="nine-one {{item.isSelected?'selected':''}}" wx:for="{{tableList}}" wx:key="index">
+        <image src="{{app.domain}}static/img/nine_bag.png" style="width: 100%;height: 100%;"></image>
+      </view>
+    </view>
+    <view style="width: 710rpx;position: absolute;color: #fff;bottom: 182rpx;text-align: center;font-size: 24rpx;">剩余抽奖次数：{{userinfo.reward_num}}</view>
+    <view hover-class="theme-action-hover" style="width: 290rpx;height: 100rpx;position: absolute;bottom: 80rpx;left: 215rpx;background:var(--action-background);color: #fff;text-align: center;line-height: 100rpx;border-radius: 50rpx;font-size: 40rpx;font-weight: 700;" bind:tap="onPrizeClick">试试手气</view>
+  </view>
+
+  <view wx:if="{{0}}" class="table-list" style="background: url({{app.domain}}static/img/lottery/lottery_bg.png);background-size: 100% 100%;background-repeat: no-repeat;">
+    <view class="flex flexw" style="width: 610rpx;margin: 37rpx 35rpx 35rpx;justify-content: space-between;">
+      <block wx:for="{{tableList}}" wx:key="id">
+        <view class="table-item btn fcc {{isTurnOver?'':'grayscale'}}" style="background: url({{app.domain}}static/img/lottery/lottery_center.png);background-size: 100% 100%;background-repeat: no-repeat;" wx:if="{{item.type=='btn'}}" bind:tap="onPrizeClick">
+          <view style="width: 190rpx;height: 100rpx;margin-top: 50rpx;">
+            <view style="font-size: 24rpx;line-height: 40rpx;color: #000;font-weight: 700;">剩余抽奖次数</view>
+            <view style="font-size: 60rpx;line-height: 60rpx;color: #ff2f0e;">{{userinfo.reward_num}}</view>
+          </view>
+        </view>
+        <view class="table-item fcc {{item.isSelected?'selected':''}}" style="box-shadow:0 4rpx 4rpx 4rpx #d5354d;" wx:else>
+          <image src="{{app.domain}}static/img/lottery/lottery_fd.png" style="width: 110rpx;height: 110rpx;margin: 40rpx auto;"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view wx:if="{{0}}" style="display: flex;">
+    <button style="width: 250rpx;line-height: 70rpx;height: 70rpx;background:var(--action-background);color: #fff;text-align: center;margin: 0 83rpx 0 84rpx;font-size: 26rpx;border-radius: 35rpx;padding: 0;border: 0;" plain="true" open-type="share" hover-class="theme-action-hover">邀请好友</button>
+    <view hover-class="theme-action-hover" style="width: 250rpx;line-height: 70rpx;background:var(--action-background);color: #fff;text-align: center;margin: 0 83rpx 0 0;font-size: 26rpx;border-radius: 35rpx;" wx:if="{{userinfo.reward_num>0}}" bind:tap="onPrizeClick">抽奖</view>
+  </view>
+
+  <view style="width: 670rpx;background: #fff;border-radius: 20rpx;margin: 0 auto;padding: 0 20rpx 20rpx;text-align: center;">
+    <view style="font-weight: 700;background: var(--brand-soft);width: 420rpx;height: 76rpx;line-height: 76rpx;margin-left: 125rpx;border-radius: 0 0 20rpx 20rpx;color: var(--brand-strong);margin-bottom: 20rpx;">做任务得抽奖次数</view>
+    <view style="display: flex;margin-bottom: 20rpx;margin-top: 20rpx;">
+      <view style="width: 72rpx;height: 72rpx;line-height: 30rpx;background: #fdf07e;border-radius: 10rpx;">
+        <view style="font-size: 24rpx;font-weight: 700;margin-top: 6rpx;">+2</view>
+        <view style="font-size: 14rpx;">抽奖次数</view>
+      </view>
+      <view style="line-height: 72rpx;width: 580rpx;margin-left: 18rpx;text-align: left;font-size: 28rpx;display: flex;padding-bottom: 20rpx;border-bottom: 2rpx solid var(--brand-border);">
+        <view style="width: 460rpx;display: flex;">
+          <view>邀请好友参与抽奖活动（{{userinfo.invite_num}}/2）</view>
+          <view hover-class="theme-action-hover" style="color:#fff;background:var(--action-background);width: 60rpx;height: 72rpx;line-height: 72rpx;text-align: center;font-size: 34rpx;" catchtap="showRule" data-type="1" class="icon iconfont icon-info"></view>
+        </view>
+        <button wx:if="{{userinfo.invite_num<2}}" style="width: 120rpx;text-align: center;background:var(--action-background);color: #fff;line-height: 54rpx;height: 54rpx;border-radius: 27rpx;margin-top: 10rpx;padding: 0;border: 0;font-size: 26rpx;font-weight: 700;" plain="true" open-type="share" hover-class="theme-action-hover">去完成</button>
+        <view wx:else style="width: 116rpx;text-align: center;background: #fff;color: #fa4347;line-height: 50rpx;height: 50rpx;border-radius: 25rpx;margin-top: 16rpx;border: 2rpx solid #fa4347;">已完成</view>
+      </view>
+    </view>
+    <view style="display: flex;">
+      <view style="width: 72rpx;height: 72rpx;line-height: 30rpx;background: #fdf07e;border-radius: 10rpx;">
+        <view style="font-size: 24rpx;font-weight: 700;margin-top: 6rpx;">+1</view>
+        <view style="font-size: 14rpx;">抽奖次数</view>
+      </view>
+      <view style="line-height: 72rpx;width: 580rpx;margin-left: 18rpx;text-align: left;font-size: 28rpx;display: flex;">
+        <view style="width: 460rpx;display: flex;">
+          <view>购买1单砍价产品（{{userinfo.order_num}}/1）</view>
+          <view hover-class="theme-action-hover" style="color:#fff;background:var(--action-background);width: 60rpx;height: 72rpx;line-height: 72rpx;text-align: center;font-size: 34rpx;" catchtap="showRule" data-type="1" class="icon iconfont icon-info"></view>
+        </view>
+        <button wx:if="{{userinfo.order_num<1}}" style="width: 120rpx;text-align: center;background:var(--action-background);color: #fff;line-height: 54rpx;height: 54rpx;border-radius: 27rpx;margin-top: 10rpx;padding: 0;border: 0;font-size: 26rpx;font-weight: 700;" plain="true" open-type="share" hover-class="theme-action-hover">去完成</button>
+        <view wx:else style="width: 116rpx;text-align: center;background: #fff;color: #fa4347;line-height: 50rpx;height: 50rpx;border-radius: 25rpx;margin-top: 16rpx;border: 2rpx solid #fa4347;">已完成</view>
+      </view>
+    </view>
+  </view>
+
+  <view style="width: 670rpx;margin: 20rpx auto;background: #fff;padding: 20rpx;border-radius: 20rpx;" wx:if="{{my_reward_list.length>0}}">
+    <view style="font-weight: 700;letter-spacing: 2rpx;text-align: center;">奖励明细</view>
+    <view style="text-align: center;line-height: 50rpx;margin-top: 10rpx;font-size: 24rpx;">
+      <view style="display: flex;border-bottom: 2rpx solid #dadada;padding: 10rpx 0;">
+        <view style="width: 50%;">时间</view>
+        <view style="width: 50%;">获奖</view>
+      </view>
+      <view style="display: flex;border-bottom: {{my_reward_list.length == index+1 ? '0' : '2rpx'}} solid #dadada;font-weight: 700;padding: 10rpx 0;line-height: 28rpx;justify-content: center;align-items: center;" wx:for="{{my_reward_list}}" wx:key="index">
+        <view style="width: 50%;color: #333;">{{item.add_time}}</view>
+        <view style="width: 50%;color: var(--brand-strong);">{{item.msg}}
+          <view hover-class="theme-action-hover" style="font-size: 20rpx;display: inline-block;padding: 2rpx 8rpx;background:var(--action-background);color: #fff;line-height: 24rpx;border-radius: 6rpx;" wx:if="{{item.auto_send==0 && item.is_get==0}}" catchtap="toGet" data-item="{{item}}">领取</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{showAlert}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000080;">
+  <view style="position: absolute;width: 690rpx;height: 600rpx;left: 30rpx;background-image: url('{{app.domain}}static/img/lottery/reward9.png');background-size: 100%;top: calc(({{app.globalData.windowHeight}}px - env(safe-area-inset-bottom) - 708rpx) / 2);">
+    <view style="color: #a96f41;font-size: 30rpx;text-align: center;margin-top: 120rpx;font-weight: 700;">恭喜您，中奖了</view>
+    <view style="color: #f73c37;font-size: 40rpx;text-align: center;margin-top: 44rpx;font-weight: 700;width: 490rpx;margin-left: 100rpx;">{{reward_info.msg}}</view>
+    <view style="color: #ffd899;font-size: 24rpx;width: 490rpx;margin-left: 100rpx;position: absolute;bottom: 100rpx;text-align: center;" wx:if="{{is_integral}}">积分奖励已发放至您的账户，请尽快使用！</view>
+    <view hover-class="theme-action-hover" catchtap="toGet" data-item="{{reward_info}}" style="color: #fff;font-size: 24rpx;width: 210rpx;margin-left: 240rpx;position: absolute;bottom: 86rpx;text-align: center;line-height: 60rpx;background:var(--action-background);border-radius: 10rpx;letter-spacing: 4rpx;" wx:else>立即领取</view>
+  </view>
+  <view hover-class="theme-action-hover" catchtap="closeAlert" style="color:#fff;background:var(--action-background);width: 60rpx;height: 60rpx;border: 4rpx solid #fff;position: absolute;top: calc(({{app.globalData.windowHeight}}px - env(safe-area-inset-bottom) - 708rpx) / 2 + 600rpx + 40rpx);left: 345rpx;text-align: center;line-height: 60rpx;border-radius: 50%;font-weight: 700;"><text class="icon iconfont icon-close"></text></view>
+</view>
+
+<view class="mengban fixed" wx:if="{{isCharter}}" catchtouchmove="true"></view>
+<view class="tips12 fixed" catchtouchmove="true" wx:if="{{isCharter}}">
+  <view class="tips123 mt">{{tip_name}}</view>
+  <view class="tips2 mta">
+    <scroll-view scroll-y="{{true}}" style="max-height: calc(60vh);">
+      <rich-text nodes="{{tip_content}}" />
+    </scroll-view>
+  </view>
+  <view hover-class="theme-action-hover" class="tips3" catchtap="tips3IsTip">我知道了</view>
+</view>
+
+<view hover-class="activity-rule-hover" style="position: fixed;right: 20rpx;top: 300rpx;width: 97rpx;height: 113rpx;" catchtap="showRule" data-type="3">
+  <view style="width:100%;height:100%;background:var(--action-background);color:#fff;text-align:center;line-height:113rpx;border-radius:20rpx;font-size:30rpx;">规则</view>
+</view>
+<view catchtap="hideRule" wx:if="{{show_rule}}" style="position: fixed;width: 100%;height: 100%;background: #00000080;top: 0;left: 0;">
+  <view style="position: absolute;width: 670rpx;padding: 20rpx;height: calc({{app.globalData.windowHeight}}px - {{app.globalData.navBarHeight}}px * 2 - 80rpx);background: #fff;top: calc({{app.globalData.navBarHeight}}px + 20rpx);left: 20rpx;border-radius: 20rpx;">
+    <view style="font-weight: 700;text-align: center;margin-bottom: 20rpx;font-size: 40rpx;">活动规则</view>
+    <view>活动时间：即日起-2025年3月31日</view>
+    <view>1、每日可邀请2位好友，可获得2次抽奖机会</view>
+    <view>2、每日自购首单砍价产品，可获得1次抽奖机会</view>
+  </view>
+</view>
+
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom));"></view>

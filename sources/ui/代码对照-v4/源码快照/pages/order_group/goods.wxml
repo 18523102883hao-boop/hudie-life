@@ -1,0 +1,29 @@
+<view style="width: 710rpx;margin: 20rpx;">
+  <view class="lun" wx:if="{{goods && goods.imgs.length>0}}">
+    <swiper class="luns" autoplay="play" circular interval="3000">
+      <swiper-item wx:for="{{goods.imgs}}" wx:key="index" class="luns" data-item="{{item}}">
+        <image mode="widthFix" src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view style="width: 670rpx;background: #fff;margin-top: -20rpx;padding: 40rpx 20rpx 20rpx;border-radius: 0 0 20rpx 20rpx;">
+    <view style="font-size: 36rpx;font-weight: 700;margin-bottom: 10rpx;">{{goods.title}}</view>
+    <view style="margin-top: 20rpx;display: flex;justify-content: space-between;">
+      <view style="color: #fe0a0a;">
+        <text>￥</text><text style="font-weight: 700;font-size: 50rpx;">{{goods.price}}</text>
+        <text style="text-decoration: line-through;font-size: 28rpx;margin-left: 20rpx;color: #ccc;">门市价￥{{goods.market_price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="width: 670rpx;border-radius: 20rpx;padding: 20rpx;margin-top: 20rpx;background: #fff;">
+    <view style="background-image: url('{{app.domain}}static/img/content-head.png?t=1');background-size: 100%;height: 279rpx;"></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-body.png');background-size: 100%;padding: 0 8.763%;padding-bottom: 20rpx;"><rich-text nodes="{{goods.content}}"></rich-text></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-bottom.png');background-size: 100%;height: 58.52rpx;"></view>
+
+    <view style="background-image: url('{{app.domain}}static/img/rule-head.png?t=2');background-size: 100%;height: 279rpx;margin-top: 20rpx;"></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-body.png');background-size: 100%;padding: 0 8.763%;padding-bottom: 20rpx;"><rich-text nodes="{{goods.rule}}"></rich-text></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-bottom.png');background-size: 100%;height: 58.52rpx;"></view>
+  </view>
+</view>
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom) + 20rpx + 100rpx);"></view>

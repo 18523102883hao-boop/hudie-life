@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "应缴账单",
+  "usingComponents": {},
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f3f3f3",
+  "backgroundTextStyle": "dark"
+}

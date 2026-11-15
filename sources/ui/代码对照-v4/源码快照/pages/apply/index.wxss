@@ -1,0 +1,3 @@
+.nav{width: 750rpx;display: flex;text-align: center;line-height: 80rpx;background: #fff;justify-content: space-around;}
+.nav-one{width: 50%;}
+.nav-one.on{background: var(--brand-strong);color: #fff;}

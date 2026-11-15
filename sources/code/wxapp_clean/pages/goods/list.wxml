@@ -1,0 +1,313 @@
+<view class="nav-main relative" style="height:calc({{app.globalData.navBarHeight}}px);background: #f3f3f3;">
+  <!-- <image src="{{swiperList[0].img}}" style="position: absolute;left: 0;top: 0;width: 100%;height: 90%;filter: blur(5rpx);"></image> -->
+  <view style="width: 750rpx;height:{{app.globalData.navBarHeight}}px;background: var(--brand-soft);position: fixed;z-index: 2;top: 0">
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px; min-height:{{app.globalData.menuHeight}}px; line-height:{{app.globalData.menuHeight}}px;bottom: 4px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <view class="view flex">
+        <view class="views" catchtap="searchAddress">
+          <view class="flex" style="width: {{area_width}}rpx;font-size: 30rpx;font-weight: 700;">
+            <view style="line-height: 60rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;text-overflow: ellipsis;"><text class="icon iconfont ">{{county?county:(city?city:province)}}</text></view>
+            <text class="icon iconfont icon-sanjiaoxing" style="transform: rotate(180deg);font-size: 16rpx;margin-left: 10rpx;"></text>
+          </view>
+        </view>
+        <view class="title" style="color: #333;font-weight: 700;letter-spacing: 4rpx;width: {{150-area_width+360}}rpx;text-align: center;">
+          <view style="width: 100%;background: #ffffff88;border-radius: 40rpx;display: flex;border:  {{scroll_top>0?'1rpx solid #f1f1f1;':'none'}}">
+            <input type="text" style="width: {{150-area_width+360-60-80}}rpx;margin-left: 60rpx;font-size: 24rpx;font-weight: 100;line-height:{{app.globalData.menuHeight}}px;height:{{app.globalData.menuHeight}}px;" placeholder="搜索" bindinput="setKeywords" bindconfirm="search"/>
+            <text class="icon iconfont icon-search" style="width: 80rpx;" catchtap="search"></text>
+          </view>
+        </view>
+        <!-- <view catchtap="showCustomer" style="width: 64rpx;height: 64rpx;text-align: center;background: #ffffff88;border-radius: 50%;font-size: 40rpx;">
+          <text class="icon iconfont icon-customer-service-fill"></text>
+        </view> -->
+        <view class="title" style="opacity: 0;width: 180rpx;margin-top: 0;">
+          <view class="flex">
+            <text class="icon iconfont icon-dingwei">重庆站</text>
+            <text class="icon iconfont icon-down"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 轮播图 -->
+<view class="lun" wx:if="{{swiperList && swiperList.length>0}}">
+  <swiper class="luns" autoplay="play" circular interval="3000" bindchange="swiperchange">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index" class="luns" bindtap="toPage" data-item="{{item}}">
+      <image mode="widthFix" src="{{item.img}}"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图标签 -->
+  <view class="labels absolute flex">
+    <view class="label" wx:if="{{index <= 6}}" wx:for="{{labelAll}}" wx:key="index">{{item}}</view>
+  </view>
+  <!-- 轮播图下点 -->
+  <view class="points pointss flex" wx:if="{{swiperList.length > 1}}" style="left: -20rpx;">
+    <view class="{{swiperIndex == index ?'pointe':'point'}}" wx:for="{{swiperList.length}}" wx:key="index">
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{show_follow}}" style="width: 710rpx;margin: 20rpx;background: #666;color: #fff;line-height: 60rpx;border-radius: 20rpx;position: relative;">
+  <view style="display: flex;padding: 0 20rpx;font-size: 24rpx;">
+    <view style="width: 520rpx;">关注蝴蝶优选公众号，每周四最新活动一手掌握</view>
+    <view style="width: 145rpx;">
+      <view hover-class="theme-action-hover" catchtap="showQrcode" style="text-align: center;background:var(--action-background);line-height: 40rpx;margin-top: 10rpx;border-radius: 10rpx;">立即关注</view>
+    </view>
+    <view style="width: 45rpx;text-align: right;font-size: 30rpx;">
+      <view catchtap="hideFollow"><text class="icon iconfont icon-close"></text></view>
+    </view>
+  </view>
+  <official-account style="position: absolute;left: 68rpx;top: -76rpx;opacity: 0;"></official-account>
+</view>
+<view wx:if="{{hide_qrcode}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000066;z-index: 99;">
+  <image src="{{app.domain}}static/img/wx_qrcode.png" style="width: 550rpx;height: 550rpx;position: absolute;left: 100rpx;top: calc(50vh - 275rpx - env(safe-area-inset-bottom) - 100rpx);border-radius: 20rpx 20rpx 0 0;" show-menu-by-longpress></image>
+  <viwe style="position: absolute;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 120rpx);left: 100rpx;width: 550rpx;text-align: center;color: #333;font-size: 28rpx;background: #fff;padding-bottom: 20rpx;border-radius: 0 0 20rpx 20rpx;">长按识别上方二维码，关注公众号~！</viwe>
+  <view catchtap="hide_qrcode" style="position: absolute;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 40rpx;border-radius: 50%;border: 2rpx solid #fff;color: #fff;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 100rpx + 80rpx);left: 345rpx;"><text class="icon iconfont icon-x"></text></view>
+</view>
+
+<view wx:if="{{show_cate}}" style="width: 750rpx;height: {{nav_index==0?'172rpx':'314rpx'}};margin-top: 20rpx;position: relative;z-index: 1;">
+  <!-- <view style="width: 750rpx;height: {{nav_index==0?'192rpx':'334rpx'}};position: absolute;background-image: linear-gradient(to top, #fbfbfb 70%, #ffffff00);top: -30rpx"></view> -->
+  <swiper style="width: 690rpx;height: {{nav_index==0?'172rpx':'314rpx'}};margin-left: 30rpx;border-radius: 20rpx;overflow: hidden;" bindchange="swiperchange1">
+    <swiper-item>
+      <view class="flex flexw" style="text-align: center;justify-content: space-around;font-size: 24rpx;background: #fff;padding: 20rpx 0;">
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="餐饮美食" src="/img/cyms-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '餐饮美食' ? 'var(--brand-strong)' : '#000'}};">餐饮美食</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="娱乐休闲" src="/img/xxyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '娱乐休闲' ? 'var(--brand-strong)' : '#000'}};">娱乐休闲</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="酒店住宿" src="/img/jdzs-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '酒店住宿' ? 'var(--brand-strong)' : '#000'}};">酒店住宿</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="景区娱乐" src="/img/jqyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '景区娱乐' ? 'var(--brand-strong)' : '#000'}};">景区娱乐</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="toPage" data-path="/pages/preferred/index" data-name="优选好物" src="/img/dshw-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '优选好物' ? 'var(--brand-strong)' : '#000'}};">优选好物</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="flex flexw" style="text-align: center;justify-content: space-around;font-size: 24rpx;background: #fff;padding: 20rpx 0;">
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="餐饮美食" src="/img/cyms-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '餐饮美食' ? 'var(--brand-strong)' : '#000'}};">餐饮美食</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="娱乐休闲" src="/img/xxyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '娱乐休闲' ? 'var(--brand-strong)' : '#000'}};">娱乐休闲</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="酒店住宿" src="/img/jdzs-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '酒店住宿' ? 'var(--brand-strong)' : '#000'}};">酒店住宿</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="searchCate" data-name="景区娱乐" src="/img/jqyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '景区娱乐' ? 'var(--brand-strong)' : '#000'}};">景区娱乐</view>
+        </view>
+        <view style="width: 20%;text-align: center;">
+          <image catchtap="toPage" data-path="/pages/preferred/index" data-name="优选好物" src="/img/dshw-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '优选好物' ? 'var(--brand-strong)' : '#000'}};">优选好物</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="天天特惠" src="/img/ttth-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '天天特惠' ? 'var(--brand-strong)' : '#000'}};">天天特惠</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="充值专区" src="/img/czzq-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '充值专区' ? 'var(--brand-strong)' : '#000'}};">充值专区</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="电影专区" src="/img/dyzq-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '电影专区' ? 'var(--brand-strong)' : '#000'}};">电影专区</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="加油专区" src="/img/jyzq-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '加油专区' ? 'var(--brand-strong)' : '#000'}};">加油专区</view>
+        </view>
+        <view style="width: 20%;text-align: center;margin-top: 10rpx;">
+          <image catchtap="searchCate" data-name="全部" src="/img/more-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+          <view style="color: {{cate == '全部' ? 'var(--brand-strong)' : '#000'}};">全部</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class="points flex" style="position: absolute;bottom: 5rpx;width: 690rpx;left: 30rpx">
+    <view class="{{nav_index == index ?'pointe':'point'}}" wx:for="{{2}}" wx:key="index">
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{new_list.length > 0}}" style="width: 710rpx;display: flex;margin: 20rpx;justify-content: space-between;color: #fff7ea;">
+  <view style="width: 305rpx;background: var(--brand-strong);padding: 10rpx 20rpx;border-radius: 20rpx;line-height: 36rpx;">
+    <view style="display: flex;justify-content: space-between;line-height: 36rpx;">
+      <view style="font-weight: 700;font-size: 24rpx;line-height: 30rpx;letter-spacing: 2rpx;">
+        <image src="{{app.domain}}static/img/hg.png" mode="aspectFit" style="width: 27rpx;height: 30rpx;vertical-align: middle;margin-right: 6rpx;"></image>
+        砍价排行榜
+      </view>
+      <view hover-class="theme-action-hover" data-path="/pages/goods/top?get_cut_goods=1" bindtap="switchTab" style="font-size: 24rpx;line-height: 30rpx;padding: 0 15rpx;border-radius: 20rpx;background:var(--action-background);color:#fff;">more</view>
+    </view>
+    <view style="width: 100%;overflow-x: scroll;overflow-y: hidden;">
+      <view style="margin-top: 10rpx;width: calc(166rpx * {{top_goods.length}} - 10rpx);">
+        <view style="width: 156rpx;height: 156rpx;display: inline-block;margin-right: {{top_goods.length == index+1 ? '0' : '10rpx'}};" wx:for="{{top_goods}}" wx:key="index" data-path="/pages/goods/top?get_cut_goods=1" bindtap="switchTab" data-type="1" data-id="{{item.id}}">
+          <view style="width: 156rpx;height: 156rpx;position: relative;">
+            <!-- <view style="width: 136rpx;height: 136rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);margin: 10rpx;"></view> -->
+            <image src="{{item.img}}" style="width: 156rpx;height: 156rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 10rpx;"></image>
+            <view style="font-size: 20rpx;padding: 0 10rpx;text-align: center;font-weight: 700;background: var(--brand-strong);color: #fff;position: absolute;top: 0;left: 0;border-radius: 10rpx 0 10rpx 0;z-index: 1;line-height: 28rpx;">TOP {{index+1}}</view>
+          </view>
+          <!-- <image src="{{item.img}}" style="width: 200rpx;height: {{200/item.img_size.width*item.img_size.height}}rpx;border-radius: 20rpx;"></image> -->
+          <!-- <view style="font-size: 24rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;text-overflow: ellipsis;">{{item.title}}</view> -->
+          <!-- <view style="font-size: 24rpx;color: #fe0a0a;font-weight: 700;">￥{{item.price}}</view> -->
+        </view>
+      </view>
+      <swiper wx:if="{{0}}" style="width: 310rpx;height: 156rpx;overflow: hidden;" autoplay="play" circular interval="3000">
+        <swiper-item wx:for="{{top_goods}}" wx:key="index">
+          <view style="width: 310rpx;height: 156rpx;position: relative;left: 10rpx;" catchtap="viewGoods" data-type="1" data-id="{{item.id}}">
+            <view style="width: 290rpx;height: 136rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);position: absolute;left: 10rpx;top: 10rpx;"></view>
+            <image src="{{item.img}}" mode="aspectFit" style="width: 310rpx;height: 156rpx;position: absolute;z-index: 1;top: 0;left: 0;"></image>
+            <!-- <view style="font-size: 20rpx;line-height: 32rpx;width: 340rpx;position: absolute;bottom: 0;left: 0;background: #ffffffaa;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;text-overflow: ellipsis;">{{item.title}}</view> -->
+            <view style="font-size: 20rpx;width: 80rpx;text-align: center;font-weight: 700;background: var(--brand-strong);color: #fff;position: absolute;top: 0;left: 10rpx;border-radius: 0 0 10rpx 10rpx;z-index: 1;">TOP {{index+1}}</view>
+          </view>
+          <!-- <image src="{{item.img}}" style="width: 305rpx;height: {{305/top_goods.img_size.width*top_goods.img_size.height}}rpx;border-radius: 20rpx;margin-top: 15rpx;"></image> -->
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view style="width: 305rpx;background: var(--brand-strong);padding: 10rpx 20rpx;border-radius: 20rpx;position: relative;">
+    <view style="width: 58rpx;height: 57rpx;position: absolute;left: -2rpx;top: -2rpx;z-index: 1;background: var(--brand-strong);color: #fff;font-size: 18rpx;line-height: 57rpx;text-align: center;border-radius: 10rpx 0 16rpx 0;">NEW</view>
+    <view style="display: flex;justify-content: space-between;line-height: 36rpx;">
+      <view style="font-weight: 700;font-size: 24rpx;line-height: 30rpx;text-indent: 30rpx;letter-spacing: 2rpx;">
+        <!-- <view style="background: #fff;display: inline-block;background:var(--action-background);color: #fff;font-size: 24rpx;padding: 0 8rpx;border-radius: 10rpx;">{{date}}</view> -->
+        今日上新
+      </view>
+      <view hover-class="theme-action-hover" data-path="/pages/goods/new?get_cut_goods=1" bindtap="switchTab" style="font-size: 24rpx;line-height: 30rpx;padding: 0 15rpx;border-radius: 20rpx;background:var(--action-background);color:#fff;">more</view>
+    </view>
+    <view style="width: 100%;overflow-x: scroll;overflow-y: hidden;">
+      <view style="margin-top: 10rpx;width: calc(166rpx * {{new_list.length}} - 10rpx);">
+        <view style="width: 156rpx;display: inline-block;margin-right: {{new_list.length == index+1 ? '0' : '10rpx'}};" wx:for="{{new_list}}" wx:key="index" data-path="/pages/goods/new?get_cut_goods=1" bindtap="switchTab" data-type="{{item.type}}" data-id="{{item.id}}">
+          <view style="width: 156rpx;height: 156rpx;position: relative;">
+            <!-- <view style="width: 136rpx;height: 136rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);margin: 10rpx;"></view> -->
+            <image src="{{item.img}}" style="width: 156rpx;height: 156rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 10rpx;"></image>
+            <view style="font-size: 20rpx;padding: 0 10rpx;text-align: center;font-weight: 700;background: #ed2514;color: #fff;position: absolute;bottom: 0;left: 0;border-radius: 0 10rpx 0 10rpx;z-index: 1;">￥{{item.subsidy_price}}</view>
+          </view>
+          <!-- <image src="{{item.img}}" style="width: 200rpx;height: {{200/item.img_size.width*item.img_size.height}}rpx;border-radius: 20rpx;"></image> -->
+          <!-- <view style="font-size: 24rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;text-overflow: ellipsis;">{{item.title}}</view> -->
+          <!-- <view style="font-size: 24rpx;color: #fe0a0a;font-weight: 700;">￥{{item.price}}</view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style="width: 670rpx;padding: 20rpx;margin: 20rpx 20rpx 0;background: #fff;border-radius: 20rpx;display: flex;justify-content: space-between;" wx:for="{{list}}" wx:key="index" catchtap="viewGoods" data-id="{{item.id}}" data-type="{{item.type}}">
+  <view style="width: 200rpx;height: 200rpx;position: relative;overflow: hidden;border-radius: 20rpx;">
+    <view style="width: 180rpx;height: 180rpx;background-image: url({{item.img}});background-size: 100% 100%;filter: blur(5px);margin: 10rpx"></view>
+    <image src="{{item.img}}" style="width: 200rpx;height: 200rpx;position: absolute;z-index: 1;top: 0;left: 0;border-radius: 20rpx;"></image>
+    <view wx:if="{{item.need_book == 0}}" style="position:absolute;left:0;top:0;z-index:2;background:#00bd52;color:#fff;font-size:24rpx;font-weight:700;line-height:36rpx;padding:0 10rpx;border-radius:20rpx 0 12rpx 0;">免预约</view>
+  </view>
+  <view style="width: 450rpx;min-height: 250rpx;position: relative;">
+    <view style="width: 450rpx;display: flex;">
+      <view wx:if="{{item.type == 1}}" style="background: #fb143d;color: #fff;font-weight: 700;padding: 0 10rpx;text-align: center;font-size: 24rpx;border-radius: 10rpx;line-height: 36rpx;margin-right: 10rpx;">蝴蝶优选补贴</view>
+      <view wx:if="{{item.type == 1}}" style="background: #fd596a;color: #fff;font-weight: 700;padding: 0 10rpx;text-align: center;font-size: 24rpx;border-radius: 10rpx;line-height: 36rpx;margin-right: 10rpx;">最高补贴{{item.max_bt}}元</view>
+
+    </view>
+    <view style="width: 450rpx;height: 124rpx;display: flex;align-items: center;flex-wrap: wrap;">
+      <view style="width: 450rpx;font-size: 28rpx;font-weight: 600;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;text-overflow: ellipsis;line-height: 42rpx;height: 84rpx;">
+        <block>
+        <text style="color: var(--brand-strong);font-size:34rpx;font-weight:800;">{{item.shop_name}}</text><text style="color: #9f9f9f;font-weight: 100;">丨</text>
+        </block>
+        {{item.title}}
+      </view>
+      <view style="width: 450rpx;display: flex;line-height: 30rpx;justify-content: space-between;color: #666;">
+        <view style="font-size: 26rpx;width: 300rpx;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;opacity: 0;">{{item.shop_name}}</view>
+        <view wx:if="{{item.distant}}" style="font-size: 24rpx;width: 150rpx;text-align: right;">
+          <text class="icon iconfont icon-location"></text>{{item.distant}}
+        </view>
+      </view>
+    </view>
+    <view style="width: 450rpx;height: 90rpx;display: flex;justify-content: space-between;font-size: 24rpx;color: #999;line-height: 44rpx;flex-wrap: wrap;height: 90rpx;border-radius: 38rpx;">
+      <view style="width: 230rpx;">
+        <view style="font-weight: 700;color: #ff3d24;width: 336rpx;margin-top: 4rpx;">
+          ￥<text style="font-size: 38rpx;">{{item.subsidy_price}} </text>
+          <text style="color: #777;text-decoration: line-through;font-weight: 100;">￥{{item.market_price}}</text>
+        </view>
+        <view style="width: 336rpx;line-height: 20rpx;font-size: 20rpx;display: flex;flex-wrap: wrap;">
+          <view style="color: #ff0a0a;border-radius: 10rpx;margin-right: 6rpx;margin-top: 6rpx;font-weight: 700;font-size: 22rpx;background-image: url({{app.domain}}static/img/icon-commission.png);background-size: 20rpx 20rpx;background-repeat: no-repeat;padding-left: 26rpx;" wx:if="{{item.max_commission}}">自购省 {{item.max_commission}} | 分享赚 {{item.max_commission}}</view>
+        </view>
+      </view>
+      <view style="width: 220rpx;height: 90rpx;display: flex;align-items: flex-end;justify-content: flex-end;">
+        <view wx:if="{{item.status!=1}}" style="width: 180rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;justify-content: center;background-image: linear-gradient(to right, #f1f1f1, #d1d1d1);background-size: 100% 100%;line-height: 56rpx;text-align: center;border-radius: 28rpx;text-align: center;color: #333">
+          {{item.start_time <= now_time ? '已下架' : '未上架'}}
+        </view>
+        <view wx:elif="{{item.end_time<now_time}}" style="width: 180rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;justify-content: center;background-image: linear-gradient(to right, #f1f1f1, #d1d1d1);background-size: 100% 100%;line-height: 56rpx;text-align: center;border-radius: 28rpx;text-align: center;color: #333">
+          已下架
+        </view>
+        <view wx:elif="{{item.start_time>now_time}}" style="width: 180rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;justify-content: center;background-image: linear-gradient(to right, #ffe79c, #ffbb17);background-size: 100% 100%;line-height: 56rpx;text-align: center;border-radius: 28rpx;text-align: center;color: #fff">{{item.start_date}} 开售</view>
+        <view wx:elif="{{item.stock<=item.today_sale_num}}" style="width: 180rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;justify-content: center;background-image: linear-gradient(to right, #f1f1f1, #d1d1d1);background-size: 100% 100%;line-height: 56rpx;text-align: center;border-radius: 28rpx;text-align: center;color: #333">已抢光</view>
+        <view hover-class="theme-action-hover" wx:elif="{{item.type == 1}}" style="width: 220rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;align-items: flex-end;justify-content: flex-end;border-radius: 28rpx;background-size: 100% 100%;line-height: 56rpx;text-align: center;background:var(--action-background);color:#fff;">
+          <view style="width: 110rpx;height: 56rpx;color: #fff;font-size: 20rpx;">最低砍至</view>
+          <view style="width: 110rpx;height: 56rpx;color: #fff;">￥{{item.min_price}}</view>
+        </view>
+        <view hover-class="theme-action-hover" wx:elif="{{item.type == 3}}" style="width: 180rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;align-items: flex-end;justify-content: flex-end;background:var(--action-background);background-size: 100% 100%;line-height: 56rpx;text-align: center;border-radius: 28rpx;text-align: center;color: #fff">
+          {{item.group_num}}人团
+        </view>
+        <view hover-class="theme-action-hover" wx:else style="width: 180rpx;height: 56rpx;font-weight: 700;font-size: 24rpx;display: flex;justify-content: center;background:var(--action-background);background-size: 100% 100%;line-height: 56rpx;text-align: center;border-radius: 28rpx;text-align: center;color: #fff">
+          立即购买
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{show_cut_msg}}" style="position: fixed;left: 0;top: 0;background: #00000066;z-index: 9;width: 100%;height: 100%;">
+  <view hover-class="theme-action-hover" style="position: absolute;right: 125rpx;top: calc(50vh - 250rpx);z-index: 1;font-size: 24rpx;width: 120rpx;text-align: center;line-height: 40rpx;border-radius: 20rpx;background:var(--action-background);color:#fff;" catchtap="closeCutMsg">关闭 {{sec>0?sec:''}}</view>
+  <view style="position: absolute;height: 587rpx;width: 686rpx;left: 32rpx;top: calc(50vh - 293.5rpx);border-radius: 20rpx;">
+    <image src="{{app.domain}}static/img/cut_alert.png?t=1" style="width: 100%;height: 100%;"></image>
+    <view style="line-height: 80rpx;font-size: 60rpx;color: #fe0a0a;font-weight: 700;text-align: center;width: 286rpx;position: absolute;top: 282rpx;left: 200rpx;">{{cut_price}}元</view>
+    <view style="width: 410rpx;font-size: 24rpx;text-align: center;color: #fff;position: absolute;top: 410rpx;left: 138rpx">砍价成功，当前商品最终价格仅当日有效，先抢先得</view>
+  </view>
+</view>
+<view wx:if="{{show_share}}" style="position: fixed;left: 0;top: 0;background: #00000066;z-index: 9;width: 100%;height: 100%;">
+  <view style="position: absolute;width: 620rpx;height: 850rpx;left: 65rpx;top: calc((100vh - 850rpx - env(safe-area-inset-bottom) - 390rpx +  {{app.globalData.navBarHeight}}px) / 2)" wx:if="{{goods.poster}}">
+    <image show-menu-by-longpress src="{{goods.poster}}" style="width: 620rpx;height: 850rpx;"></image>
+  </view>
+  <view style="position: absolute;bottom: 0;left: 0;">
+    <view style="background: #fff;padding: 30rpx 40rpx 20rpx;border-radius: 20rpx 20rpx 0 0;">
+      <view style="display: flex;text-align: center;border-bottom: 1px solid #f1f1f1;padding-bottom: 20rpx;">
+        <button plain="true" open-type="share" hover-class="theme-share-hover" style="width: 33.33%;box-sizing: border-box;padding: 0;border: 0;font-weight: 100;font-size: 28rpx;border-right: 1px solid #f1f1f1;">
+          <view class="theme-action-icon" style="background:var(--action-background);width: 109rpx;height: 108rpx;color: #fff;font-size: 70rpx;line-height: 108rpx;border-radius: 24rpx;display: inline-block;">↗</view>
+          <view>发送给好友</view>
+        </button>
+        <view hover-class="theme-share-hover" catchtap="savePoster" style="width: 33.33%;border-right: 1px solid #f1f1f1;box-sizing: border-box;font-weight: 100;font-size: 28rpx;">
+          <view class="theme-action-icon" style="border-radius:24rpx;background:var(--action-background);width: 109rpx;height: 108rpx;color:#fff;font-size:64rpx;line-height:108rpx;display:inline-block;"><text class="icon iconfont icon-save"></text></view>
+          <view>保存海报</view>
+        </view>
+        <view hover-class="theme-share-hover" catchtap="toBuy" style="width: 33.33%;font-weight: 100;font-size: 28rpx;">
+          <view class="theme-action-icon" style="border-radius:24rpx;background:var(--action-background);width: 109rpx;height: 108rpx;color:#fff;font-size:64rpx;line-height:108rpx;display:inline-block;">¥</view>
+          <view>立即购买</view>
+        </view>
+      </view>
+      <view style="text-align: center;margin-top: 20rpx;" catchtap="closeShare">关闭</view>
+    </view>
+    <view style="width: 750rpx;height: calc(env(safe-area-inset-bottom));background: #f1f1f1;"></view>
+  </view>
+</view>
+
+<view hover-class="theme-action-hover" style="width: 170rpx;height: 178rpx;font-weight: 700;font-size: 28rpx;line-height: 178rpx;text-align: center;border-radius: 24rpx;background-size: 100%;position: fixed;z-index: 6;bottom: calc(200rpx + env(safe-area-inset-bottom) + 80rpx);right: 10rpx;background:var(--action-background);color:#fff;" catchtap="toPage" data-path="/pages/join_us/qun">加入福利群</view>
+<view style="width: 120rpx;height: 120rpx;background-image: url('{{app.domain}}static/img/icon-float-kf.png');background-size: 100%;position: fixed;z-index: 6;bottom: calc(80rpx + env(safe-area-inset-bottom) + 80rpx);right: 34rpx;" catchtap="showKf" data-path="/pages/join_us/add_customer"></view>
+<view wx:if="{{show_kf}}" catchtap="hideKf" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 8;background: #00000060">
+  <image src="{{app.domain}}static/img/kf_qrcode.png" style="width: 650rpx;height: 930.526rpx;position: relative;left: 50rpx;top: calc(({{app.globalData.windowHeight}}px - 930.526rpx - {{app.globalData.navBarHeight}}px - env(safe-area-inset-bottom) - 100rpx) / 2)" show-menu-by-longpress></image>
+</view>
+
+<import src="/utils/common/alert_imgs"></import>
+<template is="alert_imgs" data="{{app,showAlert,alertList}}"></template>
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>
+<import src="/utils/common/area"></import>
+<template is="area" data="{{showArea,app,cityList,province,city,county}}"></template>
+<import src="/utils/common/tabbar"></import>
+<template is="tabbar" data="{{tabbarData,selected}}"></template>

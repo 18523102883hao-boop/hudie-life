@@ -1,0 +1,3 @@
+/* pages/order_seckill/info.wxss */
+/* 浅色券号 / 门店操作区：按下只做浅橙反馈，不再套橙红渐变实底 */
+.soft-action-hover { background: #fce6dd !important; }

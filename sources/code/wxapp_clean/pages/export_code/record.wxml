@@ -1,0 +1,70 @@
+<view class="ec-page">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;">
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px;min-height:{{app.globalData.menuHeight}}px;line-height:{{app.globalData.menuHeight}}px;bottom:{{app.globalData.menuBotton}}px;left:12rpx;">
+      <view class="ec-nav flex">
+        <view class="ec-back" catchtap="back">
+          <text class="icon iconfont icon-fanhui"></text>
+        </view>
+        <view class="ec-nav-title">导出记录</view>
+        <view class="ec-nav-title" style="opacity:0;">导出记录</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 状态筛选（三态 + 全部） -->
+  <view class="ec-tabs flex">
+    <block wx:for="{{statusTabs}}" wx:key="key">
+      <view
+        class="ec-tab {{status == item.key ? 'ec-tab-on' : ''}}"
+        catchtap="switchStatus"
+        data-key="{{item.key}}"
+      >{{item.text}}</view>
+    </block>
+  </view>
+
+  <!-- 按商品筛选提示（从商品卡片「查看记录」跳入） -->
+  <view wx:if="{{productId}}" class="ec-filter-tip flex">
+    <view class="ec-filter-txt">仅显示该商品的导出记录</view>
+    <view class="ec-filter-clear" catchtap="clearProduct">查看全部</view>
+  </view>
+
+  <view class="ec-section">
+    <view wx:if="{{list.length == 0}}" class="ec-empty">
+      <image class="ec-empty-img" src="{{app.domain}}static/img/nodata.png"></image>
+      <view class="ec-empty-txt">{{loading ? '加载中…' : '暂无导出记录'}}</view>
+    </view>
+
+    <block wx:else>
+      <view wx:for="{{list}}" wx:key="id" class="ec-rec-item">
+        <view class="ec-rec-head flex">
+          <image class="ec-rec-img" src="{{item.product_img}}" mode="aspectFill"></image>
+          <view class="ec-rec-info">
+            <view class="ec-rec-title">{{item.product_title}}</view>
+            <view class="ec-rec-time">导出时间 {{item.created_time}} · 导码价 ¥{{item.exportPriceText}}</view>
+          </view>
+          <view class="ec-rec-badge ec-st-{{item.status}}">{{item.statusText}}</view>
+        </view>
+
+        <!-- 点击复制（复制成功后才上报计数，计数由后端原子自增） -->
+        <view hover-class="ec-copy-hover" class="ec-rec-code-row flex" catchtap="copyCode" data-index="{{index}}">
+          <text class="ec-rec-code">{{item.code}}</text>
+          <text class="ec-rec-copy">复制{{item.copy_count > 0 ? '（' + item.copy_count + '）' : ''}}</text>
+        </view>
+
+        <view class="ec-rec-foot flex">
+          <view class="ec-rec-sub">
+            <text wx:if="{{item.used_time}}">使用时间 {{item.used_time}}</text>
+            <text wx:elif="{{item.void_time}}">作废时间 {{item.void_time}}</text>
+            <text wx:else>未使用，可复制发给顾客兑换</text>
+          </view>
+          <view hover-class="theme-action-hover" wx:if="{{item.can_void}}" class="ec-rec-void" catchtap="toVoid" data-index="{{index}}">作废</view>
+        </view>
+
+        <view wx:if="{{item.void_reason}}" class="ec-rec-reason">作废原因：{{item.void_reason}}</view>
+      </view>
+
+      <view hover-class="{{loading ? 'none' : 'theme-action-hover'}}" wx:if="{{!is_end}}" class="ec-more {{loading ? 'ec-more-loading' : ''}}" catchtap="loadMore">{{loading ? '加载中…' : '加载更多'}}</view>
+      <view wx:else class="ec-more ec-more-end">没有更多了</view>
+    </block>
+  </view>
+</view>

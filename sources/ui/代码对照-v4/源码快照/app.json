@@ -1,0 +1,133 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/hotel_booking/index",
+    "pages/preferred/index",
+    "pages/foodmap/index",
+    "pages/foodmap/shop",
+    "pages/foodmap/stores",
+    "pages/score/index",
+    "pages/score/res",
+    "pages/activity/nine_square_grid",
+    "pages/mine/mine",
+    "pages/mine/rule",
+    "pages/integral/sign",
+    "pages/integral/index",
+    "pages/integral/rule",
+    "pages/join_us/index",
+    "pages/join_us/customer",
+    "pages/join_us/qun",
+    "pages/join_us/invite",
+    "pages/join_us/apply_agent",
+    "pages/join_us/add_customer",
+    "pages/agent/index",
+    "pages/agent/withdraw",
+    "pages/agent/withdraw_list",
+    "pages/product/index",
+    "pages/product/info",
+    "pages/product/place",
+    "pages/product/top",
+    "pages/product/new",
+    "pages/goods_group/index",
+    "pages/goods_group/info",
+    "pages/goods_group/place",
+    "pages/goods_group/top",
+    "pages/goods_group/new",
+    "pages/goods/index",
+    "pages/goods/list",
+    "pages/goods/my",
+    "pages/goods/place",
+    "pages/goods/cut",
+    "pages/goods/top",
+    "pages/goods/all_top",
+    "pages/goods/special",
+    "pages/goods/new",
+    "pages/order/index",
+    "pages/order/list",
+    "pages/order/info",
+    "pages/order/goods",
+    "pages/order/verify",
+    "pages/order_seckill/index",
+    "pages/order_seckill/info",
+    "pages/order_seckill/goods",
+    "pages/order_seckill/verify",
+    "pages/order_group/index",
+    "pages/order_group/info",
+    "pages/order_group/goods",
+    "pages/order_group/verify",
+    "pages/store/index",
+    "pages/switch/login",
+    "pages/export_code/index",
+    "pages/export_code/record",
+    "pages/export_code/void",
+    "pages/export_code/recharge",
+    "pages/export_code/exchange",
+    "pages/goods/category"
+  ],
+  "subpackages": [
+    {
+      "root": "package1",
+      "name": "shop",
+      "pages": [
+        "shop/index",
+        "order/verify",
+        "order/verify_list",
+        "order/hotel_booking_list",
+        "order/hotel_booking_info",
+        "finance/stat",
+        "finance/wallet",
+        "finance/cash",
+        "finance/withdraw_list",
+        "finance/balance_list",
+        "bd/index"
+      ]
+    },
+    {
+      "root": "package2",
+      "name": "user",
+      "pages": [
+        "userinfo/index",
+        "rule/index",
+        "webview/index",
+        "house_bind/index",
+        "mobile_bind/index",
+        "landlord/index",
+        "landlord/add",
+        "video_bind/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "user"
+      ]
+    },
+    "pages/mine/mine": {
+      "network": "all",
+      "packages": [
+        "shop"
+      ]
+    }
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于查看你附近的合作门店与距离"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation",
+    "choosePoi"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

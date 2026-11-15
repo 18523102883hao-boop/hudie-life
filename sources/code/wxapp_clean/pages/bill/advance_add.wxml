@@ -1,0 +1,27 @@
+<view style="width: 750rpx;padding-bottom: 120rpx;background: var(--brand-strong);line-height: 50rpx;">
+  <view style="justify-content: space-between;font-size: 24rpx;margin: 0 20rpx;color: #fff;width: 710rpx;">
+    <view>收费项信息：{{subject == 1 ? '租金' : '物业费'}}</view>
+    <view>当前服务到期时间：{{last_time}}</view>
+  </view>
+</view>
+
+<view style="width: 670rpx;margin-top: -100rpx;margin-left: 20rpx;background: #fff;border-radius: 20rpx;padding: 20rpx">
+  <view style="font-size: 24rpx;font-weight: 700;">请选择您要缴纳的费用周期</view>
+  <view class="flex months" style="justify-content: space-between;margin-top: 40rpx;border-bottom: 2rpx solid #ccc;padding-bottom: 20rpx;">
+    <view class="{{i==1?'on':''}}" catchtap="selMonth" data-i="1" data-mon="1">1个月</view>
+    <view class="{{i==2?'on':''}}" catchtap="selMonth" data-i="2" data-mon="3">3个月</view>
+    <view class="{{i==3?'on':''}}" catchtap="selMonth" data-i="3" data-mon="6">6个月</view>
+    <view class="{{i==4?'on':''}}" catchtap="selMonth" data-i="4" data-mon="12">12个月</view>
+    <input bindinput="inputMon" class="{{i==5?'on':''}}" catchtap="selMonth" data-i="5" data-mon="{{input_mon}}" type="digit" data-i="5" bind:in placeholder="其他"/>
+  </view>
+  <view class="flex" style="justify-content: space-between;margin-top: 20rpx;line-height: 30rpx;">
+    <view style="font-size: 24rpx;">费用总额</view>
+    <view style="color: #ed2519;">￥{{total}}</view>
+  </view>
+  <view class="flex" style="justify-content: space-between;margin-top: 20rpx;line-height: 30rpx;">
+    <view style="font-size: 24rpx;">计费周期</view>
+    <view style="font-size: 24rpx;">{{range}}</view>
+  </view>
+</view>
+
+<view hover-class="theme-action-hover" catchtap="advance" style="width: 550rpx;margin-left: 100rpx;text-align: center;line-height: 80rpx;background:var(--action-background);color: #fff;border-radius: 20rpx;margin-top: 80rpx;">去支付</view>

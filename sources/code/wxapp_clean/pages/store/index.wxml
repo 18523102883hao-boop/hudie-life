@@ -1,0 +1,12 @@
+<view wx:for="{{list}}" wx:key="index" style="width: 670rpx;padding: 20rpx;background: #fff;border-radius: 20rpx;font-size: 30rpx;margin: 20rpx">
+    <view style="width: 670rpx;display: flex;justify-content: space-between;line-height: 50rpx;border-bottom: 1rpx solid #f1f1f1;padding-bottom: 20rpx;margin-bottom: 20rpx;">
+      <view>{{item.name}}</view>
+      <view catchtap="viewStore" style="font-size: 26rpx;color: var(--brand-strong);" wx:if="{{item.distant}}"><text class="icon iconfont icon-location">距我 {{item.distant}}</text></view>
+    </view>
+    <view style="display: flex;justify-content: space-between;line-height: 30rpx;font-size: 24rpx;margin-top: 10rpx;">
+      <view catchtap="daohang" data-item="{{item}}" style="width: 600rpx;color: #999;">{{item.province}} {{item.city}} {{item.county}} {{item.address}}</view>
+      <view hover-class="theme-action-hover" data-phone="{{item.mobile}}" catchtap="callPhone" style="color:#fff;background:var(--action-background);font-size: 50rpx;line-height: 60rpx;width: 60rpx;text-align: center;border-radius: 10rpx;">
+        <text class="icon iconfont icon-phone-fill"></text>
+      </view>
+    </view>
+  </view>

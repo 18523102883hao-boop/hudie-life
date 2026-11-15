@@ -1,0 +1,42 @@
+<view style="width: 750rpx;background: #fff;">
+  <view class="flex flexw" style="justify-content: space-between;font-size: 24rpx;margin-bottom: 20rpx;width: 710rpx;padding: 20rpx">
+    <view style="color: #999;">当前选择房屋</view>
+    <view style="color: var(--brand-strong);" catchtap="record">缴费记录</view>
+    <view style="width: 100%;font-size: 30rpx;margin-top: 14rpx;">{{path_name}}</view>
+  </view>
+</view>
+
+<checkbox-group bindchange="bindCheckboxChange" data-index="{{index}}">
+<view wx:for="{{list}}" wx:key="index" style="width: 670rpx;margin: 20rpx;background: #fff;padding: 20rpx;border-radius: 20rpx;">
+  <label class="radio" style="display: block;font-weight: 700;width: 100%;line-height: 50rpx;line-height: 50rpx;" >
+    <checkbox color="#0879b5" value="{{item.id}}" checked="{{item.checked === true}}" style="font-size: 0;width: 50rpx;height: 50rpx;vertical-align: middle;"/>
+    <view style="display: inline-block;margin-left: 10rpx;">{{item.project}}</view>
+  </label>
+  <view class="flex" style="justify-content: space-between;line-height: 80rpx;background: #f1f1f1;margin-top: 20rpx;padding: 0 20rpx;width: 630rpx;border-radius: 20rpx;font-size: 24rpx;" catchtap="detail" data-item="{{item}}">
+    <view>{{item.start_date}} ~ {{item.end_date}}</view>
+    <view style="color: #ed2519;">￥{{item.pay_amount}}元<text class="icon iconfont icon-right" style="color: #000;margin-left: 10rpx;"></text></view>
+  </view>
+</view>
+</checkbox-group>
+
+<checkbox-group bindchange="checkAll">
+<view style="width: 750rpx;position: fixed;padding-bottom: 10rpx;background: #fff;bottom: calc(env(safe-area-inset-bottom));left: 0;display: flex;padding-top: 10rpx;">
+  <label class="radio" style="display: block;font-weight: 700;width: 130rpx;line-height: 50rpx;line-height: 50rpx;margin-left: 20rpx;padding: 10rpx 0;">
+    <checkbox color="#0879b5" value="1" style="font-size: 0;width: 50rpx;height: 50rpx;vertical-align: middle;"/>
+    <view style="display: inline-block;font-size: 24rpx;color: #666;margin-left: 4rpx;">全选</view>
+  </label>
+  <view style="width: 350rpx;line-height: 40rpx;font-size: 24rpx;">
+    <view>
+      <text style="color: var(--brand-strong);">合计：</text>
+      <text style="font-size: 30rpx;">￥{{total}}</text>
+    </view>
+    <view style="color: #666;">已选{{num}}项</view>
+  </view>
+  <view hover-class="{{total > 0 ? 'theme-action-hover' : 'none'}}" catchtap="toPay" style="width: 250rpx;position: absolute;height: 100rpx;right: 0;background: {{total>0?'var(--action-background)':'#ccc'}};top: 0;color: #fff;line-height: 100rpx;text-align: center;">去缴费</view>
+</view>
+</checkbox-group>
+
+<view style="position: fixed;width: 100rpx;height: 100rpx;bottom: calc(env(safe-area-inset-bottom) + 140rpx);right: 20rpx;background: var(--brand-strong);color: #fff;border-radius: 50%;text-align: center;" wx:if="{{list.length == 0}}">
+  <view class="icon iconfont icon-money-wallet-fill" style="margin-top: 10rpx;font-size: 40rpx;"></view>
+  <view style="font-size: 20rpx;">费用预缴</view>
+</view>

@@ -1,0 +1,19 @@
+<view style="width: 750rpx;background: #fff;padding: 20rpx 0">
+  <view style="color: #999;font-size: 24rpx;margin-bottom: 20rpx;width: 710rpx;margin-left: 20rpx;">当前选择房屋</view>
+  <view style="width: 710rpx;margin-left: 20rpx;">{{house.path_name}} | {{house.room}}</view>
+</view>
+
+<view style="width: 710rpx;padding: 20rpx;background: #fff;margin-top: 20rpx;line-height: 60rpx;" wx:for="{{landlord}}" wx:key="index">
+  <view class="flex" style="justify-content: space-between;">
+    <view style="font-weight: 700;">{{item.name}}</view>
+    <view wx:if="{{item.type == 1}}" style="height: 40rpx;line-height: 40rpx;margin-top: 10rpx;font-size: 24rpx;background: var(--brand-soft);color: var(--brand-strong);padding: 0 20rpx;border-radius: 30rpx;">承租人</view>
+    <view wx:if="{{item.type == 2}}" style="height: 40rpx;line-height: 40rpx;margin-top: 10rpx;font-size: 24rpx;background: var(--brand-soft);color: var(--brand-strong);padding: 0 20rpx;border-radius: 30rpx;">亲属</view>
+  </view>
+  <view class="flex" style="justify-content: space-between;">
+    <view>{{item.mobile}}</view>
+    <view style="height: 40rpx;line-height: 40rpx;margin-top: 10rpx;font-size: 24rpx;padding: 0 20rpx;border-radius: 30rpx;background:var(--action-background);color:#fff;" catchtap="del" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{item.type > 1}}" hover-class="theme-action-hover">删除</view>
+  </view>
+</view>
+
+<view style="width: 1rpx;height: calc(120rpx + env(safe-area-inset-bottom));"></view>
+<view catchtap="toPage" style="width: 650rpx;line-height: 80rpx;position: fixed;bottom: max(calc(env(safe-area-inset-bottom)), 20rpx);left: 50rpx;text-align: center;background:var(--action-background);color: #fff;border-radius: 20rpx;" hover-class="theme-action-hover">添加住户</view>

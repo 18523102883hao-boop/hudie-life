@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "邀好友 躺赚佣",
+  "usingComponents": {
+    "van-overlay": "@vant/weapp/overlay/index"
+  }
+}

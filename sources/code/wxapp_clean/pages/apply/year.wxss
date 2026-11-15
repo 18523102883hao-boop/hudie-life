@@ -1,0 +1,10 @@
+page{background: #fff;overflow-x: scroll;}
+.th,.td{box-sizing: border-box;padding: 10rpx 0;border-top: 2rpx solid #ccc;border-left: 2rpx solid #ccc;display: flex;align-items: center;justify-content: center;}
+.th{font-weight: 700;font-size: 30rpx;}
+checkbox .wx-checkbox-input.wx-checkbox-input-disabled{background: #fff;}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{background: #fff;}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{color: var(--brand-strong);}
+
+radio .wx-radio-input.wx-radio-input-disabled{background: #fff;}
+radio .wx-radio-input.wx-radio-input-checked{background: var(--brand-strong);}
+radio .wx-radio-input.wx-radio-input-checked::before{color: #fff;}

@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "兑换商品",
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#f3f3f3",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

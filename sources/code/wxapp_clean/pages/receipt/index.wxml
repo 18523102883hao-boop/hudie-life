@@ -1,0 +1,23 @@
+<view style="width: 750rpx;background: #fff;">
+  <view class="flex flexw" style="justify-content: space-between;font-size: 24rpx;width: 710rpx;padding: 20rpx">
+    <view style="color: #999;line-height: 32rpx;">当前选择房屋</view>
+    <view style="color: var(--brand-strong);" catchtap="record">缴费记录</view>
+    <view style="width: 100%;font-size: 30rpx;margin-top: 14rpx;line-height: 40rpx;">{{path_name}}</view>
+  </view>
+</view>
+
+<scroll-view scroll-y="{{true}}" style="width: 750rpx;height: calc(100vh - 126rpx);">
+  <view wx:for="{{list}}" wx:key="index" style="width: 670rpx;margin: 20rpx;background: #fff;padding: 20rpx;border-radius: 20rpx;">
+    <view style="display: inline-block;font-weight: 700;">{{item.receipt_no}}</view>
+    <view style="font-size: 24rpx;margin-top: 20rpx;color: #666;display: flex;justify-content: space-between;">
+      <view>缴费时间：{{item.pay_date}}</view>
+      <!-- <view style="width: 120rpx;">display: inline-block;margin-right: 20rpx; -->
+        <view hover-class="theme-action-hover" catchtap="detail" data-item="{{item}}" data-type="0" style="background:var(--action-background);border-color:var(--action);color:#fff;">查看</view>
+        <!-- <view catchtap="detail" data-item="{{item}}" data-type="1" style="background: #f6ffed;border-color: #b7eb8f;color: #52c41a;display: inline-block;">下载</view>
+      </view> -->
+    </view>
+  </view>
+
+  <view style="width: 1rpx;height: calc(max(env(safe-area-inset-bottom), 20rpx));"></view>
+</scroll-view>
+

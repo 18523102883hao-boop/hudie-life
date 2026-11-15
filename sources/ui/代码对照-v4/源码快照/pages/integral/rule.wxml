@@ -1,0 +1,14 @@
+<view style="width: 710rpx;padding: 20rpx;line-height: 50rpx;">
+  <view style="font-size: 40rpx;font-weight: 700;text-align: center;">积分规则说明</view>
+  <view style="font-weight: 700;margin-top: 40rpx;">1、什么是积分?</view>
+  <view>积分是蝴蝶优选平台的虚拟活动币，仅可用于在购买砍价商品时用来抵扣现金使用，积分不可提现，不可兑换现金。</view>
+  <view style="font-weight: 700;margin-top: 40rpx;">2、如何获得积分?</view>
+  <view>可以通过“日常签到”、社群参与“帮砍任务”等方式获得;更多积分奖励活动陆续上线中，敬请期待!</view>
+  <view style="font-weight: 700;margin-top: 40rpx;">3、如何使用积分?</view>
+  <view>购买任一砍价商品时，消费抵扣现金，积分抵扣后的实付金额不超过最低砍价金额</view>
+  <view>(100积分=1元等值人民币)，单笔订单最多可使用500个积分(=5元)抵扣消费金额</view>
+  <view style="font-weight: 700;margin-top: 40rpx;">4、积分有效期</view>
+  <view>所得积分有效期时间均为30天，过期自动作废。</view>
+  <view style="font-weight: 700;margin-top: 40rpx;">5、积分使用范围</view>
+  <view>积分仅限砍价商品使用，秒杀及拼团产品不参与兑换</view>
+</view>

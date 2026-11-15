@@ -1,0 +1,15 @@
+<block wx:if="{{home_catalog_enable}}">
+  <scroll-view class="primary-tabs" scroll-x><view class="primary-row"><view wx:for="{{categories}}" wx:key="id" class="primary-tab {{primaryId == item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectPrimary">{{item.name}}</view></view></scroll-view>
+  <catalog-filter level="secondary" categories="{{categoryOptions}}" category-id="{{categoryId}}" districts="{{districts}}" county="{{county}}" order="{{order}}" order-chosen="{{orderChosen}}" bind:change="filterChange" />
+  <import src="/utils/common/goods_list" />
+  <template is="goods_list" data="{{app,list}}" />
+  <view class="catalog-message" wx:if="{{cityStatus === 'loading'}}">正在加载城市…</view>
+  <view class="catalog-message" wx:elif="{{cityStatus === 'unavailable'}}">{{city}}暂无商品，请返回首页切换城市<button hover-class="theme-action-hover" bindtap="goHome">返回首页换城市</button></view>
+  <view class="catalog-message" wx:elif="{{cityStatus === 'empty'}}">全平台暂无商品</view>
+  <view class="catalog-message" wx:elif="{{ready && !categories.length}}">暂无可用分类</view>
+  <view class="catalog-message" wx:elif="{{!loading && !list.length && !error}}">{{city}}暂无符合条件的商品<button hover-class="theme-action-hover" bindtap="clearCatalogFilters">清空筛选</button></view>
+  <view class="catalog-message" wx:if="{{districtError}}">区县加载失败<button hover-class="theme-action-hover" bindtap="retryCatalog">重试</button></view>
+  <view class="catalog-message" wx:if="{{loading}}">正在加载…</view>
+  <view class="catalog-message" wx:if="{{is_end && list.length}}">已经到底了</view>
+</block>
+<view class="catalog-message" wx:if="{{error}}">{{error}}<button hover-class="theme-action-hover" wx:if="{{!disabled}}" bindtap="retryCatalog">重试</button><button wx:else bindtap="goHome">返回首页</button></view>

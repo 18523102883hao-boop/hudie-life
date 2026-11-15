@@ -1,0 +1,173 @@
+<!-- 头部整块背景：标题栏与轮播共用同一张图、同一缩放基准，整屏只显示一次 -->
+<view class="head-wrap">
+<view class="head-bg" wx:if="{{swiperList && swiperList.length>0}}" style="background-image: url('{{swiperList[swiperIndex].bg || swiperList[swiperIndex].img}}');"></view>
+<view class="nav-main relative" style="height:calc({{app.globalData.navBarHeight}}px);">
+  <!-- <image src="{{swiperList[0].img}}" style="position: absolute;left: 0;top: 0;width: 100%;height: 90%;filter: blur(5rpx);"></image> -->
+  <view class="nav-fixed-bg" wx:if="{{home_catalog_enable || (swiperList && swiperList.length>0)}}" style="height:{{app.globalData.navBarHeight}}px;background-image: url('{{swiperList[swiperIndex].bg || swiperList[swiperIndex].img}}');">
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px; min-height:{{app.globalData.menuHeight}}px; line-height:{{app.globalData.menuHeight}}px;bottom: 4px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <view class="view flex">
+        <view class="views" catchtap="searchAddress">
+          <view class="flex" style="width: {{area_width}}rpx;font-size: 30rpx;font-weight: 700;color: #000;">
+            <view style="flex:1;min-width:0;line-height:60rpx;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><text>{{home_catalog_enable ? (cityLabel || '选择城市') : (county ? county : (city ? city : province))}}</text></view>
+            <text class="icon iconfont icon-sanjiaoxing" style="transform: rotate(180deg);font-size: 16rpx;margin-left: 10rpx;"></text>
+          </view>
+        </view>
+        <view class="title" style="color: #fff;font-weight: 700;letter-spacing: 4rpx;width: {{150-area_width+360}}rpx;text-align: center;">
+          <view style="width: 100%;background: rgba(255,255,255,0.6);border-radius: 40rpx;display: flex;">
+            <input type="text" style="width: {{150-area_width+360-60-80}}rpx;margin-left: 60rpx;font-size: 24rpx;font-weight: 400;line-height:{{app.globalData.menuHeight}}px;height:{{app.globalData.menuHeight}}px;color:#333;" placeholder="搜索热词" placeholder-style="color:#999;" bindinput="setKeywords" bindconfirm="search"/>
+            <text class="icon iconfont icon-search" style="width: 80rpx;color:#333;" catchtap="search"></text>
+          </view>
+        </view>
+        <!-- <view catchtap="showCustomer" style="width: 64rpx;height: 64rpx;text-align: center;background: #ffffff88;border-radius: 50%;font-size: 40rpx;">
+          <text class="icon iconfont icon-customer-service-fill"></text>
+        </view> -->
+        <view class="title" style="opacity: 0;width: 180rpx;margin-top: 0;">
+          <view class="flex">
+            <text class="icon iconfont icon-dingwei">重庆站</text>
+            <text class="icon iconfont icon-down"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 轮播图 -->
+<view class="lun" wx:if="{{swiperList && swiperList.length>0}}">
+  <swiper class="luns" autoplay="play" circular interval="3000" bindchange="swiperchange">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index" class="luns" bindtap="toPage" data-item="{{item}}">
+      <image mode="aspectFill" src="{{item.img}}" style="width: 100%;height: 100%;border-radius: 20rpx;display: block;"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图标签 -->
+  <view class="labels absolute flex">
+    <view class="label" wx:if="{{index <= 6}}" wx:for="{{labelAll}}" wx:key="index">{{item}}</view>
+  </view>
+  <!-- 轮播图下点 -->
+  <view class="points pointss flex" wx:if="{{swiperList.length > 1}}" style="left: -20rpx;">
+    <view class="{{swiperIndex == index ?'pointe':'point'}}" wx:for="{{swiperList.length}}" wx:key="index">
+    </view>
+  </view>
+</view>
+</view>
+
+<view wx:if="{{show_follow}}" style="width: 710rpx;margin: 20rpx;background: #666;color: #fff;line-height: 60rpx;border-radius: 20rpx;position: relative;">
+  <view style="display: flex;padding: 0 20rpx;font-size: 24rpx;">
+    <view style="width: 520rpx;">关注蝴蝶优选公众号，每周四最新活动一手掌握</view>
+    <view style="width: 145rpx;">
+      <view catchtap="showQrcode" hover-class="theme-action-hover" style="text-align: center;background:var(--action-background);line-height: 40rpx;margin-top: 10rpx;border-radius: 10rpx;">立即关注</view>
+    </view>
+    <view style="width: 45rpx;text-align: right;font-size: 30rpx;">
+      <view catchtap="hideFollow"><text class="icon iconfont icon-close"></text></view>
+    </view>
+  </view>
+  <official-account style="position: absolute;left: 68rpx;top: -76rpx;opacity: 0;"></official-account>
+</view>
+<view wx:if="{{hide_qrcode}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000066;z-index: 99;">
+  <image src="{{app.domain}}static/img/wx_qrcode.png" style="width: 550rpx;height: 550rpx;position: absolute;left: 100rpx;top: calc(50vh - 275rpx - env(safe-area-inset-bottom) - 100rpx);border-radius: 20rpx 20rpx 0 0;" show-menu-by-longpress></image>
+  <viwe style="position: absolute;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 120rpx);left: 100rpx;width: 550rpx;text-align: center;color: #333;font-size: 28rpx;background: #fff;padding-bottom: 20rpx;border-radius: 0 0 20rpx 20rpx;">长按识别上方二维码，关注公众号~！</viwe>
+  <view catchtap="hide_qrcode" style="position: absolute;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 40rpx;border-radius: 50%;border: 2rpx solid #fff;color: #fff;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 100rpx + 80rpx);left: 345rpx;"><text class="icon iconfont icon-x"></text></view>
+</view>
+
+<view wx:if="{{1||show_cate}}" style="width: 750rpx;height: 172rpx;margin-top: 20rpx;position: relative;z-index: 1;">
+  <view class="flex flexw" style="text-align: center;justify-content: space-around;font-size: 24rpx;background: #fff;padding: 20rpx 0;border-radius: 20rpx;width: 690rpx;margin-left: 30rpx;overflow: hidden;">
+    <view style="width: 20%;text-align: center;">
+      <image catchtap="searchCate" data-name="餐饮美食" src="/img/cyms-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+      <view style="color: {{cate == '餐饮美食' ? '#0879b5' : '#000'}};">餐饮美食</view>
+    </view>
+    <view style="width: 20%;text-align: center;">
+      <image catchtap="searchCate" data-name="景区门票" src="/img/jqyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+      <view style="color: {{cate == '景区门票' ? '#0879b5' : '#000'}};">景区门票</view>
+    </view>
+    <view style="width: 20%;text-align: center;">
+      <image catchtap="searchCate" data-name="住宿酒店" src="/img/jdzs-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+      <view style="color: {{cate == '住宿酒店' ? '#0879b5' : '#000'}};">住宿酒店</view>
+    </view>
+    <view style="width: 20%;text-align: center;">
+      <image catchtap="searchCate" data-name="休闲娱乐" src="/img/xxyl-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+      <view style="color: {{cate == '休闲娱乐' ? '#0879b5' : '#000'}};">休闲娱乐</view>
+    </view>
+    <view style="width: 20%;text-align: center;">
+      <image catchtap="searchCate" data-name="全部类目" src="/img/more-blue-v1.png" mode="aspectFit" style="width: 90rpx;height: 90rpx;margin: 5rpx auto 0;display: block;"></image>
+      <view style="color: {{cate == '全部类目' ? '#0879b5' : '#000'}};">全部类目</view>
+    </view>
+  </view>
+</view>
+
+<!-- 今日上新 / 即将下线 切换模块（替代原双卡与下线入口卡） -->
+<view class="feed-card" wx:if="{{new_list.length > 0 || offline_list.length > 0}}">
+  <view class="feed-head">
+    <view class="feed-tabs">
+      <view class="feed-tab {{feed_tab == 'new' ? 'feed-tab-on' : ''}}" data-tab="new" bindtap="switchFeedTab">
+        <text>今日上新</text>
+        <view class="feed-tab-line" wx:if="{{feed_tab == 'new'}}"></view>
+      </view>
+      <view class="feed-tab {{feed_tab == 'offline' ? 'feed-tab-on' : ''}}" data-tab="offline" bindtap="switchFeedTab">
+        <text>即将下线</text>
+        <view class="feed-tab-line" wx:if="{{feed_tab == 'offline'}}"></view>
+      </view>
+    </view>
+    <view class="feed-more" data-path="{{feed_tab == 'new' ? '/pages/goods/new' : '/pages/goods/new?act=offline'}}" bindtap="switchTab">更多<text class="icon iconfont icon-jiantouyou feed-more-arrow"></text></view>
+  </view>
+
+  <swiper wx:if="{{feed_pages.length > 0}}" class="feed-swiper" current="{{feed_index}}" bindchange="feedSwiperChange">
+    <swiper-item wx:for="{{feed_pages}}" wx:key="index" wx:for-item="page">
+      <view class="feed-row">
+        <view class="feed-item" wx:for="{{page}}" wx:key="index" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="viewGoods">
+          <view class="feed-img-box">
+            <image class="feed-img" src="{{item.img}}" lazy-load></image><view wx:if="{{item.need_book == 0}}" class="feed-book">免预约</view>
+            <view class="feed-sold">已抢{{item.sale_num || 0}}</view>
+          </view>
+          <view class="feed-title"><text class="feed-badge">{{item.badge}}</text>{{item.title}}</view>
+          <view class="feed-price">
+            <text class="feed-price-now"><text class="feed-yen">¥</text>{{item.subsidy_price}}</text>
+            <text class="feed-price-old">¥{{item.market_price}}</text>
+          </view>
+          <!-- <view class="feed-subsidy" wx:if="{{item.max_commission}}">
+            <view class="feed-subsidy-red"></view>
+            <text class="feed-subsidy-label">自购省</text>
+            <text class="feed-subsidy-val">¥{{item.max_commission}}</text>
+          </view> -->
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view wx:else class="feed-empty">{{feed_tab == 'new' ? '暂无上新商品' : '暂无即将下线商品'}}</view>
+
+  <view class="feed-dots" wx:if="{{feed_pages.length > 1}}">
+    <view class="feed-dot {{feed_index == index ? 'feed-dot-on' : ''}}" wx:for="{{feed_pages}}" wx:key="index"></view>
+  </view>
+</view>
+
+<block wx:if="{{home_catalog_enable}}">
+  <catalog-filter level="primary" categories="{{categoryOptions}}" category-id="{{categoryId}}" districts="{{districts}}" county="{{county}}" order="{{order}}" order-chosen="{{orderChosen}}" bind:change="filterChange" />
+  <view class="catalog-message" wx:if="{{cityStatus === 'unavailable'}}">{{city}}暂无商品，请切换城市<button hover-class="theme-action-hover" bindtap="searchAddress">切换城市</button></view>
+  <view class="catalog-message" wx:elif="{{cityStatus === 'empty'}}">全平台暂无商品</view>
+  <view class="catalog-message" wx:elif="{{ready && !loading && !list.length && !error}}">{{city}}暂无符合条件的商品<button hover-class="theme-action-hover" bindtap="clearCatalogFilters">清空筛选</button></view>
+  <view class="catalog-message" wx:if="{{error}}">{{error}}<button hover-class="theme-action-hover" bindtap="retryCatalog">重试</button></view>
+  <view class="catalog-message" wx:if="{{districtError}}">区县加载失败<button hover-class="theme-action-hover" bindtap="retryCatalog">重试</button></view>
+</block>
+<import src="/utils/common/goods_list"></import>
+<template is="goods_list" data="{{app,list,show_cut_msg,sec,cut_price,show_share,goods}}"></template>
+
+<view wx:if="{{show_kf}}" catchtap="hideKf" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 8;background: #00000060;display: flex;align-items: center;justify-content: center;">
+  <image src="{{app.domain}}static/img/kf_qrcode.png" style="width: 520rpx;height: auto;" mode="widthFix" show-menu-by-longpress></image>
+</view>
+
+<view style="width: 170rpx;height: 178rpx;background-image: url('{{app.domain}}static/img/icon-float-qun.png?t=1');background-size: 100%;position: fixed;z-index: 6;bottom: calc(200rpx + env(safe-area-inset-bottom) + 80rpx);right: 10rpx;" catchtap="toPage" data-path="/pages/join_us/qun"></view>
+<view style="width: 120rpx;height: 120rpx;background-image: url('{{app.domain}}static/img/icon-float-kf.png');background-size: 100%;position: fixed;z-index: 6;bottom: calc(80rpx + env(safe-area-inset-bottom) + 80rpx);right: 34rpx;" catchtap="showKf" data-path="/pages/join_us/add_customer"></view>
+
+<import src="/utils/common/alert_imgs"></import>
+<template is="alert_imgs" data="{{app,showAlert,alertList}}"></template>
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>
+<import src="/utils/common/area"></import>
+<template wx:if="{{!home_catalog_enable}}" is="area" data="{{showArea,app,cityList,province,city,county}}"></template>
+<import src="/utils/common/tabbar"></import>
+<template is="tabbar" data="{{tabbarData,selected}}"></template>
+<view wx:if="{{cityDialog}}" class="city-mask" catchtap="closeCity">
+  <view class="city-panel" catchtap="noop"><view class="city-title">选择城市<text bindtap="closeCity">关闭</text></view>
+    <view wx:if="{{cityStatus === 'error'}}" class="catalog-message">城市加载失败<button hover-class="theme-action-hover" bindtap="retryCatalog">重试</button></view>
+    <view wx:elif="{{!cityChoices.length}}" class="catalog-message">暂无有商品的城市</view>
+    <scroll-view scroll-y class="city-scroll"><view class="city-grid"><view wx:for="{{cityChoices}}" wx:key="city" class="city-chip {{city === item.city ? 'city-selected' : ''}}" data-city="{{item.city}}" bindtap="selectCity">{{item.label}}</view></view></scroll-view>
+  </view>
+</view>

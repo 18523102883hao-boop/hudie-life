@@ -1,0 +1,25 @@
+<template name="area">
+<view wx:if="{{showArea}}" class="box">
+  <view class="nav-main relative" style="height:{{app.globalData.navBarHeight}}px;background: #fff;">
+    <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px; min-height:{{app.globalData.menuHeight}}px; line-height:{{app.globalData.menuHeight}}px; bottom:{{app.globalData.menuBotton}}px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+      <view class="view flex">
+          <view class="views" style="opacity: 0;">1</view>
+          <view class="title" style="color: #000;font-weight: 700;">区域选择</view>
+          <view class="title" style="opacity: 0;">12情</view>
+      </view>
+    </view>
+  </view>
+  <view style="padding: 20rpx;">
+    <view class="title mt">当前选择</view>
+    <view class="items-one" style="width: 200rpx;padding: 0 10rpx;margin-top: 20rpx;" catchtap="selArea" data-county="{{county}}" data-city="{{city}}" data-province="{{province}}">{{county?county:(city?city:province)}}</view>
+    <view class="main">
+      <view wx:for="{{cityList}}" wx:key="i">
+        <view style="color: #666;">{{index}}</view>
+          <view class="flex flexw" style="margin-top: 20rpx;">
+            <view class="{{(county?county:(city?city:province)) == (item1.county?item1.county:(item1.city?item1.city:item1.province)) ? 'items' : 'item'}}-one mb mr" wx:for="{{item}}" wx:for-item="item1" wx:key="i1" catchtap="selArea" data-county="{{item1.county}}" data-city="{{item1.city}}" data-province="{{item1.province}}">{{item1.county?item1.county:(item1.city?item1.city:item1.province)}}</view>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>

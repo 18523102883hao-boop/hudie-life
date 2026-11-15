@@ -1,0 +1,181 @@
+<view style="width: 710rpx;margin: 20rpx;">
+  <view class="lun" wx:if="{{goods && goods.imgs.length>0}}">
+    <swiper class="luns" autoplay="play" circular interval="3000">
+      <swiper-item wx:for="{{goods.imgs}}" wx:key="index" class="luns" data-item="{{item}}">
+        <image mode="widthFix" src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view style="width: 670rpx;background: #fff;margin-top: -20rpx;padding: 40rpx 20rpx 20rpx;border-radius: 0 0 20rpx 20rpx;">
+    <view style="font-size: 36rpx;font-weight: 700;margin-bottom: 10rpx;">
+      <block wx:if="{{goods.is_virtual != 1}}">
+        <text style="color: var(--brand-strong);">{{goods.shop_name}}</text><text style="color: #9f9f9f;font-weight: 100;">丨</text>
+      </block>
+      {{goods.title}}
+    </view>
+    <view class="product-meta-row">
+      <view class="product-meta-tags">
+        <view wx:if="{{goods.commission}}" style="display: inline-block;border: 1px solid #fe0a0a;color: #fe0a0a;border-radius: 8rpx;padding: 4rpx 8rpx;font-size: 24rpx;">
+          自购省 {{goods.commission}} | 分享赚 {{item.max_commission}}
+        </view>
+        <view wx:if="{{goods.id && goods.need_book != null}}" class="product-detail-top-tag">{{goods.need_book == 0 ? '免预约' : (goods.book_text || '需预约')}}</view>
+        <view wx:if="{{goods.id && goods.forward_days > 0}}" class="product-detail-top-tag">提前{{goods.forward_days}}天购买</view>
+      </view>
+      
+      <view class="product-share-action" hover-class="theme-action-hover" wx:if="{{goods.commission}}" catchtap="savePoster" style="background:var(--action-background);color: #fff;text-align: center;line-height: 44rpx;font-size: 24rpx;border-radius: 22rpx;width: 145.454545454545rpx;height:44rpx;">立即分享 ↗</view>
+    </view>
+    <view style="margin-top: 20rpx;display: flex;justify-content: space-between;">
+      <view style="color: #fe0a0a;width: 500rpx;">
+        <text>￥</text><text style="font-weight: 700;font-size: 50rpx;">{{goods.subsidy_price}}</text>
+        <text style="text-decoration: line-through;font-size: 28rpx;margin-left: 20rpx;color: #ccc;">门市价￥{{goods.market_price}}</text>
+      </view>
+      <view style="position: relative;width: 200rpx;font-size: 28rpx;">
+        <text style="color: #000;position: absolute;right: 0;bottom: 6rpx;">已售{{goods.sale_num + goods.virtual_sale_num}}份</text>
+      </view>
+    </view>
+    <view wx:if="{{goods.id && goods.tag && goods.tag.length > 0}}" class="product-detail-service-row">
+      <view wx:for="{{goods.tag}}" wx:key="*this" wx:for-item="gtag" wx:if="{{gtag}}" class="product-detail-service-item"><text class="product-detail-service-icon">✓</text>{{gtag}}</view>
+    </view>
+  </view>
+  
+  <view wx:if="{{group_order}}" style="width: 666rpx;margin-top: 20rpx;padding: 20rpx;background: #fff;border-radius: 20rpx;font-size: 30rpx;border: 2rpx solid var(--brand-border);">
+    <view style="width: 670rpx;display: flex;justify-content: space-between;line-height: 50rpx;border-bottom: 1rpx solid #f1f1f1;padding-bottom: 20rpx;margin-bottom: 20rpx;">
+      <view style="display: flex;">
+        <view style="width: 8rpx;height: 30rpx;background: var(--brand);margin-top: 10rpx;margin-right: 10rpx;border-radius: 8rpx;"></view>
+        您的好友正在拼团，可直接参团
+      </view>
+      <text class="icon iconfont icon-right" style="color: #aaa;"></text>
+    </view>
+    <view style="display: flex;justify-content: space-between;">
+      <view style="display: flex;line-height: 60rpx;">
+        <image src="{{group_order.img}}" style="width: 60rpx;height: 60rpx;border-radius: 50%;margin-right: 10rpx;"></image>
+        <text>{{group_order.nickname}}</text>
+      </view>
+      <view style="display: flex;padding-top: 6rpx;">
+        <view style="font-size: 24rpx;line-height: 24rpx;">
+          <view>还差 <text style="color: var(--brand-strong);">{{group_order.num}}</text> 人成团</view>
+          <view>剩余 {{hour}}:{{min}}:{{sec}}</view>
+        </view>
+        <view hover-class="theme-action-hover" wx:if="{{userinfo.id != group_order.user_id}}" catchtap="toGroupBuy" style="line-height: 48rpx;width: 120rpx;text-align: center;background:var(--action-background);color: #fff;border-radius: 10rpx;margin-left: 20rpx;">去拼团</view>
+      </view>
+    </view>
+  </view>
+  
+  <view wx:if="{{goods_list.length > 0}}" style="width: 670rpx;margin-top: 20rpx;padding: 20rpx;background: #fff;border-radius: 20rpx;font-size: 30rpx;">
+    <view style="width: 670rpx;display: flex;justify-content: space-between;line-height: 50rpx;border-bottom: 1rpx solid #f1f1f1;padding-bottom: 20rpx;margin-bottom: 20rpx;">
+      <view>选择套餐</view>
+    </view>
+    <view catchtap="selGoodsSpec" data-item="{{item}}" style="width: 630rpx;display: flex;justify-content: center;align-items: center;border: 2rpx solid {{item.id==goods.id? 'var(--brand-strong)' : '#ccc'}};padding: 18rpx;border-radius: 10rpx;position: relative;margin-top: 20rpx;overflow: hidden;" wx:for="{{goods_list}}" wx:key="index">
+      <view style="flex:1;min-width:0;font-size:26rpx;line-height:38rpx;word-break:break-all;">{{item.title}}</view>
+      <view style="flex-shrink:0;min-width:150rpx;margin-left:16rpx;text-align:right;white-space:nowrap;font-size:36rpx;font-weight:700;color:#fe0a0a;">{{item.subsidy_price != null ? '￥' + item.subsidy_price : '价格待确认'}}</view>
+      <view wx:if="{{item.id==goods.id}}" style="position: absolute;bottom: 0;right: 0;background: var(--brand-strong);border-radius: 10rpx 0 0;width: 30rpx;height: 30rpx;line-height: 30rpx;text-align: center;color: #fff;font-weight: 700;font-size: 20rpx;"><text class="icon iconfont icon-selected"></text></view>
+    </view>
+  </view>
+
+  <view wx:if="{{goods.is_virtual != 1}}" style="width: 670rpx;margin-top: 20rpx;padding: 20rpx;background: #fff;border-radius: 20rpx;font-size: 30rpx;">
+    <view style="width: 670rpx;display: flex;justify-content: space-between;line-height: 50rpx;border-bottom: 1rpx solid #f1f1f1;padding-bottom: 20rpx;margin-bottom: 20rpx;">
+      <view>适用门店</view>
+      <view catchtap="viewStore" style="font-size: 24rpx;" wx:if="{{goods.store.length > 1}}">{{goods.store.length}}家店适用<text class="icon iconfont icon-right"></text></view>
+    </view>
+    <view style="display: flex;justify-content: space-between;line-height: 40rpx;">
+      <view style="width: 500rpx;line-height: 60rpx;font-weight: 700;">{{goods.store[0].name}}</view>
+      <view hover-class="theme-action-hover" catchtap="daohang" data-item="{{goods.store[0]}}" style="font-size: 44rpx;line-height: 60rpx;background:var(--action-background);color:#fff;width: 60rpx;text-align: center;border-radius: 10rpx;">
+        <text class="icon iconfont icon-logistics-tracking-fill"></text>
+      </view>
+      <view hover-class="theme-action-hover" data-phone="{{goods.store[0].mobile}}" catchtap="callPhone" style="font-size: 44rpx;line-height: 60rpx;background:var(--action-background);color:#fff;width: 60rpx;text-align: center;border-radius: 10rpx;">
+        <text class="icon iconfont icon-phone-fill"></text>
+      </view>
+    </view>
+    <view style="display: flex;justify-content: space-between;line-height: 30rpx;font-size: 24rpx;margin-top: 10rpx;">
+      <view catchtap="daohang" style="width: 670rpx;color: #999;">{{goods.store[0].province}} {{goods.store[0].city}} {{goods.store[0].county}} {{goods.store[0].address}}</view>
+    </view>
+  </view>
+
+  <view style="width: 670rpx;border-radius: 20rpx;padding: 20rpx;margin-top: 20rpx;background: #fff;">
+    <view style="background-image: url('{{app.domain}}static/img/content-head.png?t=1');background-size: 100%;height: 279rpx;"></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-body.png');background-size: 100%;padding: 0 8.763%;padding-bottom: 20rpx;"><rich-text nodes="{{goods.extend.content}}"></rich-text></view>
+
+  <view style="background-image: url('{{app.domain}}static/img/content-bottom.png');background-size: 100%;height: 58.52rpx;"></view>
+    
+    <view style="background-image: url('{{app.domain}}static/img/rule-head.png?t=2');background-size: 100%;height: 279rpx;margin-top: 20rpx;"></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-body.png');background-size: 100%;padding: 0 8.763%;padding-bottom: 20rpx;"><rich-text nodes="{{goods.extend.rule}}"></rich-text></view>
+    <view style="background-image: url('{{app.domain}}static/img/content-bottom.png');background-size: 100%;height: 58.52rpx;"></view>
+  </view>
+  <view class="detail-info-card" wx:if="{{goods.id}}">
+    <view class="detail-info-row" wx:if="{{goods.video_goods_id}}">
+      <text class="detail-info-icon">▣</text>
+      <text class="detail-info-label">视频号商品ID：</text>
+      <text class="detail-info-value">{{goods.video_goods_id}}</text>
+      <text class="detail-info-copy" catchtap="copyVideoGoodsId">复制</text>
+    </view>
+    <view class="detail-info-row detail-info-link" hover-class="theme-share-hover" catchtap="viewLicense">
+      <text class="detail-info-icon">▤</text><text class="detail-info-link-text">商家资质</text><text class="icon iconfont icon-right detail-info-arrow"></text>
+    </view>
+    <view class="detail-info-row detail-info-link" hover-class="theme-share-hover" catchtap="openPartnerQr">
+      <text class="detail-info-icon">♡</text><text class="detail-info-link-text">我是商家，想跟蝴蝶优选合作</text><text class="icon iconfont icon-right detail-info-arrow"></text>
+    </view>
+  </view>
+</view>
+<block wx:if="{{goods.id}}">
+<view wx:if="{{goods.status != 1}}" style="width: 750rpx;height: 100rpx;position: fixed;bottom: 0;border-bottom: calc(env(safe-area-inset-bottom)) solid #f1f1f1;left: 0;background: #ccc;line-height: 100rpx;text-align: center;">
+  {{goods.start_time <= now_time ? '已下架' : '未上架'}}
+</view>
+<view wx:elif="{{goods.start_time > now_time}}" style="width: 750rpx;height: 100rpx;position: fixed;bottom: 0;border-bottom: calc(env(safe-area-inset-bottom)) solid #f1f1f1;left: 0;background: #ffaa00;color: #fff;line-height: 100rpx;text-align: center;">
+  {{goods.start_date}} 开售
+</view>
+<view wx:elif="{{goods.end_time < now_time}}" style="width: 750rpx;height: 100rpx;position: fixed;bottom: 0;border-bottom: calc(env(safe-area-inset-bottom)) solid #f1f1f1;left: 0;background: #ccc;line-height: 100rpx;text-align: center;">
+  已下架
+</view>
+<view wx:elif="{{goods.stock <= goods.today_sale_num}}" style="width: 750rpx;height: 100rpx;position: fixed;bottom: 0;border-bottom: calc(env(safe-area-inset-bottom)) solid #f1f1f1;left: 0;background: #ccc;line-height: 100rpx;text-align: center;">
+  已抢光
+</view>
+<view wx:else style="width: 750rpx;height: 100rpx;position: fixed;bottom: 0;border-bottom: calc(env(safe-area-inset-bottom)) solid #f1f1f1;left: 0;display: flex;text-align: center;">
+  <view style="width: 340rpx;height: 100rpx;background: #fff;color: #000;border-top: 4rpx solid;border-image: linear-gradient(to top, #999, #f3f3f3) 1;">
+    <view style="display: flex;justify-content: space-between;">
+      <view catchtap="toIndex" style="line-height: 36rpx;margin-top: 14rpx;width: 80rpx;margin-left: 60rpx;">
+        <text class="icon iconfont icon-mendian" style="font-size: 36rpx;"></text>
+        <view style="font-size: 24rpx;">首页</view>
+      </view>
+      <view catchtap="showCustomer" wx:if="{{customer}}" style="line-height: 36rpx;margin-top: 14rpx;width: 80rpx;margin-right: 60rpx;">
+        <text class="icon iconfont icon-rengongkefu" style="font-size: 36rpx;"></text>
+        <view style="font-size: 24rpx;">客服</view>
+      </view>
+    </view>
+  </view>
+  <view hover-class="theme-action-hover" catchtap="toBuy" style="width: 410rpx;height: 100rpx;background:var(--action-background);line-height: 40rpx;color: #fff;font-weight: 700;border-top: 4rpx solid;border-image: linear-gradient(to top, #999, #f3f3f3) 1;">
+    <view style="margin-top: 10rpx">
+      <text style="font-size: 40rpx;">发起拼团</text>
+    </view>
+    <view style="font-size: 26rpx;line-height: 32rpx;font-weight: 100;">{{goods.group_num}}人成团</view>
+  </view>
+</view>
+</block>
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom) + 20rpx + 100rpx);"></view>
+<view wx:if="{{show_customer}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000066;z-index: 99;">
+  <image src="{{customer.img}}" style="width: 550rpx;height: 550rpx;position: absolute;left: 100rpx;top: calc(50vh - 275rpx - env(safe-area-inset-bottom) - 100rpx);" show-menu-by-longpress></image>
+  <view catchtap="hideCustomer" style="position: absolute;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 40rpx;border-radius: 50%;border: 2rpx solid #fff;color: #fff;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 100rpx + 40rpx);left: 345rpx;"><text class="icon iconfont icon-x"></text></view>
+</view>
+<view wx:if="{{show_share}}" style="position: fixed;left: 0;top: 0;background: #00000066;z-index: 9;width: 100%;height: 100%;">
+  <view style="position: absolute;width: 620rpx;height: 850rpx;left: 65rpx;top: calc((100vh - 850rpx - env(safe-area-inset-bottom) - 250rpx) / 2)" wx:if="{{goods.poster}}">
+    <image show-menu-by-longpress src="{{goods.poster}}" style="width: 620rpx;height: 850rpx;" mode="aspectFit"></image>
+    <view wx:if="{{!goods.copywriting}}" catchtap="hide_share" style="width: 60rpx;height: 60rpx;line-height: 60rpx;font-size: 40rpx;text-align: center;color: #fff;font-weight: 700;border: 4rpx solid #fff;border-radius: 50%;margin: 40rpx auto 0;">
+      <text class="icon iconfont icon-close"></text>
+    </view>
+  </view>
+  <view wx:if="{{goods.copywriting}}" style="position: absolute;bottom: 0;padding: 20rpx 20rpx calc(env(safe-area-inset-bottom) + 10rpx);background: var(--brand-soft);">
+    <view style="display: flex;justify-content: space-around;">
+      <view hover-class="theme-action-hover" catchtap="savePosterImg" style="background:var(--action-background);color: #fff;margin-bottom: 20rpx;padding: 10rpx 20rpx;font-size: 24rpx;border-radius: 20rpx;"><text class="icon iconfont icon-save"></text>一键保存海报</view>
+      <view hover-class="theme-action-hover" catchtap="copyText" style="background:var(--action-background);color: #fff;margin-bottom: 20rpx;padding: 10rpx 20rpx;font-size: 24rpx;border-radius: 20rpx;"><text class="icon iconfont icon-copy"></text>一键复制文案</view>
+      <view hover-class="theme-action-hover" catchtap="hide_share" style="margin-bottom: 20rpx;padding: 10rpx 20rpx;font-size: 24rpx;border-radius: 20rpx;background:var(--action-background);color:#fff;">关闭</view>
+    </view>
+    <view style="width: 670rpx;background: #fff;border-radius: 20rpx;padding: 20rpx;height: 160rpx;overflow-y: scroll;">
+      <text>{{goods.copywriting}}</text>
+    </view>
+  </view>
+</view>
+<view wx:if="{{detail_show_partner_qr}}" class="detail-partner-mask" catchtap="closePartnerQr">
+  <view class="detail-partner-panel" catchtap="stopPartnerQrTap">
+    <image class="detail-partner-image" src="{{app.domain}}static/img/kf_qrcode.png" mode="widthFix" show-menu-by-longpress binderror="partnerQrError"></image>
+    <view class="detail-partner-close" catchtap="closePartnerQr">×</view>
+  </view>
+</view>

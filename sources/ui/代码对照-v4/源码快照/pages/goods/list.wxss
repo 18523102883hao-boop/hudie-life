@@ -1,0 +1,15 @@
+page{background: #f8f8f8}
+.nav-main::before{content:'';position: absolute;left: 0;top: 0;right: 0;bottom: 0;width: 100%;height: 100%;z-index: -1;}
+.view{width:710rpx;align-items:center;justify-content:space-between}
+.lun{height:237.36rpx;width: 710rpx;margin: 20rpx;}
+.luns{border-radius: 20rpx;overflow: hidden;}
+.pointss{position: absolute;bottom: -16rpx;z-index: 1;width: 750rpx;}
+.scroll-container{width:670rpx;height:100%;overflow:hidden;display: flex;}
+.scroll-container .scroll-content{white-space:nowrap;color: var(--brand-strong);width: 250.733rpx;}
+.scroll-container .scroll-icon{display:flex;width: 135rpx;border-right: 2rpx solid #ccc;height: 40rpx;margin-top: 11.5rpx;}
+.scroll-container .scroll-icon image{display:inline-block;width: 115rpx;height: 37rpx;}
+/* .scroll-container .scroll-icon view{display:inline-block;font-size: 24rpx;width: 130rpx;text-align: center;background: linear-gradient(to bottom, #fefad8, #dfbe7c);line-height: 40rpx;color: #7e520d;font-weight: 700;} */
+.scroll-container .scroll-content .scroll-item{display:inline-block;font-size:28rpx;width: 475rpx;margin-left: 20rpx;}
+.scroll-container .scroll-content .scroll-item text{margin-left: 100px;display: inline-block;}
+.scroll-container .scroll-content .scroll-item text:first-child{margin-left: 0;}
+@import "/utils/common/area.wxss";

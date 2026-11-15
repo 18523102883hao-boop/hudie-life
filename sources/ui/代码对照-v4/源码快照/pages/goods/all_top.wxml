@@ -1,0 +1,50 @@
+<!-- <view class="nav-main relative" style="height:535rpx;background: #f3f3f3;">
+  <view style="width: 750rpx;height:{{app.globalData.navBarHeight}}px;background: {{scroll_top>0?'#fff':'none'}};position: fixed;z-index: 2;top: 0">
+  <view class="capsule-box absolute" style="height:{{app.globalData.menuHeight}}px; min-height:{{app.globalData.menuHeight}}px; line-height:{{app.globalData.menuHeight}}px;bottom: 4px;left:{{app.globalData.menuRight}}px;margin-left: 12rpx;">
+    <view class="view flex">
+        <view class="views" catchtap="toBack">
+          <text class="icon iconfont icon-left" style="font-size: 50rpx;line-height: {{app.globalData.menuHeight}}rpx;"></text>
+        </view>
+        <view style="width: 64rpx;height: 64rpx;"></view>
+        <view class="title" style="opacity: 0;width: 180rpx;margin-top: 0;">
+          <view class="flex">
+            <text class="icon iconfont icon-dingwei">重庆站</text>
+            <text class="icon iconfont icon-down"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 轮播图 -->
+  <view class="lun" style="z-index: 0;" wx:if="{{swiperList && swiperList.length>0}}">
+    <swiper class="luns" autoplay="play" circular interval="3000" bindchange="swiperchange">
+      <swiper-item wx:for="{{swiperList}}" wx:key="index" class="luns" bindtap="toPage" data-item="{{item}}">
+        <image mode="widthFix" src="{{item.img}}"></image>
+      </swiper-item>
+    </swiper>
+    <!-- 轮播图标签 -->
+    <view class="labels absolute flex">
+      <view class="label" wx:if="{{index <= 6}}" wx:for="{{labelAll}}" wx:key="index">{{item}}</view>
+    </view>
+  </view>
+<!-- </view> -->
+
+<view class="cate_list">
+  <view class="cate_box">
+    <view class="cate_one {{cate==''?'on':''}}" catchtap="cateSel" data-cate="">全部</view>
+    <view class="cate_one {{cate==item.name?'on':''}}" catchtap="cateSel" data-cate="{{item.name}}" wx:for="{{cateList}}" wx:key="index">{{item.name}}</view>
+  </view>
+</view>
+
+<import src="/utils/common/goods_list"></import>
+<template is="goods_list" data="{{app,list,show_cut_msg,sec,cut_price,show_share,goods}}"></template>
+
+<view wx:if="{{show_customer}}" style="position: fixed;width: 100%;height: 100%;left: 0;top: 0;background: #00000066;z-index: 99;">
+  <image src="{{customer.img}}" style="width: 550rpx;height: 550rpx;position: absolute;left: 100rpx;top: calc(50vh - 275rpx - env(safe-area-inset-bottom) - 100rpx);" show-menu-by-longpress></image>
+  <view catchtap="hideCustomer" style="position: absolute;width: 60rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 40rpx;border-radius: 50%;border: 2rpx solid #fff;color: #fff;top: calc(50vh + 275rpx - env(safe-area-inset-bottom) - 100rpx + 40rpx);left: 345rpx;"><text class="icon iconfont icon-x"></text></view>
+</view>
+
+<import src="/utils/common/loading"></import>
+<template is="loading" data="{{app,loading,list}}"></template>
+
+<view style="width: 1rpx;height: calc(max(env(safe-area-inset-bottom), 20rpx));"></view>

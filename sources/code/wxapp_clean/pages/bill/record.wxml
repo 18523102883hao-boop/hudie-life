@@ -1,0 +1,24 @@
+<view class="nav">
+  <view catchtap="selNav" data-i="1" class="nav-one {{i==1?'on':''}}">全部</view>
+  <view catchtap="selNav" data-i="2" class="nav-one {{i==2?'on':''}}">租金</view>
+  <view catchtap="selNav" data-i="3" class="nav-one {{i==3?'on':''}}">物业费</view>
+</view>
+
+<image wx:if="{{list.length == 0}}" src="{{app.domain}}admin/static/images/404.svg" style="width: 423rpx;height: 341rpx;margin: 80rpx 163.5rpx;"></image>
+
+<view wx:for="{{list}}" wx:key="index" style="width: 670rpx;margin: 20rpx;background: #fff;padding: 20rpx;border-radius: 20rpx;">
+  <view style="display: inline-block;font-weight: 700;">{{item.project}}</view>
+  <view class="flex" style="justify-content: space-between;line-height: 80rpx;background: #f1f1f1;margin-top: 20rpx;padding: 0 20rpx;width: 630rpx;border-radius: 20rpx;font-size: 24rpx;" catchtap="detail" data-item="{{item}}">
+    <view>{{item.start_date}} ~ {{item.end_date}}</view>
+    <view style="color: #ed2519;">￥{{item.pay_amount}}元<text class="icon iconfont icon-right" style="color: #000;margin-left: 10rpx;"></text></view>
+  </view>
+  <view style="font-size: 24rpx;margin-top: 20rpx;color: #666;display: flex;justify-content: space-between;">
+    <view>缴费时间：{{item.pay_date}}</view>
+    <view wx:if="{{item.status == 2}}" style="background: #f6ffed;border-color: #b7eb8f;color: #52c41a;">部分退款</view>
+    <view wx:if="{{item.status == 3}}" style="background: #f3f1e3;border-color: #efedc7;color: #ffbd00;">部分退款</view>
+    <view wx:if="{{item.status == 4}}" style="background: #fff1f0;border-color: #ffa39e;color: #f5222d;">已退款</view>
+  </view>
+</view>
+
+<view style="text-align: center;font-size: 24rpx;color: #aaa;" wx:if="{{is_end && list.length > 6}}">-- 已经到底了 --</view>
+<view style="width: 1rpx;height: calc(env(safe-area-inset-bottom));"></view>

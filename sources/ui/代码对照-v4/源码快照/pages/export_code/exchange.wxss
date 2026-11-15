@@ -1,0 +1,140 @@
+@import "./export_code.wxss";
+
+/* 兑换页（K2-1） */
+.ec-ex-tip {
+  padding: 4rpx 0 20rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #999;
+}
+.ec-ex-verify-tip {
+  margin-top: 16rpx;
+  padding: 14rpx 18rpx;
+  border-radius: 10rpx;
+  background: #fff8e6;
+  font-size: 22rpx;
+  line-height: 32rpx;
+  color: #b26a00;
+}
+.ec-ex-field {
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #f2f2f2;
+}
+.ec-ex-label {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 700;
+}
+.ec-ex-required {
+  margin-left: 4rpx;
+  color: #fe3a00;
+}
+.ec-ex-input {
+  margin-top: 14rpx;
+  height: 84rpx;
+  padding: 0 22rpx;
+  border-radius: 12rpx;
+  background: #f7f7f7;
+  font-size: 28rpx;
+  color: #333;
+}
+.ec-ex-hint {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  line-height: 32rpx;
+  color: #aaa;
+}
+.ec-ex-pay-tip {
+  margin-top: 22rpx;
+  font-size: 24rpx;
+  color: #fe3a00;
+}
+.ec-ex-footer {
+  padding: 20rpx 24rpx 40rpx;
+}
+.ec-ex-submit {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: #fff;
+  background:var(--action-background);
+}
+.ec-ex-submit-off {
+  background: #ccc;
+}
+
+/* 成功态 */
+.ec-ex-done {
+  padding: 50rpx 24rpx 30rpx;
+  text-align: center;
+}
+.ec-ex-done-icon {
+  width: 96rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #e7f7ee;
+  color: #14a05a;
+  font-size: 52rpx;
+}
+.ec-ex-done-title {
+  margin-top: 20rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #333;
+}
+.ec-ex-done-sub {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #888;
+}
+.ec-ex-code-box {
+  margin: 30rpx 0 0;
+  padding: 26rpx 20rpx;
+  border-radius: 14rpx;
+  background: #f7f7f7;
+}
+.ec-ex-code-label {
+  font-size: 22rpx;
+  color: #999;
+}
+.ec-ex-code {
+  margin-top: 12rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+  letter-spacing: 6rpx;
+  color: var(--brand-strong);
+}
+.ec-ex-copy {display: inline-block;
+  margin-top: 16rpx;
+  padding: 8rpx 28rpx;
+  border-radius: 24rpx;
+  border: 1rpx solid var(--action);
+  font-size: 22rpx;background:var(--action-background);color:#fff;}
+.ec-ex-done-tip {
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  line-height: 34rpx;
+  color: #999;
+}
+.ec-ex-done-btns {
+  margin-top: 34rpx;
+}
+.ec-ex-btn-ghost,
+.ec-ex-btn-main {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+.ec-ex-btn-ghost {margin-right: 20rpx;
+  border: 1rpx solid var(--action);background:var(--action-background);color:#fff;}
+.ec-ex-btn-main {
+  color: #fff;
+  background:var(--action-background);
+}

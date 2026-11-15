@@ -1,0 +1,20 @@
+<view wx:if="{{index != -1}}" style="text-align: center;line-height: 80rpx;">当前序号：<text style="font-weight: 700;font-size: 40rpx;">{{index}}</text></view>
+
+<view wx:if="{{index != -1}}" style="display: flex;">
+  <view hover-class="theme-action-hover" style="width: 300rpx;line-height: 80rpx;text-align: center;border-radius: 20rpx;margin: 20rpx 50rpx;background:var(--action-background);color:#fff;" catchtap="setEnd">活动结束</view>
+  <view hover-class="theme-action-hover" style="width: 300rpx;line-height: 80rpx;text-align: center;border-radius: 20rpx;margin: 20rpx 0;background:var(--action-background);color: #fff;" catchtap="setIndex">{{index+1}}号选手入场</view>
+</view>
+<view wx:else>
+  <view hover-class="theme-action-hover" style="width: 300rpx;line-height: 80rpx;text-align: center;border-radius: 20rpx;margin: 20rpx 225rpx;background:var(--action-background);color: #fff;" catchtap="setStart">活动开始</view>
+</view>
+
+<view style="text-align: center;"> ---- 当前排名 ---- </view>
+<view style="display: flex;line-height: 60rpx;width: 750rpx;text-align: center;margin-top: 20rpx;padding-bottom: 20rpx;border-bottom: 1rpx solid #ddd;" wx:for="{{list}}" wx:key="index">
+  <view style="width: 80rpx;">
+    <view style="width: 60rpx;line-height: 60rpx;text-align: center;border-radius: 50%;background: {{item.bg}};color: #fff;margin-left: 10rpx;">{{item.top}}</view>
+  </view>
+  <view style="width: 180rpx;">{{item.index}}号选手</view>
+  <view style="width: 200rpx;">{{item.score_list}}</view>
+  <view style="width: 150rpx;">{{item.total_score}}</view>
+  <view style="width: 140rpx;">{{item.average}}</view>
+</view>

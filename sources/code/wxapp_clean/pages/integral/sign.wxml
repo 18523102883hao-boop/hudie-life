@@ -1,0 +1,43 @@
+<view style="width: 750rpx;height: 300rpx;background-image: linear-gradient(to right bottom, var(--brand), var(--brand-strong));">
+  <view style="display: flex;width: 710rpx;padding: 120rpx 20rpx 60rpx;height: 120rpx;">
+    <view><image src="{{userinfo.img}}" style="width: 120rpx;height: 120rpx;border-radius: 50%;"></image></view>
+    <view style="margin-left: 20rpx;letter-spacing: 4rpx;">
+      <view style="font-size: 34rpx;color: #fff;line-height: 50rpx;margin-top: 20rpx;">连续签到<text style="color: #f87635;">{{userinfo.check_in_num}}</text>天</view>
+      <view style="font-size: 26rpx;color: #3d3d3d;line-height: 30rpx;">连续签到第七天可获得{{userinfo.check_in_integral7}}积分</view>
+    </view>
+  </view>
+</view>
+<view style="width: 710rpx;padding: 20rpx;border-radius: 20rpx;margin-top: -20rpx;z-index: 1;background: #f3f3f3;">
+  <view style="margin-bottom: 20rpx;font-weight: 700;">签到得积分，直接当钱花</view>
+  <view style="display: flex;flex-wrap: wrap;">
+    <view class="check-in-box {{index < userinfo.check_in_num%7 || (userinfo.check_in_num%7==0 && userinfo.is_check) ? 'on' : ''}}" wx:for="{{check_arr}}" wx:key="index">
+      <view class="check-in-day" style="width: 345rpx;position: relative;" wx:if="{{(userinfo.check_in_num?(userinfo.p*7+1):1)+index == 7}}">
+        <view style="width: 162.5rpx;position: absolute;left: 0;">
+          <view class="check-in-txt">
+            <block wx:if="{{index < userinfo.check_in_num%7 || (userinfo.check_in_num%7==0 && userinfo.is_check)}}">已签</block>
+            <block wx:else>
+              <block>第{{(userinfo.check_in_num?(userinfo.p*7+1):1)+index+'天'}}</block>
+            </block>
+          </view>
+        <view class="check-in-icon" style="position: relative;">
+          <image src="{{app.domain}}static/img/integral.png?t=1" style="position: absolute;left: 155rpx;width: 120rpx;height: 120rpx;top: -30rpx;"></image>
+          </view>
+          <view class="check-in-text" style="font-size: 22rpx;">{{((userinfo.check_in_num?(userinfo.p*7+1):1)+index)%7==0?userinfo.check_in_integral7:userinfo.check_in_integral}}积分</view>
+        </view>
+      </view>
+      <view class="check-in-day" wx:else>
+        <view class="check-in-txt">
+          <block wx:if="{{index < userinfo.check_in_num%7 || (userinfo.check_in_num%7==0 && userinfo.is_check)}}">已签到</block>
+          <block wx:else>
+            <block>第{{(userinfo.check_in_num?(userinfo.p*7+1):1)+index+'天'}}</block>
+          </block>
+        </view>
+        <view class="check-in-icon">
+          <image src="{{app.domain}}static/img/integral.png?t=1"></image>
+        </view>
+        <view class="check-in-text" style="font-size: 22rpx;">{{((userinfo.check_in_num?(userinfo.p*7+1):1)+index)%7==0?userinfo.check_in_integral7:userinfo.check_in_integral}}积分</view>
+      </view>
+    </view>
+  </view>
+  <view hover-class="{{userinfo.is_check ? 'none' : 'theme-action-hover'}}" catchtap="checkin" class="check-in-btn {{userinfo.is_check ? 'on' : ''}}">{{check_arr[0].is_check ? '今日已' : '立即'}}签到</view>
+</view>
